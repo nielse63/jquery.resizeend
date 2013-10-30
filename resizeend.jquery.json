@@ -1,15 +1,23 @@
 {
 	"name":"ResizeEnd",
-	"version":0.1,
+	"version":"0.1.0",
 	"title":"jQuery ResizeEnd",
-	"author":"Erik Nielsen",
-	"licenses":{
+	"author":{
+		"name":"Erik Nielsen",
+		"email":"erik@312development.com",
+		"url":"http://312development.com"
+	},
+	"licenses":[{
 		"type":"MIT",
 		"url":"http://opensource.org/licenses/MIT"
+	}],
+	"dependencies":{
+		"jquery":">=1.7"
 	},
-	"dependencies":"jquery",
 	"description":"A tiny plugin to handle events after a (window) resize has been completed.",
-	"keywords":"resize, window resize, responsive",
+	"keywords":[
+		"resize", "window", "responsive", "handler", "events"
+	],
 	"homepage":"https://github.com/nielse63/jQuery-ResizeEnd",
 	"demo":"http://github.io/nielse63/jQuery-ResizeEnd"
 }
