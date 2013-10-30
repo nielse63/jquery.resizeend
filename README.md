@@ -2,6 +2,10 @@
 
 A tiny plugin to handle events after a (window) resize has been completed.
 
+## Demo
+
+See the demo <a href="http://nielse63.github.io/jQuery-ResizeEnd/" target="_blank">here</a>.
+
 ## Usage
 
 Include both the jQuery library and the resizeEnd plugin on your page:
