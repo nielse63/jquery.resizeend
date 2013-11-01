@@ -47,3 +47,7 @@ Currently, the only default is the delay timeout before the callback is executed
 
 Credit's due where credit's earned, and I took most of the main logic from <a href="http://stackoverflow.com/questions/5489946/jquery-how-to-wait-for-the-end-or-resize-event-and-only-then-perform-an-ac" target="_blank">this SO post</a>.
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/nielse63/jquery-resizeend/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
