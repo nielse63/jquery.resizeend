@@ -13,6 +13,21 @@ body {
 h1, h2, h3, h4 {
 	font-weight: 300;
 }
+a {
+	clear: both;
+	display: inline-block;
+	padding: 5px 15px;
+	text-decoration: none;
+	border: 3px solid rgba(255, 255, 255, 0.25);
+	margin: 10px 0;
+	color: #fff;
+	-webkit-transition: 150ms ease-in-out;
+	-moz-transition: 150ms ease-in-out;
+	transition: 150ms ease-in-out;
+}
+a:hover {
+	border-color: #fff;
+}
 .main-wrapper {
 	padding: 50px;
 	text-align: right;

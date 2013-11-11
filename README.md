@@ -17,7 +17,7 @@ Include both the jQuery library and the resizeEnd plugin on your page:
 
 Attach the resizeEnd method to an element, instatiate options (if so desired), and run a callback functions:
 
-```
+```js
 $(window).resizeEnd({
 	delay : 250
 }, function() {
@@ -27,7 +27,7 @@ $(window).resizeEnd({
 
 If you want to use the default delay setting of 250ms, simply don't include the options object:
 
-```
+```js
 $(window).resizeEnd(function() {
 	// Callback logic
 });
@@ -37,7 +37,7 @@ $(window).resizeEnd(function() {
 
 Currently, the only default is the delay timeout before the callback is executed.  This is set as an integer in milliseconds.
 
-```
+```js
 {
 	delay : 250
 }
