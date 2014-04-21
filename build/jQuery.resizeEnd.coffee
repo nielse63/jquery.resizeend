@@ -50,4 +50,5 @@
 			if !$.data(this, 'plugin_' + plugin)
 				$.data this, 'plugin_' + plugin, new ResizeEnd(this, options, callback)
 
+
 ) jQuery, window, document
