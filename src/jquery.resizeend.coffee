@@ -1,4 +1,48 @@
 
+do ( $ = jQuery, window, document )->
+
+	pluginName = 'resizeEnd'
+	defaults =
+		delay : 250
+
+	class ResizeEnd
+		constructor : ( @el, options, callback )->
+			@settings = $.extend {}, defaults, options
+			@_defaults = defaults
+			@_name = pluginName
+			@timeout = false
+			if typeof options is 'function'
+				@callback = options
+				options = @_defaults
+			else
+				@callback = callback
+			@init()
+
+		init : ->
+			# _this = @
+			@el.on 'resize', ( e )->
+				# console.log e.timeStamp, _this
+				if ResizeEnd.timeout is false
+					ResizeEnd._timestart = e.timeStamp
+					ResizeEnd.timeout = true
+					setTimeout ( e )->
+						new ResizeEnd._execCallback( e )
+					, ResizeEnd.settings.delay
+		@_execCallback : ( e )->
+			console.log e.timeStamp
+			if ( e.timeStamp - @_timestart ) < @settings.delay
+				setTimeout ( e )->
+					@_execCallback( e )
+				, @settings.delay
+			else
+				ResizeEnd.timeout = false
+				@callback()
+
+	$.fn[pluginName] = ( options, callback ) ->
+		unless $.data @, "plugin_#{pluginName}"
+			$.data @, "plugin_#{pluginName}", new ResizeEnd @, options, callback
+
+###
 ( ($, window, document)->
 	plugin = 'resizeEnd'
 	defaults =
@@ -52,3 +96,4 @@
 
 
 ) jQuery, window, document
+###
