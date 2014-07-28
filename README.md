@@ -11,7 +11,7 @@ See the demo <a href="http://nielse63.github.io/jQuery-ResizeEnd/" target="_blan
 Include both the jQuery library and the resizeEnd plugin on your page:
 
 ```
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="js/jQuery.resizeEnd.js"></script>
 ```
 
@@ -42,6 +42,10 @@ Currently, the only default is the delay timeout before the callback is executed
 	delay : 250
 }
 ```
+
+## License
+
+This plugin is licensed under the <a href="http://opensource.org/licenses/MIT" target="_blank">MIT license</a>.  A copy of the license is included in this package.
 
 ## Credits
 
