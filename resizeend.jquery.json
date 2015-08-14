@@ -1,7 +1,7 @@
 {
-	"name":"resizeend",
-	"version":"0.1.2",
-	"title":"jQuery ResizeEnd",
+	"name":"jQuery resizeend",
+	"version":"1.0.0",
+	"title":"jQuery resizeend",
 	"author":{
 		"name":"Erik Nielsen",
 		"email":"erik@312development.com",
@@ -14,10 +14,10 @@
 	"dependencies":{
 		"jquery":">=1.7"
 	},
-	"description":"A tiny plugin to handle events after a (window) resize has been completed.",
+	"description": "A jQuery plugin that allows for window resize-end event handling.",
 	"keywords":[
-		"resize", "window", "responsive", "handler", "events"
+		"resize", "window", "responsive", "handler", "events", "custom events"
 	],
-	"homepage":"https://github.com/nielse63/jQuery-ResizeEnd",
-	"demo":"http://nielse63.github.io/jQuery-ResizeEnd/"
+	"homepage" : "https://github.com/nielse63/jquery.resizeend",
+	"demo" : "http://nielse63.github.io/jquery.resizeend/"
 }

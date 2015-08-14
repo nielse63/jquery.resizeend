@@ -1,0 +1,30 @@
+{
+	"curly" : true,
+	"eqnull" : true,
+	"eqeqeq" : true,
+	"undef" : true,
+	"globals": {
+		"define" : true,
+		"window" : true,
+		"Clique" : true,
+		"setTimeout" : true,
+		"clearTimeout" : true,
+		"jQuery" : true,
+		"setInterval" : true,
+		"document" : true,
+		"navigator" : true,
+		"console" : true,
+		"location" : true,
+		"setInterval" : true,
+		"clearInterval" : true,
+		"DocumentTouch" : true,
+		"Image" : true,
+		"alert" : true,
+		"XMLHttpRequest" : true,
+		"FormData" : true,
+		"require" : true,
+		"CSSRule" : true,
+		"module" : true,
+		"global" : true
+	}
+}

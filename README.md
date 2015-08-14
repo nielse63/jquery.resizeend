@@ -1,57 +1,65 @@
-### jQuery Resize End Plugin
+### jQuery resizeend
 
-A tiny plugin to handle events after a (window) resize has been completed.
+A jQuery plugin that allows for window resize-end event handling.
 
 ## Demo
 
-See the demo <a href="http://nielse63.github.io/jQuery-ResizeEnd/" target="_blank">here</a>.
+See the demo <a href="http://nielse63.github.io/jquery.resizeend/" target="_blank">here</a>.
 
 ## Usage
 
-Include both the jQuery library and the resizeEnd plugin on your page:
+Include both the jQuery library and the resizeend plugin in your project:
 
 ```
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="js/jQuery.resizeEnd.js"></script>
+<script src="js/jQuery.resizeend.js"></script>
 ```
 
-Attach the resizeEnd method to an element, instatiate options (if so desired), and run a callback functions:
+Execute the resizeend method to an element, instatiate options (if so desired), and run a callback functions:
 
 ```js
-$(window).resizeEnd({
+$(window).resizeend({
 	delay : 250
 }, function() {
-	// Callback logic
+	// ...
+});
+```
+
+Or bind an element to the event, passing in options and event handler:
+
+```js
+$(window).on('resizeend', 250, function() {
+	// ...
 });
 ```
 
 If you want to use the default delay setting of 250ms, simply don't include the options object:
 
 ```js
-$(window).resizeEnd(function() {
-	// Callback logic
+$(window).resizeend(function() {
+	// ...
 });
 ```
 
-## Defaults
+## Options
 
-Currently, the only default is the delay timeout before the callback is executed.  This is set as an integer in milliseconds.
+The only option available is the delay time (in milliseconds) to execute the callback after the browser has stopped being resized. The default value is 250ms. This can be passed as either a number or object:
 
 ```js
-{
-	delay : 250
-}
+// As a number
+$(window).on('resizeend', 250, function() {
+	// ...
+});
+
+// As an object
+$(window).on('resizeend', { delay : 250 }, function() {
+	// ...
+});
 ```
 
 ## License
 
 This plugin is licensed under the <a href="http://opensource.org/licenses/MIT" target="_blank">MIT license</a>.  A copy of the license is included in this package.
-
-## Credits
-
-Credit's due where credit's earned, and I took most of the main logic from <a href="http://stackoverflow.com/questions/5489946/jquery-how-to-wait-for-the-end-or-resize-event-and-only-then-perform-an-ac" target="_blank">this SO post</a>.
-
-
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/nielse63/jquery-resizeend/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
