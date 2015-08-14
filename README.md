@@ -12,7 +12,7 @@ Include both the jQuery library and the resizeend plugin in your project:
 
 ```
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="js/jQuery.resizeend.js"></script>
+<script src="js/jquery.resizeend.js"></script>
 ```
 
 Execute the resizeend method to an element, instatiate options (if so desired), and run a callback functions:
