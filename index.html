@@ -3,43 +3,130 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Resize End Test</title>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script src="jQuery.resizeEnd.min.js"></script>
-
-	<!-- For Demo Only -->
-	<link rel="stylesheet" href="style.css">
-	<link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+	<link rel="shortcut icon" href="images/favicon.ico?_=1439606525" type="image/x-icon" />
+	<link rel="apple-touch-icon" href="images/apple-touch-icon.png?_=1439606525">
+	<link rel="apple-touch-icon" sizes="57x57" href="images/apple-touch-icon-57x57.png?_=1439606525">
+	<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png?_=1439606525">
+	<link rel="apple-touch-icon" sizes="76x76" href="images/apple-touch-icon-76x76.png?_=1439606525">
+	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png?_=1439606525">
+	<link rel="apple-touch-icon" sizes="120x120" href="images/apple-touch-icon-120x120.png?_=1439606525">
+	<link rel="apple-touch-icon" sizes="144x144" href="images/apple-touch-icon-144x144.png?_=1439606525">
+	<link rel="apple-touch-icon" sizes="152x152" href="images/apple-touch-icon-152x152.png?_=1439606525">
 </head>
 <body>
-	
-	<div class="main-wrapper">
-		<h1 class="site-title">jQuery ResizeEnd Plugin</h1>
-		<h2>Resize your browser window,<br>a completion notice will appear below:</h2>
-		<div class="window"><h3>&nbsp;</h3></div>
-	</div>
 
-<script>
-	;(function($) {
-		$(window).on('resize', function() {
-			$('.window h3').text('');
-		});
-		$(window).resizeEnd({
-			delay : 500
-		}, function() {
-			$('.window h3').html('Complete!');
-			/* Add callback function logic here */
-		});
-	})(jQuery);
-</script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	<main class="main">
+		<header class="header">
+			<div class="header-cover"></div>
+			<div class="header-center">
+				<h1>ResizeEnd</h1>
+				<h2>A Custom jQuery Event</h2>
+			</div>
+		</header>
+		<article>
+			<div class="container">
+				<div class="row">
+					<div class="col-12-12 col-4-12-small flex">
+						<aside class="aside flex-item-grow">
+							<div class="aside-inner">
+								<h4>ResizeEnd</h4>
+								<ul class="nav nav-side">
+									<li class="active"><a href="#demo">Demos</a></li>
+									<li><a href="#installation">Installation</a></li>
+									<li><a href="#usage">Usage</a></li>
+									<li><a href="#options">Options</a></li>
+								</ul>
+							</div>
+						</aside>
+					</div>
+					<div class="col-12-12 col-8-12-small">
+						<section class="article" id="demo">
+							<h3 class="article-title">Demo</h3>
+							<p class="article-lead">An example jQuery.resizeend in action.</p>
+							<p>Begin resizing your browser window. Event output will be displayed below.</p>
+							<div class="demo-output">
+								<pre>No event</pre>
+							</div>
+						</section>
+						<section class="article" id="installation">
+							<h3 class="article-title">Installation</h3>
+							<p class="article-lead">Manual installation</p>
+							<p>Reference the file in your project:</p>
+							<pre><code>&lt;script src="jquery.resizeend.js"&gt;&lt;/script&gt;</code></pre>
+							<p class="article-lead">Using Bower</p>
+							<pre><code>bower install resizeend</code></pre>
+							<p class="article-lead">Using NPM</p>
+							<pre><code>npm install resizeend</code></pre>
+						</section>
+						<section class="article" id="usage">
+							<h3 class="article-title">Usage</h3>
+							<p class="article-lead">Basic usage.</p>
+							<p>Direct method reference:</p>
+							<pre><code>// Default options
+$(<em>selector</em>).resizeend(function() {
+	// execute callback...
+});
 
-  ga('create', 'UA-35376132-4', 'nielse63.github.io');
-  ga('send', 'pageview');
+// Custom options
+$(<em>selector</em>).resizeend(1000, function() {
+	// execute callback...
+});</code></pre>
+							<p>Event binding:</p>
+							<pre><code>// Default options
+$(<em>selector</em>).on('resizeend', function() {
+	// execute callback...
+});
 
-</script>
+// Custom options
+$(<em>selector</em>).on('resizeend', 1000, function() {
+	// execute callback...
+});</code></pre>
+						</section>
+						<section class="article" id="options">
+							<h3 class="article-title">Options</h3>
+							<p class="article-lead">All plugin &amp; event options.</p>
+							<div class="overflow-container">
+								<table class="table-striped">
+									<thead>
+										<tr>
+											<th>Option</th>
+											<th>Type</th>
+											<th>Default</th>
+											<th>Description</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>
+												<code>delay</code>
+											</td>
+											<td>integer/<br>object</td>
+											<td>250</td>
+											<td>The amount of time, in millisecond, to wait after the last <em>resize</em> event was fired before triggering the event.</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</section>
+					</div>
+				</div>
+			</div>
+		</article>
+	</main>
+
+	<link rel="stylesheet" href="css/clique.css">
+	<link rel="stylesheet" href="css/main.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="js/core/core.js"></script>
+	<script src="js/jquery.resizeend.js"></script>
+	<script src="js/functions.js"></script>
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-66367751-1', 'auto');
+		ga('send', 'pageview');
+	</script>
 </body>
 </html>

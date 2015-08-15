@@ -1,1 +1,9 @@
+*~
+*.diff
+*.patch
 .DS_Store
+node_modules
+npm-debug.log
+tests/results
+build
+fonts

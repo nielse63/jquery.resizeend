@@ -1,0 +1,112 @@
+@font-face {
+  font-family: "Proxima Nova";
+  src: url("../fonts/ProximaNova-Regular.eot");
+  src: url("../fonts/ProximaNova-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/ProximaNova-Regular.woff") format("woff"), url("../fonts/ProximaNova-Regular.ttf") format("truetype"), url("../fonts/ProximaNova-Regular.svg#ProximaNovaReg") format("svg");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Proxima Nova";
+  src: url("../fonts/Proxima Nova Bold.eot");
+  src: url("../fonts/Proxima Nova Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/Proxima Nova Bold.woff") format("woff"), url("../fonts/Proxima Nova Bold.ttf") format("truetype"), url("../fonts/Proxima Nova Bold.svg#d1e00a8fb1fd9b428ab6b90409479fde") format("svg");
+  font-style: normal;
+  font-weight: 700;
+}
+@font-face {
+  font-family: "Brandon Grotesque";
+  src: url("../fonts/Brandon_bld.eot");
+  src: url("../fonts/Brandon_bld.eot?#iefix") format("embedded-opentype"), url("../fonts/Brandon_bld.woff") format("woff"), url("../fonts/Brandon_bld.ttf") format("truetype"), url("../fonts/Brandon_bld.svg#41e76bd6e414417d52adb646f262964a") format("svg");
+  font-style: normal;
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'Brandon Grotesque Regular';
+  src: url('../fonts/Brandon_reg.eot');
+  src: url('../fonts/Brandon_reg.eot?#iefix') format('embedded-opentype'), url('../fonts/Brandon_reg.woff') format('woff'), url('../fonts/Brandon_reg.ttf') format('truetype'), url('../fonts/Brandon_reg.svg#50bf5a2005a5412419d6a4b30314e68e') format('svg');
+  font-style: normal;
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Crimson";
+  src: url("../fonts/CrimsonText-Regular.eot");
+  src: url("../fonts/CrimsonText-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/CrimsonText-Regular.woff") format("woff"), url("../fonts/CrimsonText-Regular.ttf") format("truetype"), url("../fonts/CrimsonText-Regular.svg#13dc73e3781b936ac8184d25c72fae4c") format("svg");
+  font-style: normal;
+  font-weight: 400;
+}
+body,
+html {
+  font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #888;
+}
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+body {
+  background-color: #fcfcfc;
+}
+.header {
+  font-family: "Brandon Grotesque", "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #1e4a54;
+  min-height: 100vh;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  position: relative;
+  text-align: center;
+  color: #fcfcfc;
+  overflow: hidden;
+}
+.header + * {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.header h1,
+.header h2 {
+  position: relative;
+}
+.header h1 {
+  font-weight: 700;
+  font-size: 52px;
+}
+.header h2 {
+  font-family: "Brandon Grotesque Regular", "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 26px;
+  font-weight: 200;
+}
+.header-cover {
+  background-image: url('../images/skyline-lite.png?_=skyline-lite');
+  background-position: top left;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.header-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+h3,
+h4 {
+  text-transform: uppercase;
+}
+h3 {
+  font-family: "Brandon Grotesque Regular", "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+h4 {
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.aside {
+  padding-right: 30px;
+  border-right: 1px solid #dddddd;
+}
+.aside-fixed {
+  position: fixed;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImJ1aWxkL2xlc3MvYXBwL21haW4ubGVzcyIsImJ1aWxkL2xlc3MvYXBwL3ZhcmlhYmxlcy5sZXNzIiwiYnVpbGQvbGVzcy9jbGlxdWUvdmFyaWFibGVzL3ZhcmlhYmxlcy5sZXNzIiwiYnVpbGQvbGVzcy9jbGlxdWUvbWl4aW5zL2xlc3NoYXQubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFNQTtFQUNDLGFBQWEsY0FBYjtFQUNBLFNBQVMsbUNBQVQ7RUFDQSxTQUFTLDJDQUErQyxPQUFPLDBCQUMzRCxxQ0FBeUMsT0FBTyxhQUNoRCxvQ0FBd0MsT0FBTyxpQkFDL0MsbURBQXVELE9BQU8sTUFIbEU7RUFJQSxnQkFBQTtFQUNBLGtCQUFBOztBQUdEO0VBQ0MsYUFBYSxjQUFiO0VBQ0EsU0FBUyxpQ0FBVDtFQUNBLFNBQVMseUNBQTZDLE9BQU8sMEJBQ3pELG1DQUF1QyxPQUFPLGFBQzlDLGtDQUFzQyxPQUFPLGlCQUM3QyxtRUFBdUUsT0FBTyxNQUhsRjtFQUlBLGtCQUFBO0VBQ0EsZ0JBQUE7O0FBR0Q7RUFDQyxhQUFhLG1CQUFiO0VBQ0EsU0FBUywyQkFBVDtFQUNBLFNBQVMsbUNBQXVDLE9BQU8sMEJBQ25ELDZCQUFpQyxPQUFPLGFBQ3hDLDRCQUFnQyxPQUFPLGlCQUN2Qyw2REFBaUUsT0FBTyxNQUg1RTtFQUlBLGtCQUFBO0VBQ0EsZ0JBQUE7O0FBR0Q7RUFDQyxhQUFhLDJCQUFiO0VBQ0EsU0FBUywyQkFBVDtFQUNBLFNBQVMsbUNBQXVDLE9BQU8sMEJBQ25ELDZCQUFpQyxPQUFPLGFBQ3hDLDRCQUFpQyxPQUFPLGlCQUN4Qyw2REFBaUUsT0FBTyxNQUg1RTtFQUlBLGtCQUFBO0VBQ0EsZ0JBQUE7O0FBR0Q7RUFDQyxhQUFhLFNBQWI7RUFDQSxTQUFTLG1DQUFUO0VBQ0EsU0FBUywyQ0FBK0MsT0FBTywwQkFDM0QscUNBQXlDLE9BQU8sYUFDaEQsb0NBQXdDLE9BQU8saUJBQy9DLHFFQUF5RSxPQUFPLE1BSHBGO0VBSUEsa0JBQUE7RUFDQSxnQkFBQTs7QUFHRDtBQUNBO0VBQ0MsYUM1Q2EsZ0JDZ0RPLDhDRkpwQjtFQUNBLFdBQUE7O0FBR0Q7RUFFQyxtQ0FBQTtFQUNBLGtDQUFBOztBQUdEO0VBQ0MseUJBQUE7O0FBR0Q7RUFDQyxhQzFEb0IscUJBRFAsZ0JDZ0RPLDhDRldwQjtFQUNBLHlCQUFBO0VBQ0EsaUJBQUE7RUFDQSx5QkFBQTtFQUNBLG1CQUFBO0VBQ0Esa0JBQUE7RUFDQSxrQkFBQTtFQUNBLGNBQUE7RUFDQSxnQkFBQTs7QUFURCxPQVdDO0VBQ0MsaUJBQUE7RUFDQSxvQkFBQTs7QUFiRixPQWdCQztBQWhCRCxPQWdCSztFQUNILGtCQUFBOztBQWpCRixPQW9CQztFQUNDLGdCQUFBO0VBQ0EsZUFBQTs7QUF0QkYsT0F5QkM7RUFDQyxhQ2xGZSw2QkFGSCxnQkNnRE8sOENGb0NuQjtFQUNBLGVBQUE7RUFDQSxnQkFBQTs7QUFHRCxPQUFDO0VBQ0Esc0JBQXNCLDRDQUF0QjtFQUNBLDZCQUFBO0VBQ0EsNEJBQUE7RUdlRCxzQkFBQTtFSGJDLGtCQUFBO0VBQ0EsTUFBQTtFQUNBLE9BQUE7RUcyYUEsV0FBQTtFQUNBLFlBQUE7O0FIeGFELE9BQUM7RUFDQSxrQkFBQTtFQUNBLFFBQUE7RUFDQSxTQUFBO0VHdWlCRCxtQkFBbUIscUJBQW5CO0VBRUEsV0FBVyxxQkFBWDs7QUhwaUJEO0FBQUk7RUFDSCx5QkFBQTs7QUFHRDtFQUNDLGFDL0dnQiw2QkFGSCxnQkNnRE8sOENGaUVwQjs7QUFHRDtFQUNJLGdCQUFBO0VBQ0EsbUJBQUE7O0FBR0o7RUFDQyxtQkFBQTtFQUNBLCtCQUFBOztBQUVBLE1BQUM7RUFDQSxlQUFBIn0= */
