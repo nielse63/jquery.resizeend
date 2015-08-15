@@ -21,6 +21,14 @@
 			<div class="header-center">
 				<h1>ResizeEnd</h1>
 				<h2>A Custom jQuery Event</h2>
+				<div class="row row-2-cols">
+					<div class="col">
+						<a href="https://github.com/nielse63/jquery.resizeend/archive/0.2.0.zip" class="button button-block">Download <i class="icon icon-download"></i></a>
+					</div>
+					<div class="col">
+						<a href="https://github.com/nielse63/jquery.resizeend" target="_blank" class="button button-block">View Source <i class="icon icon-embed2"></i></a>
+					</div>
+				</div>
 			</div>
 		</header>
 		<article>
@@ -52,33 +60,33 @@
 							<h3 class="article-title">Installation</h3>
 							<p class="article-lead">Manual installation</p>
 							<p>Reference the file in your project:</p>
-							<pre><code>&lt;script src="jquery.resizeend.js"&gt;&lt;/script&gt;</code></pre>
+							<pre><code class="language-markup">&lt;script src="jquery.resizeend.js"&gt;&lt;/script&gt;</code></pre>
 							<p class="article-lead">Using Bower</p>
-							<pre><code>bower install resizeend</code></pre>
+							<pre><code class="language-bash">bower install resizeend</code></pre>
 							<p class="article-lead">Using NPM</p>
-							<pre><code>npm install resizeend</code></pre>
+							<pre><code class="language-bash">npm install resizeend</code></pre>
 						</section>
 						<section class="article" id="usage">
 							<h3 class="article-title">Usage</h3>
 							<p class="article-lead">Basic usage.</p>
 							<p>Direct method reference:</p>
-							<pre><code>// Default options
-$(<em>selector</em>).resizeend(function() {
+							<pre><code class="language-javascript">// Default options
+$(selector).resizeend(function() {
 	// execute callback...
 });
 
 // Custom options
-$(<em>selector</em>).resizeend(1000, function() {
+$(selector).resizeend(1000, function() {
 	// execute callback...
 });</code></pre>
 							<p>Event binding:</p>
-							<pre><code>// Default options
-$(<em>selector</em>).on('resizeend', function() {
+							<pre><code class="language-javascript">// Default options
+$(selector).on('resizeend', function() {
 	// execute callback...
 });
 
 // Custom options
-$(<em>selector</em>).on('resizeend', 1000, function() {
+$(selector).on('resizeend', 1000, function() {
 	// execute callback...
 });</code></pre>
 						</section>
@@ -112,14 +120,29 @@ $(<em>selector</em>).on('resizeend', 1000, function() {
 				</div>
 			</div>
 		</article>
+		<footer class="footer">
+			<div class="container">
+				<div class="row flex-middle flex-space-between">
+					<div class="col">
+						<p>&copy; 2015 <a href="http://312development.com" target="_blank">Erik Nielsen</a>.</p>
+					</div>
+					<div class="col">
+						<p><a href="http://www.builtinchicago.org/" target="_blank">Build in Chicago</a> with &hearts;</p>
+					</div>
+				</div>
+			</div>
+		</footer>
 	</main>
 
 	<link rel="stylesheet" href="css/clique.css">
 	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/prism.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script src="js/core/core.js"></script>
 	<script src="js/jquery.resizeend.js"></script>
 	<script src="js/functions.js"></script>
+	<!-- <script src="js/syntax.js"></script> -->
+	<script src="js/prism.js"></script>
 	<script>
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
