@@ -3,7 +3,7 @@
 	"title": "jQuery resizeend",
 	"description": "A jQuery plugin that allows for window resize-end event handling.",
 	"version": "0.2.0",
-	"homepage": "http://312development.com",
+	"homepage": "https://nielse63.github.io/jquery.resizeend/",
 	"author": {
 		"name": "Erik Nielsen",
 		"email": "erik@312development.com",
