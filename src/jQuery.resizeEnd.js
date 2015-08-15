@@ -51,7 +51,7 @@
 					load = [];
 				var base = ( config.config && config.config.chicago && config.config.chicago.base ? config.config.chicago.base : '' ).replace( /\/+$/g, '' );
 				if( ! base ) {
-					throw new Error( 'Please define base path to jQuery resize.end in the requirejs config.' );
+					throw new Error( 'Please define base path to jQuery resizeend in the requirejs config.' );
 				}
 				var i = 0;
 				while(i < resources.length) {
@@ -70,7 +70,7 @@
 	if( window && window.jQuery ) {
 		return plugin( chicago, window, window.document );
 	} else if( ! window.jQuery ) {
-		throw new Error( 'jQuery resize.end requires jQuery' );
+		throw new Error( 'jQuery resizeend requires jQuery' );
 	}
 
 })(function(_c, win, doc) {
