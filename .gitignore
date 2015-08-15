@@ -6,5 +6,3 @@ node_modules
 npm-debug.log
 tests/results
 build
-fonts/*
-!fonts/icomoon*
