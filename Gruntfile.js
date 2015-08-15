@@ -249,22 +249,18 @@ module.exports = function(grunt) {
 			},
 			all : ['js/*.js']
 		},
-		clean: {
-			css: ['css/*'],
-			js: ['js/*.js'],
-		}
 	});
 
 	// Custom Tasks
 	grunt.registerTask(
 		'build-css',
 		'Builds, cleans, and optmiizes the CSS from .less files',
-		['clean:css', 'less', 'cssmin', 'csscomb', 'jsbeautifier:css']
+		['less', 'cssmin', 'csscomb', 'jsbeautifier:css']
 	);
 	grunt.registerTask(
 		'build-js',
 		'Builds, cleans, and optmiizes the JS from .coffee files',
-		['clean:js', 'coffee', 'concat', 'uglify', 'jsbeautifier:js']
+		['coffee', 'concat', 'uglify', 'jsbeautifier:js']
 	);
 
 	grunt.registerTask( 'build', [ 'build-css', 'build-js' ] );
