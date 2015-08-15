@@ -8,8 +8,8 @@
 
 @font-face {
 	font-family: 'Proxima Nova';
-	src: url('../fonts/Proxima Nova Bold.eot');
-	src: url('../fonts/Proxima Nova Bold.eot?#iefix') format('embedded-opentype'), url('../fonts/Proxima Nova Bold.woff') format('woff'), url('../fonts/Proxima Nova Bold.ttf') format('truetype'), url('../fonts/Proxima Nova Bold.svg#d1e00a8fb1fd9b428ab6b90409479fde') format('svg');
+	src: url('../fonts/Proxima-Nova-Bold.eot');
+	src: url('../fonts/Proxima-Nova-Bold.eot?#iefix') format('embedded-opentype'), url('../fonts/Proxima-Nova-Bold.woff') format('woff'), url('../fonts/Proxima-Nova-Bold.ttf') format('truetype'), url('../fonts/Proxima-Nova-Bold.svg#d1e00a8fb1fd9b428ab6b90409479fde') format('svg');
 	font-weight: 700;
 	font-style: normal;
 }
