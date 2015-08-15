@@ -1,0 +1,46 @@
+// Name:            Sticky
+//
+// Description:     Make elements remain at the top of the viewport
+//
+// Component:       `.data-sticky`
+//
+// States:          `.active`
+
+@import "../mixins/mixins.less";
+@import "../variables/variables.less";
+
+// ========================================================================
+// Variables
+// ========================================================================
+
+@sticky-z-index: 980;
+
+// ========================================================================
+// Component: Sticky
+// ========================================================================
+
+.sticky {
+
+	&-placeholder {
+		> .active {
+			z-index: @sticky-z-index;
+			position: fixed;
+			top: 0;
+		}
+	}
+
+}
+
+[data-sticky] {
+	&.active {
+		z-index: @sticky-z-index;
+	}
+	&[class*="animation-"] {
+		.animation-duration(150ms);
+	}
+	&.animation {
+		&-reverse {
+			.animation-duration(40ms);
+		}
+	}
+}

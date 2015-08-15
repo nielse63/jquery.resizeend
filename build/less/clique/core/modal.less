@@ -1,0 +1,220 @@
+// Name:            Modal
+//
+// Description:     Defines styles for modal dialogs
+//
+// Component:       `.modal`
+//
+// Sub-objects:     `.modal-dialog`
+//                  `.modal-header`
+//                  `.modal-footer`
+//                  `.modal-caption`
+//
+// Modifiers:       `.modal-dialog-lightbox`
+//                  `.modal-dialog-large`
+//
+// States:          `.open`
+//
+// Uses:            Close: `.close`
+//
+
+@import "../mixins/mixins.less";
+@import "../variables/variables.less";
+
+// ========================================================================
+// Imports
+// ========================================================================
+
+@import "close.less";
+
+// ========================================================================
+// Variables
+// ========================================================================
+
+@modal-z-index: 1010;
+@modal-background: fade(#000, 60%);
+@modal-dialog-margin-vertical: 50px;
+@modal-dialog-padding: 20px;
+@modal-dialog-width: 600px;
+@modal-dialog-background: @color-white;
+@modal-dialog-large-width: 930px;
+@modal-dialog-large-col-large: 1130px;
+@modal-header-margin-bottom: 15px;
+@modal-footer-margin-top: 15px;
+@modal-caption-margin-bottom: -10px;
+@modal-caption-color: @color-white;
+
+// ========================================================================
+// Component: Modal
+// ========================================================================
+
+.modal {
+	display: none;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: @modal-z-index;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+	background-color: @modal-background;
+	opacity: 0;
+	.transition(opacity 150ms linear);
+	touch-action: cross-slide-y pinch-zoom double-tap-zoom;
+
+	// Prevents duplicated scrollbar caused by 4.
+	&-page {
+		&,
+		body {
+			overflow: hidden;
+		}
+	}
+
+	// Sub-object: `.modal-dialog`
+	// ========================================================================
+
+	&-dialog {
+		position: relative;
+		margin: @modal-dialog-margin-vertical auto;
+		padding: @modal-dialog-padding;
+		width: @modal-dialog-width;
+		max-width: 100%;
+		.calc(max-width, ~"100% - 20px");
+		background-color: @modal-dialog-background;
+		opacity: 0;
+		.translateY(-100px);
+		.transition(opacity 300ms linear, transform 300ms ease-out);
+		.box-shadow(0 0 10px fade(#000, 30%));
+
+		@media (max-width: @breakpoint-small-max) {
+			width: auto;
+			margin: 10px auto;
+		}
+
+		// Remove margin from the last-child
+		> :not([class*="modal-"]) {
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		.open & {
+			opacity: 1;
+			.translateY(0);
+		}
+
+		&-large {
+			// Tablet and bigger
+			@media (min-width: @breakpoint-medium) {
+				width: @modal-dialog-large-width;
+			}
+
+			// Large screen and bigger
+			@media (min-width: @breakpoint-xlarge) {
+				width: @modal-dialog-large-col-large;
+			}
+		}
+
+		&-lightbox {
+			@media (max-width: @breakpoint-small-max) {
+				> .close {
+					&:first-child {
+						top: -7px;
+						right: -7px;
+					}
+				}
+			}
+		}
+
+		//Close in modal
+		// ========================================================================
+
+		> .close {
+			&:first-child {
+				margin: -10px -10px 0 0;
+				float: right;
+				+ * {
+					&:not([class*="modal-"]) {
+						margin-top: 0;
+					}
+				}
+			}
+		}
+
+		// Modifier: `.modal-dialog-lightbox`
+		// ========================================================================
+
+		&-lightbox {
+			margin: 15px auto;
+			padding: 0;
+			max-width: 95%;
+			.calc(max-width, ~"100% - 30px");
+
+			// Close button
+			> .close {
+				&:first-child {
+					position: absolute;
+					top: -12px;
+					right: -12px;
+					margin: 0;
+					float: none;
+				}
+			}
+		}
+	}
+
+	// Sub-object: `.modal-header` and `.modal-footer`
+	// ========================================================================
+
+	&-header {
+		margin: -20px -20px @modal-header-margin-bottom -20px;
+		padding: 20px;
+		border-bottom: 1px solid #e5e5e5;
+		.border-radius(4px 4px 0 0);
+		background-color: #fafafa;
+	}
+
+	&-footer {
+		margin: @modal-footer-margin-top -20px -20px -20px;
+		padding: 20px;
+		border-top: 1px solid #e5e5e5;
+		.border-radius(0 0 4px 4px);
+		background-color: #fafafa;
+	}
+
+	// Remove margin from the last-child
+	&-header,
+	&-footer {
+		> :last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	// Sub-object: `.modal-caption`
+	// ========================================================================
+
+	&-caption {
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: -@modal-dialog-padding;
+		margin-bottom: @modal-caption-margin-bottom;
+		color: @modal-caption-color;
+		text-align: center;
+		.text-overflow();
+	}
+
+	// Sub-object: `.modal-scrollbar`
+	// ========================================================================
+
+	&-scrollbar {
+		// ...
+	}
+
+	// State: `.open`
+	// ========================================================================
+
+	&.open {
+		opacity: 1;
+	}
+}

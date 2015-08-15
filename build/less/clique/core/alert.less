@@ -1,0 +1,124 @@
+// Name:            Alert
+//
+// Description:     Defines styles for alert messages
+//
+// Component:       `.alert`
+//
+// Sub-objects:     `.alert-close`
+//
+// Modifiers:       `.alert-success`
+//                  `.alert-warning`
+//                  `.alert-danger`
+//                  `.alert-large`
+//
+// Uses:            Close: `.close`
+//
+
+@import "../mixins/mixins.less";
+@import "../variables/variables.less";
+
+// ========================================================================
+// Variables
+// ========================================================================
+
+// Component-wide declarations
+
+@alert-margin-vertical: @global-margin;
+@alert-padding: 15px;
+
+@alert-background: @color-primary-background-light;
+@alert-color: @color-primary-text;
+
+@alert-border-width: @global-border-width;
+@alert-border-color: @color-primary-border;
+
+@alert-success-background: @color-success-background-light;
+@alert-success-color: @color-success-text;
+@alert-success-border: @color-success-border;
+
+@alert-warning-background: @color-warning-background-light;
+@alert-warning-color: @color-warning-text;
+@alert-warning-border: @color-warning-border;
+
+@alert-danger-background: @color-danger-background-light;
+@alert-danger-color: @color-danger-text;
+@alert-danger-border: @color-danger-border;
+
+@alert-large-padding: @alert-padding * 2;
+
+// ========================================================================
+// Component: Alert
+// ========================================================================
+
+.alert {
+
+	padding: @alert-padding;
+	background-color: @alert-background;
+	color: @alert-color;
+	border: @alert-border-width solid @alert-border-color;
+
+	// Add margin if adjacent element
+	* + & {
+		margin-top: @alert-margin-vertical;
+	}
+
+	// Remove margin from the last-child
+	> :last-child {
+		margin-bottom: 0;
+	}
+
+	// Close in alert
+	// ========================================================================
+
+	> .close {
+		&:first-child {
+			float: right;
+			+ * {
+				margin-top: 0;
+			}
+		}
+	}
+
+	// Modifier: `.alert-success`
+	// ========================================================================
+
+	&-success {
+		background-color: @alert-success-background;
+		color: @alert-success-color;
+		border-color: @alert-success-border;
+	}
+
+
+	// Modifier: `.alert-warning`
+	// ========================================================================
+
+	&-warning {
+		background-color: @alert-warning-background;
+		color: @alert-warning-color;
+		border-color: @alert-warning-border;
+	}
+
+
+	// Modifier: `.alert-danger`
+	// ========================================================================
+
+	&-danger {
+		background-color: @alert-danger-background;
+		color: @alert-danger-color;
+		border-color: @alert-danger-border;
+	}
+
+
+	// Modifier: `.alert-large`
+	// ========================================================================
+
+	&-large {
+		padding: @alert-large-padding;
+
+		> .close {
+			&:first-child {
+				margin: -(@alert-large-padding / 2) -(@alert-large-padding / 2) 0 0;
+			}
+		}
+	}
+}

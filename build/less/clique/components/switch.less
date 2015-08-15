@@ -1,0 +1,105 @@
+// Name:            Switch
+//
+// Description:     Display checkboxes as on/off switches
+//
+// Component:       `.data-switch`
+//
+// Sub-objects:     `.switch-container`
+//                  `.switch-label`
+//                  `.switch-handle`
+//
+// States:          `.on`
+//                  `.off`
+
+@import "../mixins/mixins.less";
+@import "../variables/variables.less";
+
+// ========================================================================
+// Variables
+// ========================================================================
+
+@switch-width: 56px;
+@switch-height: @global-height-mini;
+@switch-background-color: @color-primary-background;
+
+@switch-container-width: 120px;
+@switch-container-height: 100%;
+
+@switch-label-margin: 2px;
+@switch-label-size: @switch-height - (@switch-label-margin * 2);
+@switch-label-background-color: @color-white;
+
+@switch-handle-color: @color-white;
+@switch-handle-off-background: @global-muted-color;
+
+// ========================================================================
+// Component: Sticky
+// ========================================================================
+
+.switch {
+	.size(@switch-width, @switch-height);
+	display: inline-block;
+	vertical-align: middle;
+	background-color: @switch-background-color;
+	.transition(350ms ease-in-out);
+	.border-radius(@switch-height / 2);
+	overflow: hidden;
+	position: relative;
+	.user-select(none);
+
+	input {
+		clip: rect(0, 0, 0, 0);
+		position: absolute;
+		.size(1);
+		margin: -1px;
+		overflow: hidden;
+	}
+
+	// Sub-object: `.switch-container`
+	// ========================================================================
+
+	&-container {
+		.size(@switch-container-width, @switch-container-height);
+		position: relative;
+		.transition(350ms ease-in-out);
+		left: 0;
+		cursor: pointer;
+
+		> * {
+			display: inline-block;
+			vertical-align: top;
+		}
+	}
+
+	// Sub-object: `.switch-label`
+	// ========================================================================
+
+	&-label {
+		.size(@switch-label-size);
+		margin: @switch-label-margin;
+		background-color: @switch-label-background-color;
+		.border-radius(50%);
+	}
+
+	// Sub-object: `.switch-handle`
+	// ========================================================================
+
+	&-handle {
+		line-height: 22px;
+		.size(45, @switch-height);
+		padding: 4px;
+		text-align: center;
+		text-transform: uppercase;
+		font-weight: 700;
+		font-size: @global-font-size;
+		color: @switch-handle-color;
+	}
+
+	&.off {
+		background-color: @switch-handle-off-background;
+
+		.switch-container {
+			left: -45px;
+		}
+	}
+}

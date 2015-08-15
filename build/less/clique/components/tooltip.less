@@ -1,0 +1,201 @@
+// Name:            Tooltip
+//
+// Description:     Defines styles for tooltips
+//
+// Component:       `.tooltip`
+//
+// Modifiers        `.tooltip-top`
+//                  `.tooltip-top-left`
+//                  `.tooltip-top-right`
+//                  `.tooltip-bottom`
+//                  `.tooltip-bottom-left`
+//                  `.tooltip-bottom-right`
+//                  `.tooltip-left`
+//                  `.tooltip-right`
+
+@import "../mixins/mixins.less";
+@import "../variables/variables.less";
+
+// ========================================================================
+// Variables
+// ========================================================================
+
+@tooltip-arrow-width: 6px;
+
+@tooltip-fade: 90%;
+@tooltip-bg: fade(@color-black, @tooltip-fade);
+@tooltip-arrow-width: 6px;
+
+// ========================================================================
+// Component: Tooltip
+// ========================================================================
+
+[data-tooltip],
+.tooltip {
+	position: relative;
+	cursor: pointer;
+
+	// Base styles for the entire tooltip
+	&:before,
+	&:after {
+		position: absolute;
+		visibility: hidden;
+		opacity: 0;
+		.transition(opacity 200ms ease-in-out, visibility 200ms ease-in-out, transform 200ms cubic-bezier(0.71, 1.7, 0.77, 1.24));
+		.transform(translate3d(0, 0, 0));
+		pointer-events: none;
+		white-space: nowrap;
+		max-width: 300px;
+	}
+
+	// Show the entire tooltip on hover and focus
+	&:hover {
+		&:before,
+		&:after {
+			visibility: visible;
+			opacity: 1;
+		}
+	}
+
+	// Base styles for the tooltip"s directional arrow
+	&:before {
+		z-index: 1001;
+		border: @tooltip-arrow-width solid transparent;
+		background-color: transparent;
+		content: "";
+	}
+
+	// Base styles for the tooltip"s content area
+	&:after {
+		z-index: 1000;
+		padding: 8px;
+		background-color: @tooltip-bg;
+		color: #fff;
+		content: attr(title);
+		font-size: 14px;
+		line-height: 1.2;
+	}
+}
+
+// Directions
+// ========================================================================
+
+// Top (default)
+// ========================================================================
+
+[data-tooltip="top"],
+[data-tooltip] {
+	&:before,
+	&:after {
+		bottom: 100%;
+		left: 50%;
+		.translate(-50%, 0);
+	}
+	&:before {
+		margin-bottom: -12px;
+		border-top-color: @tooltip-bg;
+	}
+	&:hover,
+	&:focus {
+		&:before,
+		&:after {
+			.translate(-50%, -12px);
+		}
+	}
+}
+
+// Left
+// ========================================================================
+
+[data-tooltip="left"] {
+	&:before,
+	&:after {
+		right: 100%;
+		bottom: 50%;
+		left: auto;
+		.translate(0, 50%);
+	}
+	&:before {
+		margin-left: 0;
+		margin-right: -12px;
+		margin-bottom: 0;
+		border-top-color: transparent;
+		border-left-color: @tooltip-bg;
+	}
+	&:hover,
+	&:focus {
+		&:before,
+		&:after {
+			.translate(-12px, 50%);
+		}
+	}
+}
+
+// Bottom
+// ========================================================================
+
+[data-tooltip="bottom"] {
+	&:before, &:after {
+		top: 100%;
+		bottom: auto;
+		left: 50%;
+		.translate(-50%, 0);
+	}
+	&:before {
+		margin-top: -12px;
+		margin-bottom: 0;
+		border-top-color: transparent;
+		border-bottom-color: @tooltip-bg;
+	}
+	&:hover,
+	&:focus {
+		&:before,
+		&:after {
+			.translate(-50%, 12px);
+		}
+	}
+}
+
+// Right
+// ========================================================================
+
+[data-tooltip="right"] {
+	&:before,
+	&:after {
+		bottom: 50%;
+		left: 100%;
+		.translate(0, 50%);
+	}
+	&:before {
+		margin-bottom: 0;
+		margin-left: -12px;
+		border-top-color: transparent;
+		border-right-color: @tooltip-bg;
+	}
+	&:hover,
+	&:focus {
+		&:before,
+		&:after {
+			.translate(12px, 50%);
+		}
+	}
+}
+
+// Vertically center tooltip content for left/right tooltips
+[data-tooltip="left"],
+[data-tooltip="right"] {
+	&:after {
+		margin-left: 0;
+	}
+}
+
+[data-toggle="tooltip"],
+[data-toggle="tooltip"] {
+	&:hover {
+		&:after,
+		&:before {
+			visibility: visible;
+			opacity: 1;
+		}
+	}
+}

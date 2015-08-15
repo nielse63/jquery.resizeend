@@ -1,0 +1,401 @@
+// Name:            Slideshow
+//
+// Description:     Defines styles for a slideshow
+//
+// Component:       `.slideshow`
+//
+// Modifiers:       `.slideshow-fullscreen`
+//
+// Sub-modifier:    `.slideshow-fade-out`
+//                  `.slideshow-scroll-forward-in`
+//                  `.slideshow-scroll-forward-out`
+//                  `.slideshow-scroll-backward-in`
+//                  `.slideshow-scroll-backward-out`
+//                  `.slideshow-scale-out`
+//                  `.slideshow-swipe-forward-in`
+//                  `.slideshow-swipe-forward-out`
+//                  `.slideshow-swipe-backward-in`
+//                  `.slideshow-swipe-backward-out`
+//
+// States:          `.active`
+//
+// Uses:            Cover (JS)
+
+@import "../mixins/mixins.less";
+@import "../variables/variables.less";
+
+// ========================================================================
+// Component: Slideshow
+// ========================================================================
+
+.slideshow {
+	position: relative;
+	z-index: 0;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	overflow: hidden;
+	touch-action: pan-y;
+
+	// Sub-object: `.slides`
+	// ========================================================================
+
+	> li {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		opacity: 0;
+
+		> img {
+			visibility: hidden;
+		}
+	}
+
+	// Modifier: `.slideshow-fullscreen`
+	// ========================================================================
+
+	&-fullscreen {
+		&,
+		> li {
+			height: 100vh;
+		}
+	}
+
+	// Animations
+	// ========================================================================
+
+	// Fade
+	&-fade {
+
+		&-out {
+			.animation(fade 0.5s linear reverse);
+		}
+	}
+
+	// Scroll
+	&-scroll {
+
+		// Forward
+		&-forward {
+
+			&-in {
+				.animation(slide-right 0.5s ease-in-out);
+			}
+			&-out {
+				.animation(slide-left 0.5s ease-in-out reverse);
+			}
+		}
+
+		// Backwards
+		&-backward {
+			&-in {
+				.animation(slide-left 0.5s ease-in-out);
+			}
+			&-out {
+				.animation(slide-right 0.5s ease-in-out reverse);
+			}
+		}
+	}
+
+	// Scale
+	&-scale {
+
+		&-out {
+			.animation(fade-scale-15 0.5s ease-in-out reverse);
+		}
+	}
+
+	// Swipe
+	&-swipe {
+
+		// Forward
+		&-forward {
+			&-in {
+				.animation(slide-left-33 0.5s ease-in-out);
+			}
+			&-out {
+				.animation(slide-left 0.5s ease-in-out reverse);
+			}
+		}
+
+		// Backwards
+		&-backward {
+
+			&-in {
+				.animation(slide-right-33 0.5s ease-in-out);
+			}
+			&-out {
+				.animation(slide-right 0.5s ease-in-out reverse);
+			}
+		}
+
+		&-forward,
+		&-backward {
+
+			&-in {
+				content: "";
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				z-index: 1;
+				background-color: fade(#000, 60%);
+				.animation(fade 0.5s ease-in-out reverse);
+			}
+		}
+	}
+
+	// Active
+	> .active {
+		z-index: 10;
+		opacity: 1;
+	}
+}
+
+// Pointer for controls
+[data-slideshow-slide] {
+	cursor: pointer;
+}
+
+// Name:            Dotnav
+//
+// Description:     Defines styles for a dot navigation
+//
+// Component:       `.dotnav`
+//
+// Modifiers:       `.dotnav-contrast`
+//                  `.dotnav-vertical`
+//
+// States:          `.active`
+//
+
+// ========================================================================
+// Variables
+// ========================================================================
+
+@dotnav-margin-horizontal: @global-margin;
+@dotnav-margin-vertical: @dotnav-margin-horizontal;
+@dotnav-width: 12px;
+@dotnav-height: @dotnav-width;
+@dotnav-background: fade(#333, 10%);
+@dotnav-hover-background: fade(#333, 40%);
+@dotnav-onclick-background: fade(#333, 60%);
+@dotnav-active-background: fade(#333, 40%);
+@dotnav-contrast-background: fade(#fff, 40%);
+@dotnav-contrast-hover-background: fade(#fff, 70%);
+@dotnav-contrast-onclick-background: fade(#fff, 90%);
+@dotnav-contrast-active-background: fade(#fff, 90%);
+
+// ========================================================================
+// Component: Dotnav
+// ========================================================================
+
+.dotnav {
+	.display(flex);
+	.justify-content(center);
+	// margin-left: -@dotnav-margin-horizontal;
+	// margin-top: -@dotnav-margin-vertical;
+	padding: 0;
+	list-style: none;
+
+	> * {
+		.flex(none);
+
+		~ * {
+			padding-left: @dotnav-margin-horizontal;
+		}
+
+		> * {
+			display: block;
+			.box-sizing(content-box);
+			.size(@dotnav-width, @dotnav-height);
+			.border-radius(50%);
+			background-color: @dotnav-background;
+			text-indent: 100%;
+			overflow: hidden;
+			white-space: nowrap;
+			.transition(all 200ms ease-in-out);
+
+			// Hover/Focus
+			&:hover,
+			&:focus {
+				background-color: @dotnav-hover-background;
+				outline: 0;
+			}
+
+			// Active State
+			&:active {
+				background-color: @dotnav-onclick-background;
+			}
+		}
+	}
+
+	// Active
+	> .active {
+		> * {
+			background-color: @dotnav-active-background;
+		}
+	}
+
+	// Modifier: `.dotnav-contrast`
+	// ========================================================================
+
+	&-contrast {
+		> * {
+			> * {
+				background-color: @dotnav-contrast-background;
+
+				// Hover
+				&:hover,
+				&:focus {
+					background-color: @dotnav-contrast-hover-background;
+				}
+
+				// Active State
+				&:active {
+					background-color: @dotnav-contrast-onclick-background;
+				}
+			}
+		}
+
+		// Active
+		> .active {
+			> * {
+				background-color: @dotnav-contrast-active-background;
+			}
+		}
+	}
+}
+
+// Name:            Slidenav
+//
+// Description:     Defines styles for a previous/next navigation between slides
+//
+// Component:       `.slidenav`
+//
+// Modifiers:       `.slidenav-previous`
+//                  `.slidenav-next`
+//                  `.slidenav-contrast`
+//
+// Sub-objects:     `.slidenav-position`
+//
+// Uses:            Icon: "icomoon"
+//
+
+// ========================================================================
+// Variables
+// ========================================================================
+
+@slidenav-width: 60px;
+@slidenav-height: @slidenav-width;
+@slidenav-color: fade(#333, 40%);
+@slidenav-font-size: 60px;
+@slidenav-line-height: @slidenav-height;
+@slidenav-previous-icon: "\e601";
+@slidenav-next-icon: "\e602";
+@slidenav-hover-color: fade(#333, 70%);
+@slidenav-active-color: fade(#333, 90%);
+@slidenav-position-previous: 20px;
+@slidenav-position-next: @slidenav-position-previous;
+@slidenav-contrast-color: fade(#fff, 50%);
+@slidenav-contrast-hover-color: fade(#fff, 70%);
+@slidenav-contrast-active-color: fade(#fff, 90%);
+
+// ========================================================================
+// Component: Slidenav
+// ========================================================================
+
+.slidenav {
+	display: inline-block;
+	width: @slidenav-width;
+	height: @slidenav-height;
+	line-height: @slidenav-line-height;
+	color: @slidenav-color;
+	font-size: @slidenav-font-size;
+	text-align: center;
+
+	// Hover
+	&:hover,
+	&:focus {
+		outline: 0;
+		text-decoration: none;
+		color: @slidenav-hover-color;
+		cursor: pointer;
+	}
+
+	// Active
+	&:active {
+		color: @slidenav-active-color;
+	}
+
+	// Icons
+	&-previous,
+	&-next {
+		&:before {
+			font-family: "icomoon";
+		}
+	}
+
+	&-previous {
+		&:before {
+			content: @slidenav-previous-icon;
+		}
+	}
+
+	&-next {
+		&:before {
+			content: @slidenav-next-icon;
+		}
+	}
+
+	// Sub-object: `.slidenav-position`
+	// ========================================================================
+
+	&-position {
+		position: relative;
+
+		.slidenav {
+			display: none;
+			position: absolute;
+			top: 50%;
+			z-index: 1;
+			margin-top: -@slidenav-height / 2;
+
+			&-previous {
+				left: @slidenav-position-previous;
+			}
+
+			&-next {
+				right: @slidenav-position-next;
+			}
+		}
+
+		&:hover {
+			.slidenav {
+				display: block;
+			}
+		}
+	}
+
+
+	// Modifier: `.slidenav-contrast`
+	// ========================================================================
+
+	&-contrast {
+		color: @slidenav-contrast-color;
+
+		// Hover
+		&:hover,
+		&:focus {
+			color: @slidenav-contrast-hover-color;
+		}
+
+		// Active
+		&:active {
+			color: @slidenav-contrast-active-color;
+		}
+	}
+}

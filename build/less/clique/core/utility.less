@@ -1,0 +1,579 @@
+// Name:            Utility
+//
+// Description:     Collection of useful utility classes to style your content
+//
+// Component:       `.container-*`
+//                  `.clearfix`
+//                  `.float-*`
+//                  `.align-*`
+//                  `.vertical-align-*`
+//                  `.height-*`
+//                  `.responsive-*`
+//                  `.margin-*`
+//                  `.border-*`
+//                  `.link-*`
+//                  `.scrollable-*`
+//                  `.overflow-container`
+//                  `.position-*`
+//                  `.display-*`
+//                  `.visible-*`
+//                  `.hidden-*`
+//                  `.invisible`
+//
+// Used by:         Overlay
+
+@import "../mixins/mixins.less";
+@import "../variables/variables.less";
+
+// ========================================================================
+// Variables
+// ========================================================================
+
+@utility-container-max-width: 980px;
+@utility-container-padding-horizontal: 25px;
+@utility-container-large-max-width: 1200px;
+@utility-container-large-padding-horizontal: @global-grid-gutter-large;
+
+@utility-align-horizontal: 15px;
+@utility-align-vertical: 15px;
+
+@utility-margin: @global-margin;
+@utility-margin-small: 5px;
+@utility-margin-large: 50px;
+
+@utility-border-rounded: @global-border-radius;
+
+@base-link-color: @global-link-color;
+@base-link-color-hover: @global-link-color-hover;
+@base-link-text-decoration: @global-link-decoration;
+@base-link-text-decoration-hover: @global-link-decoration-hover;
+
+@utility-scrollable-text-height: 300px;
+@utility-scrollable-box-height: 170px;
+@utility-scrollable-box-padding: 10px;
+@utility-scrollable-box-border: @global-border-color;
+@utility-scrollable-box-border-width: @global-border-width;
+
+// ========================================================================
+// Component: Utility
+// ========================================================================
+
+// Container
+// ========================================================================
+
+.container {
+	max-width: @utility-container-max-width;
+	padding: 0 @utility-container-padding-horizontal;
+	.micro-clearfix();
+
+	// Large screen and bigger
+	@media (min-width: @breakpoint-xlarge) {
+		max-width: @utility-container-large-max-width;
+		padding: 0 @utility-container-large-padding-horizontal;
+	}
+
+	// Center container
+	&-center {
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+// Clearing
+// ========================================================================
+
+.clearfix{
+	.clearfix();
+}
+
+// Alignment of block elements
+// ========================================================================
+
+// Float blocks
+.float {
+
+	&-left,
+	&-right {
+		max-width: 100%;
+	}
+
+	&-left {
+		float: left;
+	}
+
+	&-right {
+		float: right;
+	}
+}
+
+// Alignment of images and objects
+// ========================================================================
+
+// Alignment
+[class*="align-"] {
+	display: block;
+}
+.align {
+
+	&-left {
+		margin-right: @utility-align-horizontal;
+		margin-bottom: @utility-align-vertical;
+		float: left;
+
+		// Tablet and bigger
+		@media (min-width: @breakpoint-medium) {
+			&-medium {
+				margin-right: @utility-align-horizontal;
+				margin-bottom: @utility-align-vertical;
+				float: left;
+			}
+		}
+	}
+	&-right {
+		margin-left: @utility-align-horizontal;
+		margin-bottom: @utility-align-vertical;
+		float: right;
+
+		// Tablet and bigger
+		@media (min-width: @breakpoint-medium) {
+			&-medium {
+				margin-left: @utility-align-horizontal;
+				margin-bottom: @utility-align-vertical;
+				float: right;
+			}
+		}
+	}
+	&-center {
+		margin-bottom: @utility-align-vertical;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+// Vertical alignment
+// ========================================================================
+
+// Remove whitespace between child elements when using `.inline-block`
+.vertical-align {
+	font-size: 0.001px;
+
+	&:before {
+		content: "";
+		display: inline-block;
+		height: 100%;
+		vertical-align: middle;
+	}
+
+	&-middle,
+	&-bottom {
+		display: inline-block;
+		max-width: 100%;
+		font-size: 1rem;
+	}
+	&-middle {
+		vertical-align: middle;
+	}
+	&-bottom {
+		vertical-align: bottom;
+	}
+}
+
+// Height
+// ========================================================================
+
+// Useful to extend the `.html` and `.body` element to the full height of the page.
+.height {
+
+	&-1-1 {
+		height: 100%;
+	}
+
+	// Useful to create image teasers
+	&-viewport {
+		min-height: 100vh;
+	}
+}
+
+// Responsive objects
+// ========================================================================
+
+.responsive {
+
+	&-width {
+		max-width: 100% !important;
+		height: auto;
+	}
+
+	&-height {
+		max-height: 100%;
+		width: auto;
+	}
+}
+
+// Margin
+// ========================================================================
+
+.margin {
+	margin-bottom: @utility-margin;
+
+	* + & {
+		margin-top: @utility-margin;
+	}
+
+	&-top {
+		margin-top: @utility-margin !important;
+	}
+
+	&-bottom {
+		margin-bottom: @utility-margin !important;
+	}
+
+	&-left {
+		margin-left: @utility-margin !important;
+	}
+
+	&-right {
+		margin-right: @utility-margin !important;
+	}
+
+	&-large {
+		margin-bottom: @utility-margin-large;
+
+		* + & {
+			margin-top: @utility-margin-large;
+		}
+
+		&-top {
+			margin-top: @utility-margin-large !important;
+		}
+
+		&-bottom {
+			margin-bottom: @utility-margin-large !important;
+		}
+
+		&-left {
+			margin-left: @utility-margin-large !important;
+		}
+
+		&-right {
+			margin-right: @utility-margin-large !important;
+		}
+	}
+
+	&-small {
+		margin-bottom: @utility-margin-small;
+
+		* + & {
+			margin-top: @utility-margin-small;
+		}
+
+		&-top {
+			margin-top: @utility-margin-small !important;
+		}
+
+		&-bottom {
+			margin-bottom: @utility-margin-small !important;
+		}
+
+		&-left {
+			margin-left: @utility-margin-small !important;
+		}
+
+		&-right {
+			margin-right: @utility-margin-small !important;
+		}
+	}
+
+	// Remove margins
+	&-remove {
+		margin: 0 !important;
+
+		&-top {
+			margin-top: 0 !important;
+		}
+
+		&-bottom {
+			margin-bottom: 0 !important;
+		}
+	}
+}
+
+// Border
+// ========================================================================
+
+.border {
+	&-circle {
+		.border-radius(50%);
+	}
+
+	&-rounded {
+		.border-radius(@utility-border-rounded);
+	}
+}
+
+// Link
+// ========================================================================
+
+.link {
+	color: @base-link-color;
+	text-decoration: @base-link-text-decoration;
+	cursor: pointer;
+
+	// Hover
+	&:hover {
+		color: @base-link-color-hover;
+		text-decoration: @base-link-text-decoration-hover;
+	}
+
+	// Reset link style
+	&-reset {
+		&,
+		a {
+			&,
+			&:hover {
+				color: inherit;
+				text-decoration: none;
+			}
+		}
+	}
+
+	// Muted link style
+	&-muted {
+		&,
+		a {
+			&,
+			&:hover {
+				color: #ccc;
+				text-decoration: none;
+			}
+		}
+	}
+}
+
+// Scrollable
+// ========================================================================
+
+// Enable scrolling for preformatted text
+.scrollable {
+	&-text {
+		height: @utility-scrollable-text-height;
+		overflow-y: scroll;
+		-webkit-overflow-scrolling: touch;
+		resize: both;
+	}
+
+	// Box with scrolling enabled
+	&-box {
+		height: @utility-scrollable-box-height;
+		padding: @utility-scrollable-box-padding;
+		border: @utility-scrollable-box-border-width solid @utility-scrollable-box-border;
+		overflow: auto;
+		-webkit-overflow-scrolling: touch;
+		resize: both;
+		> :last-child {
+			margin-bottom: 0;
+		}
+	}
+}
+
+// Overflow
+// ========================================================================
+
+// Enable scrollbars if content is clipped
+.overflow-container {
+	overflow: auto;
+	-webkit-overflow-scrolling: touch;
+
+	> :last-child {
+		margin-bottom: 0;
+	}
+}
+
+// Position
+// ========================================================================
+
+[class*="position-top"],
+[class*="position-bottom"] {
+	position: absolute !important;
+}
+
+.position {
+
+	&-top {
+		top: 0;
+		width: 100%;
+
+		&-left {
+			top: 0;
+			left: 0;
+		}
+
+		&-right {
+			top: 0;
+			right: 0;
+		}
+	}
+
+	&-bottom {
+		bottom: 0;
+		width: 100%;
+
+		&-left {
+			bottom: 0;
+			left: 0;
+		}
+
+		&-right {
+			bottom: 0;
+			right: 0;
+		}
+	}
+
+	// Cover
+	&-cover {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+	}
+
+	// Absolute
+	&-absolute {
+		position: absolute !important;
+	}
+
+	// Relative
+	&-relative {
+		position: relative !important;
+	}
+}
+
+// Display
+// ========================================================================
+
+.display {
+
+	&-block {
+		display: block !important;
+	}
+
+	&-inline {
+		display: inline !important;
+
+		&-block {
+			display: inline-block !important;
+		}
+	}
+}
+
+
+// Visibility
+// ========================================================================
+
+// Desktop and bigger
+@media (min-width: @breakpoint-large) {
+	.visible {
+
+		&-small {
+			display: none !important;
+		}
+
+		&-medium {
+			display: none !important;
+		}
+	}
+
+	.hidden {
+
+		&-large {
+			display: none !important;
+		}
+	}
+}
+
+// Tablets portrait
+@media (min-width: @breakpoint-medium) and (max-width: @breakpoint-medium-max) {
+	.visible {
+
+		&-small {
+			display: none !important;
+		}
+
+		&-large {
+			display: none !important;
+		}
+	}
+
+	.hidden {
+
+		&-medium {
+			display: none !important;
+		}
+	}
+}
+
+// Phone landscape and smaller
+@media (max-width: @breakpoint-small-max) {
+	.visible {
+
+		&-medium {
+			display: none !important;
+		}
+
+		&-large {
+			display: none !important;
+		}
+	}
+
+	.hidden {
+
+		&-small {
+			display: none !important;
+		}
+	}
+}
+
+// Remove from the flow and screen readers on any device
+.hidden {
+	display: none !important;
+	visibility: hidden !important;
+}
+
+// It's hidden, but still affects layout
+.invisible {
+	visibility: hidden !important;
+}
+
+// Show on hover
+.visible {
+	&-hover {
+		&:hover {
+			.hidden,
+			.invisible {
+				display: block !important;
+				visibility: visible !important;
+			}
+		}
+
+		&-inline {
+			&:hover {
+				.hidden,
+				.invisible {
+					display: inline-block !important;
+					visibility: visible !important;
+				}
+			}
+		}
+	}
+}
+
+// Hide on touch
+.touch,
+.notouch {
+	.hidden {
+		&-notouch {
+			display: none !important;
+		}
+	}
+}

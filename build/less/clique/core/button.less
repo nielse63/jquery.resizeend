@@ -1,0 +1,286 @@
+// Name:            Button
+//
+// Description:     Defines styles for buttons
+//
+// Component:       `.button`
+//
+// Sub-objects:     `.button-group`
+//
+// Modifiers:       `.button-block`
+//                  `.button-primary`
+//                  `.button-success`
+//                  `.button-danger`
+//                  `.button-link`
+//                  `.button-mini`
+//                  `.button-small`
+//                  `.button-large`
+//
+// States:          `.active`
+//                  `.disabled`
+//
+
+@import "../mixins/mixins.less";
+@import "../variables/variables.less";
+
+// ========================================================================
+// Variables
+// ========================================================================
+
+// Component-wide declarations
+
+@button-height: @global-height;
+@button-mini-height: @global-height-mini;
+@button-small-height: @global-height-small;
+@button-large-height: @global-height-large;
+
+@button-line-height: @button-height;
+@button-mini-line-height: @button-mini-height;
+@button-small-line-height: @button-small-height;
+@button-large-line-height: @button-large-height;
+
+@button-font-size: @global-font-size;
+@button-mini-font-size: @global-font-size-mini;
+@button-small-font-size: @global-font-size-small;
+@button-large-font-size: @global-font-size-large;
+
+@button-padding-horizontal: 12px;
+@button-mini-padding-horizontal: 6px;
+@button-small-padding-horizontal: 10px;
+@button-large-padding-horizontal: 15px;
+
+@button-background: @global-default-background;
+@button-color: @global-font-color;
+
+@button-hover-background: darken(@button-background, 4%);
+@button-hover-color: darken(@button-color, 4%);
+
+@button-active-background: @button-hover-background;
+@button-active-color: @button-hover-color;
+
+@button-primary-background: @color-primary-background;
+@button-primary-color: @color-white;
+
+@button-success-background: @color-success-background;
+@button-success-color: @color-white;
+
+@button-danger-background: @color-danger-background;
+@button-danger-color: @color-white;
+
+@button-disabled-background: #f5f5f5;
+@button-disabled-color: @global-muted-color;
+
+@button-link-color: @global-link-color;
+@button-link-hover-color: @global-link-color-hover;
+@button-link-hover-text-decoration: @global-link-decoration-hover;
+@button-link-disabled-color: @global-muted-color;
+
+@button-border-width: @global-border-width;
+@button-border: fade(#000, 6%);
+@button-hover-border: fade(#000, 16%);
+
+@button-transition-duration: @global-transition-duration;
+@button-transition-timing-function: @global-transition-timing-function;
+
+// ========================================================================
+// Component: Button
+// ========================================================================
+
+.button {
+	margin: 0;
+	border: 0;
+	overflow: visible;
+	font-family: inherit;
+	color: @button-color;
+	display: inline-block;
+	padding: 0 @button-padding-horizontal;
+	background-color: @button-background;
+	vertical-align: middle;
+	font-size: @button-font-size;
+	line-height: unit(@button-line-height) / unit(@button-font-size);
+	height: @button-height;
+	text-decoration: none;
+	text-align: center;
+	border: @button-border-width solid @button-border;
+	cursor: pointer;
+	.transition-property(background-color, border-color, color);
+	.transition-duration(@button-transition-duration);
+	.transition-timing-function(@button-transition-timing-function);
+
+	&:hover,
+	&:focus {
+		background-color: @button-hover-background;
+		color: @button-hover-color;
+		text-decoration: none;
+		border-color: @button-hover-border;
+	}
+
+	&:active,
+	&.active {
+		background-color: @button-active-background;
+		color: @button-active-color;
+		border-color: fade(#000, 30%) fade(#000, 20%) fade(#000, 20%);
+		.box-shadow(inset 0 2px 4px fade(#000, 10%));
+		.transition-duration(0);
+	}
+
+	&::-moz-focus-inner {
+		border: 0;
+		padding: 0;
+	}
+
+	&:disabled,
+	&.disabled {
+		background-color: @button-disabled-background !important;
+		color: @button-disabled-color !important;
+		border-color: fade(#000, 6%);
+		cursor: default;
+		&:active,
+		&.active {
+			.box-shadow(none);
+		}
+	}
+
+	// Modifier: `.button-block`
+	// ========================================================================
+
+	&-block {
+		display: block;
+		width: 100%;
+	}
+
+	// State Modifiers: `.button-{primary|success|danger}`
+	// ========================================================================
+
+	.button-state-modifier(@color, @background-color) {
+		background-color: @background-color;
+		color: @color;
+
+		&:hover,
+		&:focus,
+		&:active,
+		&.active {
+			background-color: darken(@background-color, 4%);
+			color: @color;
+		}
+	}
+
+	&-primary,
+	&-success,
+	&-danger {
+		&:active,
+		&.active {
+			border-color: fade(#000, 40%) fade(#000, 20%) fade(#000, 20%);
+			.box-shadow(inset 0 2px 4px fade(#000, 20%));
+		}
+	}
+
+	// Modifier: `.button-primary`
+	// ========================================================================
+
+	&-primary {
+		.button-state-modifier(@button-primary-color, @button-primary-background);
+	}
+
+	// Modifier: `.button-success`
+	// ========================================================================
+
+	&-success {
+		.button-state-modifier(@button-success-color, @button-success-background);
+	}
+
+	// Modifier: `.button-danger`
+	// ========================================================================
+
+	&-danger {
+		.button-state-modifier(@button-danger-color, @button-danger-background);
+	}
+
+	// Modifier: `.button-link`
+	// ========================================================================
+
+	// Reset
+	&-link {
+		color: @button-link-color;
+		.box-shadow(none);
+
+		&,
+		&:hover,
+		&:focus,
+		&:active,
+		&.active,
+		&:disabled {
+			border-color: transparent;
+			background-color: transparent;
+		}
+
+		&:hover,
+		&:focus,
+		&:active,
+		&.active {
+			color: @button-link-hover-color;
+			text-decoration: @button-link-hover-text-decoration;
+		}
+
+		&:disabled {
+			color: @button-link-disabled-color;
+		}
+	}
+
+	// Size Modifiers: `.button-{mini|small|large}`
+	// ========================================================================
+
+	.button-size-modifier(@height, @padding, @font-size, @line-height) {
+		height: @height;
+		padding: 0 @padding;
+		line-height: unit(@line-height) / unit(@font-size);
+		font-size: @font-size;
+	}
+
+	&-mini {
+		.button-size-modifier(@button-mini-height, @button-mini-padding-horizontal, @button-mini-font-size, @button-mini-line-height);
+	}
+
+	&-small {
+		.button-size-modifier(@button-small-height, @button-small-padding-horizontal, @button-small-font-size, @button-small-line-height);
+	}
+
+	&-large {
+		.button-size-modifier(@button-large-height, @button-large-padding-horizontal, @button-large-font-size, @button-large-line-height);
+	}
+
+
+	// Sub-object .button-group`
+	// ========================================================================
+
+	&-group {
+		display: inline-block;
+		vertical-align: middle;
+		position: relative;
+		font-size: 0.001px;
+		white-space: nowrap;
+
+		> * {
+			display: inline-block;
+			&:nth-child(n+2) {
+				margin-left: -1px;
+			}
+		}
+
+		.button {
+
+			vertical-align: top;
+			z-index: 1;
+			position: relative;
+
+			&:hover,
+			&:focus,
+			&:active {
+				z-index: 2;
+			}
+
+			&.active {
+				z-index: 3;
+			}
+		}
+	}
+}

@@ -1,0 +1,16 @@
+//
+// Mixin:           Colors
+// Description:     Defines all mixins used to create color variants.
+//
+// ========================================================================
+
+.color-variant(@color) {
+	@hue: hue(@color);
+	@saturation: saturation(@color);
+	@lightness: lightness(@color);
+
+	@font-color: hsl((@hue + 3), (@saturation - 12), (@lightness - 12)); // hsl(197, 75%, 49%) -> hsl(200, 53%, 37%)
+	@background-color: hsl((@hue - 1), (@saturation + 25), (@lightness - 4)); // hsl(197, 75%, 49%) -> hsl(196, 100%, 45%)
+	@background-color-light: hsl((@hue + 3), (@saturation + 7), (@lightness + 47)); // hsl(197, 75%, 49%) -> hsl(200, 82%, 96%)
+	@border-color: fade(@font-color, 30%);
+}

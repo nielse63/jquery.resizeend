@@ -1,0 +1,164 @@
+
+@import "../clique/variables/variables.less";
+@import "../clique/mixins/mixins.less";
+
+@import "variables.less";
+
+@font-face {
+	font-family: "Proxima Nova";
+	src: url("@{font-path}/ProximaNova-Regular.eot");
+	src: url("@{font-path}/ProximaNova-Regular.eot?#iefix") format("embedded-opentype"),
+	url("@{font-path}/ProximaNova-Regular.woff") format("woff"),
+	url("@{font-path}/ProximaNova-Regular.ttf") format("truetype"),
+	url("@{font-path}/ProximaNova-Regular.svg#ProximaNovaReg") format("svg");
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Proxima Nova";
+	src: url("@{font-path}/Proxima Nova Bold.eot");
+	src: url("@{font-path}/Proxima Nova Bold.eot?#iefix") format("embedded-opentype"),
+	url("@{font-path}/Proxima Nova Bold.woff") format("woff"),
+	url("@{font-path}/Proxima Nova Bold.ttf") format("truetype"),
+	url("@{font-path}/Proxima Nova Bold.svg#d1e00a8fb1fd9b428ab6b90409479fde") format("svg");
+	font-style: normal;
+	font-weight: 700;
+}
+
+@font-face {
+	font-family: "Brandon Grotesque";
+	src: url("@{font-path}/Brandon_bld.eot");
+	src: url("@{font-path}/Brandon_bld.eot?#iefix") format("embedded-opentype"),
+	url("@{font-path}/Brandon_bld.woff") format("woff"),
+	url("@{font-path}/Brandon_bld.ttf") format("truetype"),
+	url("@{font-path}/Brandon_bld.svg#41e76bd6e414417d52adb646f262964a") format("svg");
+	font-style: normal;
+	font-weight: 700;
+}
+
+@font-face {
+	font-family: 'Brandon Grotesque Regular';
+	src: url('@{font-path}/Brandon_reg.eot');
+	src: url('@{font-path}/Brandon_reg.eot?#iefix') format('embedded-opentype'),
+	url('@{font-path}/Brandon_reg.woff') format('woff'),
+	url('@{font-path}/Brandon_reg.ttf')  format('truetype'),
+	url('@{font-path}/Brandon_reg.svg#50bf5a2005a5412419d6a4b30314e68e') format('svg');
+	font-style:   normal;
+	font-weight:  400;
+}
+
+body,
+html {
+	font-family: @font-family;
+	color: #888;
+}
+
+html {
+	// overflow-y: scroll;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+body {
+	background-color: @color-white;
+}
+
+.header {
+	background-color: @color-blue-dark;
+	min-height: 100vh;
+	position: relative;
+	text-align: center;
+	color: @color-white;
+	overflow: hidden;
+
+	+ * {
+		padding-top: 50px;
+		padding-bottom: 50px;
+	}
+
+	h1, h2 {
+		position: relative;
+		text-transform: uppercase;
+		letter-spacing: 5px;
+	}
+
+	h1 {
+		font-weight: 700;
+		font-size: 52px;
+		font-family: @header-font-family;
+	}
+
+	h2 {
+		font-family: @article-header;
+		font-size: 26px;
+		font-weight: 200;
+	}
+
+	.button {
+		background-color: transparent;
+		border: 2px solid #fff;
+		color: #fff;
+		height: 50px;
+		line-height: 48 / 16;
+		font-size: 16px;
+		font-weight: 700;
+	}
+
+	.icon-embed2 {
+		position: relative;
+		top: 2px;
+	}
+
+	.row {
+		margin-top: 35px;
+	}
+
+	&-cover {
+		background-image: url('../images/skyline-lite.png?_=skyline-lite');
+		background-position: top left;
+		background-repeat: no-repeat;
+		.background-size( cover );
+		position: absolute;
+		top: 0;
+		left: 0;
+		.size( 100% );
+	}
+
+	&-center {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		.translate( -50%, -50% );
+	}
+}
+
+h3, h4 {
+	text-transform: uppercase;
+}
+
+h3 {
+	font-family: @article-header;
+}
+
+h4 {
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.aside {
+	padding-right: 30px;
+	border-right: 1px solid @global-border-color;
+
+	&-fixed {
+		position: fixed;
+	}
+}
+.nav-side > li.active > a {
+    background-color: @color-blue-dark;
+}
+
+.footer {
+	padding-bottom: 25px;
+}
+

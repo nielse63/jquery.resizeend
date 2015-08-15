@@ -1,0 +1,156 @@
+// Name:            Table
+//
+// Description:     Defines styles for tables
+//
+// Component:       `.table`
+//
+// Modifiers:       `.table-middle`
+//                  `.table-striped`
+//                  `.table-condensed`
+//                  `.table-hover`
+
+@import "../mixins/mixins.less";
+@import "../variables/variables.less";
+
+// ========================================================================
+// Variables
+// ========================================================================
+
+@table-border: @global-border-color;
+@table-margin-vertical: @global-margin;
+@table-padding-vertical: 8px;
+@table-padding-horizontal: 8px;
+@table-caption-color: #999;
+@table-caption-font-size: 12px;
+@table-striped-background: #fcfcfc;
+@table-condensed-padding-vertical: 4px;
+@table-condensed-padding-horizontal: 8px;
+@table-hover-background: @table-striped-background;
+
+// ========================================================================
+// Component: Table
+// ========================================================================
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: 100%;
+	margin-bottom: @table-margin-vertical;
+	border-bottom: 1px solid @table-border;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+
+	.sep {
+		td {
+			border-top: 1px solid #e5e5e5;
+		}
+	}
+
+	td,
+	th {
+		padding: @table-padding-vertical @table-padding-horizontal;
+		border-bottom: 1px solid #e5e5e5;
+	}
+
+	th {
+		text-align: left;
+	}
+
+	td {
+		vertical-align: top;
+	}
+
+	thead {
+		th {
+			vertical-align: bottom;
+		}
+	}
+
+	caption,
+	footer {
+		font-size: @table-caption-font-size;
+		font-style: italic;
+	}
+
+	caption {
+		text-align: left;
+		color: @table-caption-color;
+	}
+
+	table {
+		border-bottom: 0;
+
+		td {
+			padding: (@table-padding-vertical / 2) (@table-padding-horizontal / 2);
+			border-bottom: 0;
+
+			&:first-child {
+				padding-left: 0;
+			}
+			&:last-child {
+				padding-right: 0;
+			}
+		}
+	}
+
+	* + & {
+		margin-top: @table-margin-vertical;
+	}
+}
+
+.table {
+
+	// Sub-modifier: `.table-middle`
+	// ========================================================================
+
+	&-middle {
+		&,
+		td {
+			vertical-align: middle !important;
+		}
+	}
+
+
+	// Modifier: `.table-striped`
+	// ========================================================================
+
+	&-striped {
+		> tbody {
+			> tr {
+				&:nth-of-type(odd) {
+					background-color: @table-striped-background;
+				}
+
+				&:only-child {
+					background-color: transparent;
+				}
+			}
+		}
+	}
+
+
+	// Modifier: `.table-condensed`
+	// ========================================================================
+
+	&-condensed {
+		td {
+			padding: @table-condensed-padding-vertical @table-condensed-padding-horizontal;
+		}
+	}
+
+
+	// Modifier: `.table-hover`
+	// ========================================================================
+
+	&-hover {
+		> tbody {
+			> tr {
+				&:hover {
+					background-color: @table-hover-background;
+				}
+			}
+		}
+	}
+}

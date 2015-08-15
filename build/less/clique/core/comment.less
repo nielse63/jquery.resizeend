@@ -1,0 +1,147 @@
+// Name:            Comment
+//
+// Description:     Defines styles for comment threads
+//
+// Component:       `.comment`
+//
+// Sub-objects:     `.comment-header`
+//                  `.comment-avatar`
+//                  `.comment-title`
+//                  `.comment-meta`
+//                  `.comment-body`
+//                  `.comment-list`
+//                  `.comment-primary`
+//
+
+@import "../mixins/mixins.less";
+@import "../variables/variables.less";
+
+// ========================================================================
+// Variables
+// ========================================================================
+
+// Component-wide declarations
+
+@comment-header-margin-bottom: @global-margin;
+
+@comment-avatar-margin-right: @global-margin;
+@comment-avatar-height: 50px;
+
+@comment-title-margin-top: 5px;
+@comment-title-font-size: @global-font-size-large;
+@comment-title-line-height: 22px;
+
+@comment-meta-margin-top: 2px;
+@comment-meta-color: @global-muted-color;
+@comment-meta-font-size: @global-font-size-mini;
+@comment-meta-line-height: @global-line-height-mini;
+
+@comment-list-margin-top: @global-margin;
+@comment-list-padding-left: 100px;
+
+@comment-padding: 10px;
+@comment-border-width: @global-border-width;
+@comment-border: @global-border-color;
+@comment-background: #fafafa;
+@comment-primary-border: fade(@comment-primary-color, 30%);
+@comment-primary-background: @color-primary-background-light;
+@comment-primary-color: @color-primary-text;
+
+// ========================================================================
+// Component: Comment
+// ========================================================================
+
+.comment {
+
+	// Sub-object: `.comment-header`
+	// ========================================================================
+
+	&-header {
+		margin-bottom: @comment-header-margin-bottom;
+		padding: @comment-padding;
+		border: @comment-border-width solid @comment-border;
+		background-color: @comment-background;
+		.micro-clearfix();
+	}
+
+	// Sub-object: `.comment-avatar`
+	// ========================================================================
+
+	&-avatar {
+		margin-right: @comment-avatar-margin-right;
+		height: @comment-avatar-height;
+		float: left;
+	}
+
+	// Sub-object: `.comment-title`
+	// ========================================================================
+
+	&-title {
+		margin: @comment-title-margin-top 0 0 0;
+		font-size: @comment-title-font-size;
+		line-height: unit(@comment-title-line-height) / unit(@comment-title-font-size);
+	}
+
+	// Sub-object: `.comment-meta`
+	// ========================================================================
+
+	&-meta {
+		margin: @comment-meta-margin-top 0 0 0;
+		font-size: @comment-meta-font-size;
+		line-height: unit(@comment-meta-line-height) / unit(@comment-meta-font-size);
+		color: @comment-meta-color;
+	}
+
+	// Sub-object: `.comment-body`
+	// ========================================================================
+
+	&-body {
+		padding-left: @comment-padding;
+		padding-right: @comment-padding;
+
+		> :last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	// Sub-object: `.comment-list`
+	// ========================================================================
+
+	&-list {
+		padding: 0;
+		list-style: none;
+
+		.comment {
+			+ ul {
+				margin: @comment-list-margin-top 0 0 0;
+				list-style: none;
+				@media (min-width: @breakpoint-medium) {
+					padding-left: @comment-list-padding-left;
+				}
+
+				> li {
+					&:nth-child(n+2) {
+						margin-top: @comment-list-margin-top;
+					}
+				}
+			}
+		}
+
+		> li {
+			&:nth-child(n+2) {
+				margin-top: @comment-list-margin-top;
+			}
+		}
+	}
+
+	// Modifier: `.comment-primary`
+	// ========================================================================
+
+	&-primary {
+		.comment-header {
+			border-color: @comment-primary-border;
+			background-color: @comment-primary-background;
+			color: @comment-primary-color;
+		}
+	}
+}

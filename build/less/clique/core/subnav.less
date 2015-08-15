@@ -1,0 +1,130 @@
+// Name:            Subnav
+//
+// Description:     Defines styles for the sub navigation
+//
+// Component:       `.subnav`
+//
+// Modifiers:       `.subnav-line`
+//                  `.subnav-pill`
+//
+// States:          `.active`
+//
+
+@import "../mixins/mixins.less";
+@import "../variables/variables.less";
+
+// ========================================================================
+// Variables
+// ========================================================================
+
+@subnav-margin-horizontal: 10px;
+
+@subnav-color: @global-font-color;
+@subnav-hover-color: @global-link-color;
+@subnav-hover-text-decoration: none;
+@subnav-active-color: @global-link-color;
+
+@subnav-line-border: @global-border-color;
+@subnav-line-border-width: @global-border-width;
+
+@subnav-pill-padding-vertical: 3px;
+@subnav-pill-padding-horizontal: 9px;
+@subnav-pill-hover-background: @global-default-background;
+@subnav-pill-hover-color: @subnav-color;
+@subnav-pill-active-background: @color-primary-background;
+@subnav-pill-active-color: @color-white;
+
+@subnav-disabled-color: #999;
+
+// ========================================================================
+// Component: Subnav
+// ========================================================================
+
+.subnav {
+	.display(flex);
+	.flex-wrap(wrap);
+	padding: 0;
+	list-style: none;
+
+	> * {
+
+		> * {
+			display: inline-block;
+			color: @subnav-color;
+
+			// Hover/Focus
+			&:hover,
+			&:focus {
+				color: @subnav-hover-color;
+				text-decoration: @subnav-hover-text-decoration;
+			}
+		}
+	}
+
+	> :nth-child(n+2) {
+		padding-left: @subnav-margin-horizontal;
+	}
+
+	// State: `.active`
+	// ========================================================================
+
+	> .active {
+		> * {
+			color: @subnav-active-color;
+		}
+	}
+
+	// State: `.disbabled`
+	// ========================================================================
+
+	> .disabled {
+		> * {
+			background-color: transparent;
+			color: @subnav-disabled-color;
+			text-decoration: none;
+			cursor: default;
+		}
+	}
+
+	// Modifier: `.subnav-line"
+	// ========================================================================
+
+	&-line {
+		> li {
+			+ li {
+				&:before {
+					content: "";
+					margin-right: @subnav-margin-horizontal;
+					border-left: @subnav-line-border-width solid @subnav-line-border;
+				}
+			}
+		}
+	}
+
+	// Modifier: `.subnav-pill"
+	// ========================================================================
+
+	&-pill {
+		> * {
+			> * {
+				padding: @subnav-pill-padding-vertical @subnav-pill-padding-horizontal;
+
+				// Hover
+				&:hover,
+				&:focus {
+					background-color: @subnav-pill-hover-background;
+					color: @subnav-pill-hover-color;
+					text-decoration: none;
+				}
+			}
+		}
+
+		// Active
+		> .active {
+			> * {
+				background-color: @subnav-pill-active-background;
+				color: @subnav-pill-active-color;
+			}
+		}
+	}
+}

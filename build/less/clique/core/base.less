@@ -1,0 +1,470 @@
+// Name:            Base
+//
+// Description:     Sets default values for HTML elements
+//
+// Component:		`.h1`,
+//					`.h2`,
+//					`.h3`,
+//					`.h4`,
+//					`.h5`,
+//					`.h6`
+//					`.img-preserve`
+
+@import "../mixins/mixins.less";
+@import "../variables/variables.less";
+
+// ========================================================================
+// Variables
+// ========================================================================
+
+@base-body-background: @global-background;
+@base-body-font-family: @global-font-family;
+@base-body-font-size: @global-font-size;
+@base-body-line-height: unit(@global-line-height) / unit(@global-font-size); // (14px / 20px)
+@base-body-color: @global-font-color;
+
+@base-link-color: @global-link-color;
+@base-link-color-hover: @global-link-color-hover;
+@base-link-text-decoration: @global-link-decoration;
+@base-link-text-decoration-hover: @global-link-decoration-hover;
+
+@base-code-color: @global-emphasis-color;
+@base-code-font-size: 12px;
+@base-code-font-family: Consolas, monospace, serif;
+@base-code-border-width: @global-border-width;
+@base-code-border: @global-border-color;
+@base-code-padding: 4px;
+@base-code-background: #fafafa;
+
+@base-em-color: @global-emphasis-color;
+@base-ins-background: @global-highlight-color;
+@base-ins-color: @global-font-color;
+@base-mark-background: @global-highlight-color;
+@base-mark-color: @global-font-color;
+
+@base-margin-vertical: @global-margin;
+
+@base-heading-font-family: @global-font-family;
+@base-heading-font-weight: normal;
+@base-heading-color: inherit;
+@base-heading-margin-top: 25px;
+
+@base-h1-font-size: 36px;
+@base-h1-line-height: 42px;
+@base-h2-font-size: 24px;
+@base-h2-line-height: 30px;
+@base-h3-font-size: @global-font-size-block-title;
+@base-h3-line-height: @global-line-height-block-title;
+@base-h4-font-size: @global-font-size-large;
+@base-h4-line-height: 22px;
+@base-h5-font-size: @global-font-size;
+@base-h5-line-height: 20px;
+@base-h6-font-size: @global-font-size-small;
+@base-h6-line-height: @global-line-height-small;
+
+@base-list-padding-left: 30px;
+
+@base-hr-margin-vertical: @base-margin-vertical;
+@base-hr-border: @global-border-color;
+@base-hr-border-width: @global-border-width;
+
+@base-blockquote-padding-left: 15px;
+@base-blockquote-border: @global-border-color;
+@base-blockquote-border-width: 5px;
+@base-blockquote-font-size: @global-font-size-large;
+@base-blockquote-line-height: 22px;
+
+@base-pre-padding: 10px;
+@base-pre-background: #f5f5f5;
+@base-pre-color: #444;
+@base-pre-font-size: @global-font-size-small;
+@base-pre-line-height: @global-line-height-small;
+@base-pre-font-family: @base-code-font-family;
+@base-pre-tab-size: 4;
+@base-pre-border-width: @base-code-border-width;
+@base-pre-border: @global-border-color;
+
+@base-selection-background: #39f;
+@base-selection-color: @color-white;
+
+// ========================================================================
+// Component: Base
+// ========================================================================
+
+html {
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	background-color: @base-body-background;
+}
+
+html,
+body {
+	font-size: @base-body-font-size;
+	line-height: @base-body-line-height;
+	font-family: @base-body-font-family;
+	background-color: @base-body-background;
+	color: @base-body-color;
+	margin: 0;
+	padding: 0;
+}
+
+* {
+	&,
+	&:before,
+	&:after {
+		.box-sizing(border-box);
+	}
+}
+
+:focus {
+	outline: 0;
+}
+
+// Links
+// ========================================================================
+
+a {
+	// Remove the gray background color from active links in IE 10.
+	background-color: transparent;
+
+	&,
+	input,
+	button {
+		-webkit-tap-highlight-color: fade(#000, 0%);
+	}
+}
+
+// Style
+a {
+	color: @base-link-color;
+	text-decoration: @base-link-text-decoration;
+	cursor: pointer;
+
+	// Hover
+	&:hover {
+		color: @base-link-color-hover;
+		text-decoration: @base-link-text-decoration-hover;
+	}
+}
+
+// Text-level semantics
+// ========================================================================
+
+// Addresses styling not present in Chrome, Safari, Opera and IE 8/9/10.
+abbr {
+	&[title] {
+		border-bottom: 1px dotted;
+	}
+}
+
+// Addresses style set to `.bolder` in Firefox
+b,
+strong {
+	font-weight: bold;
+}
+
+code,
+kbd,
+samp {
+	:not(pre) > & {
+		font-size: @base-code-font-size;
+		font-family: @base-code-font-family;
+		color: @base-code-color;
+		white-space: nowrap;
+		padding: 0 @base-code-padding;
+		border: @base-code-border-width solid @base-code-border;
+		background-color: @base-code-background;
+	}
+}
+
+// Emphasize
+em {
+	font-style: italic;
+}
+
+// Insert
+ins {
+	background-color: @base-ins-background;
+	color: @base-ins-color;
+	text-decoration: none;
+}
+
+// Mark
+mark {
+	background-color: @base-mark-background;
+	color: @base-mark-color;
+}
+
+// Quote
+q {
+	font-style: italic;
+}
+
+// Addresses inconsistent and variable font size in all browsers.
+small {
+	font-size: 80%;
+}
+
+// Prevents `.sub` and `.sup` affecting `.line-height` in all browsers.
+sub,
+sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+
+sup {
+	top: -0.5em;
+}
+
+sub {
+	bottom: -0.25em;
+}
+
+// Images
+// ========================================================================
+
+img {
+	max-width: 100%;
+	height: auto;
+	border: 0;
+	vertical-align: middle;
+}
+
+// Correct overflow not hidden in IE 9/10/11.
+svg {
+	&:not(:root) {
+		overflow: hidden;
+	}
+}
+
+// Block elements
+// ========================================================================
+
+// Reset margin
+blockquote,
+figure {
+	margin: 0;
+}
+
+// Margins
+p,
+ul,
+ol,
+dl,
+blockquote,
+pre,
+address,
+fieldset,
+figure {
+	margin: 0 0 @base-margin-vertical 0;
+
+	// Add margin-top for adjacent elements
+	* + & {
+		margin-top: @base-margin-vertical;
+	}
+}
+
+// Headings
+// ========================================================================
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0 0 @base-margin-vertical 0;
+	// font-family: @base-heading-font-family;
+	font-weight: @base-heading-font-weight;
+	color: @base-heading-color;
+
+	// Add margin-top for adjacent elements
+	* + & {
+		margin-top: @base-heading-margin-top;
+	}
+}
+
+// Sizes
+h1,
+.h1 {
+	font-size: @base-h1-font-size;
+	line-height: unit(@base-h1-line-height) / unit(@base-h1-font-size);
+}
+
+h2,
+.h2 {
+	font-size: @base-h2-font-size;
+	line-height: unit(@base-h2-line-height) / unit(@base-h2-font-size);
+}
+
+h3,
+.h3 {
+	font-size: @base-h3-font-size;
+	line-height: unit(@base-h3-line-height) / unit(@base-h3-font-size);
+}
+
+h4,
+.h4 {
+	font-size: @base-h4-font-size;
+	line-height: unit(@base-h4-line-height) / unit(@base-h4-font-size);
+}
+
+h5,
+.h5 {
+	font-size: @base-h5-font-size;
+	line-height: unit(@base-h5-line-height) / unit(@base-h5-font-size);
+}
+
+h6,
+.h6 {
+	font-size: @base-h6-font-size;
+	line-height: unit(@base-h6-line-height) / unit(@base-h6-font-size);
+}
+
+// Lists
+// ========================================================================
+
+ul,
+ol {
+	padding-left: @base-list-padding-left;
+
+	// Reset margin for nested lists
+	> li {
+		> ul,
+		> ol {
+			margin: 0;
+		}
+	}
+}
+
+// Description lists
+// ========================================================================
+
+dt {
+	font-weight: bold;
+}
+
+dd {
+	margin-left: 0;
+}
+
+// Horizontal rules
+// ========================================================================
+
+hr {
+	.box-sizing(content-box);
+	height: 0;
+	margin: @base-hr-margin-vertical 0;
+	border: 0;
+	border-top: @base-hr-border-width solid @base-hr-border;
+
+	* + & {
+		margin-top: @base-hr-margin-vertical;
+	}
+}
+
+// Address
+// ========================================================================
+
+address {
+	font-style: normal;
+}
+
+// Blockquotes
+// ========================================================================
+
+blockquote {
+	padding-left: @base-blockquote-padding-left;
+	border-left: @base-blockquote-border-width solid @base-blockquote-border;
+	font-size: @base-blockquote-font-size;
+	line-height: unit(@base-blockquote-line-height) / unit(@base-blockquote-font-size);
+	font-style: italic;
+}
+
+// Preformatted text
+// ========================================================================
+
+pre {
+	padding: @base-pre-padding;
+	background-color: @base-pre-background;
+	font: @base-pre-font-size e("/") @base-pre-line-height @base-pre-font-family;
+	color: @base-pre-color;
+	.tab-size(@base-pre-tab-size);
+	overflow: auto;
+	border: @base-pre-border-width solid @base-pre-border;
+
+	> code {
+		margin: -@base-pre-padding;
+		padding: @base-pre-padding;
+	}
+}
+
+// Selection pseudo-element
+// ========================================================================
+
+::-moz-selection {
+	background-color: @base-selection-background;
+	color: @base-selection-color;
+	text-shadow: none;
+}
+
+::selection {
+	background-color: @base-selection-background;
+	color: @base-selection-color;
+	text-shadow: none;
+}
+
+// HTML5 elements
+// ========================================================================
+
+// Corrects `.block` display not defined in IE 8/9.
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+nav,
+section,
+summary {
+	display: block;
+}
+
+// Addresses inconsistent vertical alignment of `.progress` in Chrome, Firefox and Opera.
+progress {
+	vertical-align: baseline;
+}
+
+// Prevent displaying `.audio` without controls in Chrome, Safari and Opera
+audio {
+	&:not([controls]) {
+		display: none;
+	}
+}
+
+// Address `.[hidden]` styling not present in IE 8/9.
+// Hide the `.template` element in IE and Safari
+[hidden],
+template {
+	display: none;
+}
+
+// Iframe
+// ========================================================================
+
+iframe {
+	border: 0;
+}
+
+// Fix viewport for IE10 snap mode
+// ========================================================================
+
+@media screen and (max-width: 400px) {
+	@-ms-viewport {
+		width: device-width;
+	}
+}

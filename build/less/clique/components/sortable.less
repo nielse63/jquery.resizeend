@@ -1,0 +1,77 @@
+// Name:            Sortable
+//
+// Description:     Defines styles for sortable grids and lists
+//
+// Component:       `.sortable`
+//
+// Sub-objects:     `.sortable-moving`
+//
+// Modifiers:       `.sortable-dragged`
+//                  `.sortable-placeholder`
+//                  `.sortable-over`
+//
+
+@import "../mixins/mixins.less";
+@import "../variables/variables.less";
+
+// ========================================================================
+// Variables
+// ========================================================================
+
+@sortable-dragged-z-index: 1050;
+@sortable-placeholder-opacity: 0;
+@sortable-over-opacity: 0.3;
+
+// ========================================================================
+// Component: Sortable
+// ========================================================================
+
+.sortable {
+	position: relative;
+
+	> * {
+		.user-select(none);
+		touch-action: none;
+	}
+
+	// Prevents images and links from being dragged (default browser behavior)
+	// Currently only works in Webkit
+	* {
+		-webkit-user-drag: none;
+		user-drag: none;
+	}
+
+	// Sub-modifier `.sortable-dragged`
+	// ========================================================================
+
+	&-dragged {
+		position: absolute;
+		z-index: @sortable-dragged-z-index;
+		pointer-events: none;
+	}
+
+	// Sub-modifier `.sortable-placeholder`
+	// ========================================================================
+
+	&-placeholder {
+		opacity: @sortable-placeholder-opacity;
+	}
+
+	// Sub-modifier `.sortable-over`
+	// Only if `.warp:true`
+	// ========================================================================
+
+	&-over {
+		opacity: @sortable-over-opacity;
+	}
+
+	// Sub-object: `.sortable-moving`
+	// ========================================================================
+
+	&-moving {
+		&,
+		* {
+			cursor: move;
+		}
+	}
+}

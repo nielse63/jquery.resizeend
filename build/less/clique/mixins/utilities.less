@@ -1,0 +1,43 @@
+//
+// Mixin:           Utilities
+// Description:     Custom mixins used at utility functions
+//
+// ========================================================================
+
+.clearfix() {
+	&:before,
+	&:after {
+		content: "";
+	}
+	&:before {
+		display: table-cell;
+	}
+	&:after {
+		display: table;
+		clear: both;
+	}
+}
+
+.micro-clearfix() {
+	&:before,
+	&:after {
+		content: "";
+		display: table;
+	}
+	&:after {
+		clear: both;
+	}
+}
+
+.center-vertically() {
+	top: 50%;
+	left: 50%;
+	position: absolute;
+	.translate(-50%, -50%);
+}
+
+.text-overflow() {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}

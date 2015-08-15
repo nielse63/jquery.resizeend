@@ -1,0 +1,27 @@
+// Name:            Switcher
+//
+// Description:     Defines styles for the switcher
+//
+// Component:       `.switcher`
+//
+// States:          `.active`
+
+@import "../mixins/mixins.less";
+@import "../variables/variables.less";
+
+// ========================================================================
+// Component: Switcher
+// ========================================================================
+
+.switcher {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	touch-action: cross-slide-y pinch-zoom double-tap-zoom;
+
+	> * {
+		&:not(.active) {
+			display: none;
+		}
+	}
+}

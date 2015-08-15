@@ -1,0 +1,59 @@
+// Name:            Accordion
+//
+// Description:     Defines styles for the accodion
+//
+// Component:       `.accodion`
+//
+// Sub-objects:     `.accodion-title`
+//                  `.accodion-content`
+
+@import "../mixins/mixins.less";
+@import "../variables/variables.less";
+
+// ========================================================================
+// Variables
+// ========================================================================
+
+@accordion-title-margin-bottom: @global-margin;
+@accordion-title-padding-vertical: @global-gutter-mini;
+@accordion-title-padding-horizontal: @global-margin;
+@accordion-title-font-size: @global-font-size-block-title;
+@accordion-title-line-height: @global-line-height-block-title;
+@accordion-title-background: @global-default-background;
+@accordion-title-border-width: @global-border-width;
+@accordion-title-border: @global-border-color;
+
+@accordion-content-padding-horizontal: @accordion-title-padding-horizontal;
+@accordion-content-padding-bottom: @accordion-title-padding-horizontal;
+
+// ========================================================================
+// Component: Accordion
+// ========================================================================
+
+.accordion {
+
+	// Sub-object: `.accordion-title`
+	// ========================================================================
+
+	&-title {
+		margin-top: 0;
+		margin-bottom: @accordion-title-margin-bottom;
+		padding: @accordion-title-padding-vertical @accordion-title-padding-horizontal;
+		background-color: @accordion-title-background;
+		font-size: @accordion-title-font-size;
+		line-height: unit(@accordion-title-line-height) / unit(@accordion-title-font-size);
+		cursor: pointer;
+		border: @accordion-title-border-width solid @accordion-title-border;
+	}
+
+	// Sub-object: `.accordion-content`
+	// ========================================================================
+
+	&-content {
+		padding: 0 @accordion-content-padding-horizontal @accordion-content-padding-bottom @accordion-content-padding-horizontal;
+
+		> :last-child {
+			margin-bottom: 0;
+		}
+	}
+}

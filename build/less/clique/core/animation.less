@@ -1,0 +1,278 @@
+// Name:            Animation
+//
+// Description:     Provides a useful set of keyframe animations
+//
+// Component:       `.animation-*`
+//
+// Modifiers:       `.animation-fade`
+//                  `.animation-scale-up`
+//                  `.animation-scale-down`
+//                  `.animation-slide-top`
+//                  `.animation-slide-bottom`
+//                  `.animation-slide-left`
+//                  `.animation-slide-right`
+//                  `.animation-scale`
+//                  `.animation-shake`
+//                  `.animation-reverse`
+//                  `.animation-15`
+//                  `.animation-top-left`
+//                  `.animation-top-center`
+//                  `.animation-top-right`
+//                  `.animation-middle-left`
+//                  `.animation-middle-right`
+//                  `.animation-bottom-left`
+//                  `.animation-bottom-center`
+//                  `.animation-bottom-right`
+//
+// Sub-objects:     `.animation-hover`
+//
+// Uses:            Scrollspy
+//
+// Used by:         Dropdown
+//                  Icon
+//                  Search
+//                  Datepicker
+//                  Slideshow
+
+@import "../mixins/mixins.less";
+@import "../variables/variables.less";
+
+// ========================================================================
+// Component: Animation
+// ========================================================================
+
+// Keyframes: Fade
+// Used by dropdown, datepicker and slideshow component
+// ========================================================================
+
+.keyframes(fade, ~"0% { opacity: 0; } 100% { opacity: 1; }");
+
+
+// Keyframes: Fade with slide
+// ========================================================================
+
+// Top
+.keyframes(fade-top, ~"0% { opacity: 0; transform: translateY(-100%); } 100% { opacity: 1; transform: translateY(0); }");
+
+// Bottom
+.keyframes(fade-bottom, ~"0% { opacity: 0; transform: translateY(100%); } 100% { opacity: 1; transform: translateY(0); }");
+
+// Left
+.keyframes(fade-left, ~"0% { opacity: 0; transform: translateX(-100%); } 100% { opacity: 1; transform: translateX(0); }");
+
+// Right
+.keyframes(fade-right, ~"0% { opacity: 0; transform: translateX(100%); } 100% { opacity: 1; transform: translateX(0); }");
+
+
+// Keyframes: Fade with scale
+// ========================================================================
+
+// Scale by 0.2
+.keyframes(fade-scale-02, ~"0% { opacity: 0; transform: scale(0.2); } 100% { opacity: 1; transform: scale(1); }");
+
+// Scale by 1.5
+// Used by slideshow component
+.keyframes(fade-scale-15, ~"0% { opacity: 0; transform: scale(1.5); } 100% { opacity: 1; transform: scale(1); }");
+
+// Scale by 1.8
+.keyframes(fade-scale-18, ~"0% { opacity: 0; transform: scale(1.8); } 100% { opacity: 1; transform: scale(1); }");
+
+
+// Keyframes: Slide
+// ========================================================================
+
+// Left
+.keyframes(slide-left, ~"0% { transform: translateX(-100%); } 100% { transform: translateX(0); }");
+
+// Right
+.keyframes(slide-right, ~"0% { transform: translateX(100%); } 100% { transform: translateX(0); }");
+
+// Left third
+.keyframes(slide-left-33, ~"0% { transform: translateX(33%); } 100% { transform: translateX(0); }");
+
+// Right third
+.keyframes(slide-right-33, ~"0% { transform: translateX(-33%); } 100% { transform: translateX(0); }");
+
+
+// Keyframes: Scale
+// ========================================================================
+
+.keyframes(scale-12, ~"0% { transform: scale(1.2); } 100% { transform: scale(1); }");
+
+
+// Keyframes: Rotate
+// ========================================================================
+
+.keyframes(rotate, ~"0% { transform: rotate(0deg); } 100% { transform: rotate(359deg); }");
+
+
+// Keyframes: Shake
+// ========================================================================
+
+.keyframes(shake, ~"0%, 100% { transform: translateX(0); } 10% { transform: translateX(-9px); } 20% { transform: translateX(8px); } 30% { transform: translateX(-7px); } 40% { transform: translateX(6px); } 50% { transform: translateX(-5px); } 60% { transform: translateX(4px); } 70% { transform: translateX(-3px); } 80% { transform: translateX(2px); } 90% { transform: translateX(-1px); }");
+
+
+// Keyframes: Fade with slide fixed
+// ========================================================================
+
+// Top fixed
+.keyframes(slide-top-fixed, ~"0% { opacity: 0; transform: translateY(-10px); } 100% { opacity: 1; transform: translateY(0); }");
+
+// Bottom fixed
+.keyframes(slide-bottom-fixed, ~"0% { opacity: 0; transform: translateY(10px); } 100% { opacity: 1; transform: translateY(0); }");
+
+
+[class*="animation-"] {
+	.animation-duration(500ms);
+	.animation-timing-function(ease-out);
+	.animation-fill-mode(both);
+}
+
+// Hide animated element if scrollspy is used
+@media screen {
+	[data-scrollspy*="animation-"] {
+		&:not([data-scrollspy*="target"]) {
+			opacity: 0;
+		}
+	}
+}
+
+.animation {
+
+	// Fade
+	&-fade {
+		.animation-name(fade);
+		.animation-duration(800ms);
+		.animation-timing-function(linear) !important;
+	}
+
+	// Scale
+	&-scale {
+		.animation-name(scale-12);
+
+		// Fade with scale
+		&-up {
+			.animation-name(fade-scale-02);
+		}
+		&-down {
+			.animation-name(fade-scale-18);
+		}
+	}
+
+	// Fade with slide
+	&-slide {
+		&-top {
+			.animation-name(fade-top);
+		}
+		&-bottom {
+			.animation-name(fade-bottom);
+		}
+		&-left {
+			.animation-name(fade-left);
+		}
+		&-right {
+			.animation-name(fade-right);
+		}
+	}
+
+	// Shake
+	&-shake {
+		.animation-name(shake);
+	}
+
+	// Direction modifiers
+	// ========================================================================
+
+	&-reverse {
+		.animation-direction(reverse);
+		.animation-timing-function(ease-in);
+	}
+
+	// Duration modifiers
+	// ========================================================================
+
+	&-15 {
+		.animation-duration(15s);
+	}
+
+	// Delay modifiers
+	// ========================================================================
+
+	&-delay {
+		&-100 {
+			.animation-delay(100ms);
+		}
+	}
+	&-delay {
+		&-200 {
+			.animation-delay(200ms);
+		}
+	}
+	&-delay {
+		&-300 {
+			.animation-delay(300ms);
+		}
+	}
+	&-delay {
+		&-400 {
+			.animation-delay(400ms);
+		}
+	}
+	&-delay {
+		&-500 {
+			.animation-delay(500ms);
+		}
+	}
+
+	// Origin modifiers
+	// ========================================================================
+
+	&-top {
+		&-left {
+			.transform-origin(0 0);
+		}
+		&-center {
+			.transform-origin(50% 0);
+		}
+		&-right {
+			.transform-origin(100% 0);
+		}
+	}
+
+	&-middle {
+		&-left {
+			.transform-origin(0 50%);
+		}
+		&-right {
+			.transform-origin(100% 50%);
+		}
+	}
+
+	&-bottom {
+		&-left {
+			.transform-origin(0 100%);
+		}
+		&-center {
+			.transform-origin(50% 100%);
+		}
+		&-right {
+			.transform-origin(100% 100%);
+		}
+	}
+
+
+	// Sub-object: `.animation-hover`
+	// ========================================================================
+
+	&-hover {
+		&:not(:hover) {
+			&,
+			[class*="animation-"] {
+				&,
+				.touch & {
+					.animation-name(none);
+				}
+			}
+		}
+	}
+}

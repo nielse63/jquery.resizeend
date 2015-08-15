@@ -1,0 +1,196 @@
+// Name:            Text
+//
+// Description:     Collection of useful text utility classes to style your content
+//
+// Component:       `.text-*`
+
+@import "../mixins/mixins.less";
+@import "../variables/variables.less";
+
+// ========================================================================
+// Variables
+// ========================================================================
+
+@text-small-font-size: @global-font-size-small;
+@text-small-line-height: @global-line-height-small;
+
+@text-large-font-size: @global-font-size-large;
+@text-large-line-height: @global-line-height-large;
+
+@text-muted-color: @global-muted-color;
+@text-primary-color: @color-primary-text;
+@text-success-color: @color-success-text;
+@text-warning-color: @color-warning-text;
+@text-danger-color: @color-danger-text;
+@text-contrast-color: @color-white;
+
+// ========================================================================
+// Component: Text
+// ========================================================================
+
+.text {
+
+	// Size modifiers
+	// ========================================================================
+
+	&-small {
+		font-size: @text-small-font-size;
+		line-height: unit(@text-small-line-height) / unit(@text-small-font-size);
+	}
+
+	&-large {
+		font-size: @text-large-font-size;
+		line-height: unit(@text-large-line-height) / unit(@text-large-font-size);
+	}
+
+	// Weight modifiers
+	// ========================================================================
+
+	&-bold {
+		font-weight: bold;
+	}
+
+	// Style modifiers
+	// ========================================================================
+
+	&-italics {
+		font-style: italic;
+	}
+
+	// Color modifiers
+	// ========================================================================
+
+	&-muted {
+		color: @text-muted-color !important;
+	}
+
+	&-primary {
+		color: @text-primary-color !important;
+	}
+
+	&-success {
+		color: @text-success-color !important;
+	}
+
+	&-warning {
+		color: @text-warning-color !important;
+	}
+
+	&-danger {
+		color: @text-danger-color !important;
+	}
+
+	&-contrast {
+		color: @text-contrast-color !important;
+	}
+
+	// Alignment modifiers
+	// ========================================================================
+
+	&-left {
+		text-align: left !important;
+
+		&-medium {
+			@media (max-width: @breakpoint-medium-max) {
+				text-align: left !important;
+			}
+		}
+		&-small {
+			@media (max-width: @breakpoint-small-max) {
+				text-align: left !important;
+			}
+		}
+	}
+
+	&-right {
+		text-align: right !important;
+
+		&-medium {
+			@media (max-width: @breakpoint-medium-max) {
+				text-align: right !important;
+			}
+		}
+		&-small {
+			@media (max-width: @breakpoint-small-max) {
+				text-align: right !important;
+			}
+		}
+	}
+
+	&-center {
+		text-align: center !important;
+
+		&-medium {
+			@media (max-width: @breakpoint-medium-max) {
+				text-align: center !important;
+			}
+		}
+		&-small {
+			@media (max-width: @breakpoint-small-max) {
+				text-align: center !important;
+			}
+		}
+	}
+
+	&-justify {
+		text-align: justify !important;
+	}
+
+	&-top {
+		vertical-align: top !important;
+	}
+
+	&-middle {
+		vertical-align: middle !important;
+	}
+
+	&-bottom {
+		vertical-align: bottom !important;
+	}
+
+	// Wrap modifiers
+	// ========================================================================
+
+	// Prevent text from wrapping onto multiple lines
+	&-nowrap {
+		white-space: nowrap;
+	}
+
+	// Prevent text from wrapping onto multiple lines, and truncate with an ellipsis
+	&-truncate {
+		.text-overflow();
+	}
+
+	// Break strings if their length exceeds the width of their container
+	&-break {
+		word-wrap: break-word;
+		.hyphens(auto);
+	}
+
+	// Transform Modifiers
+	// ========================================================================
+
+	// Forces uppercase text
+	&-uppercase {
+		text-transform: uppercase !important;
+	}
+
+	// Forces lowercase text
+	&-lowercase {
+		text-transform: lowercase !important;
+	}
+
+	// Forces capitalized text
+	&-capitalize {
+		text-transform: capitalize !important;
+	}
+
+	// Reset Modifier
+	// ========================================================================
+
+	&-reset {
+		text-transform: none !important;
+		font-size: 100% !important;
+		font-weight: normal !important;
+	}
+}

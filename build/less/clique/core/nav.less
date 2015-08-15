@@ -1,0 +1,383 @@
+// Name:            Nav
+//
+// Description:     Defines styles for list navigations
+//
+// Component:       `.nav`
+//
+// Sub-objects:     `.nav-header`
+//                  `.nav-divider`
+//                  `.nav-sub`
+//
+// Modifiers:       `.nav-parent-icon`
+//                  `.nav-side`
+//                  `.nav-dropdown`
+//                  `.nav-navbar`
+//                  `.nav-offcanvas`
+//
+// States:          `.active`
+//                  `.parent`
+//                  `.open`
+//
+// Uses:            Icon: "icomoon"
+//
+// Used by:         Panel
+//                  Dropdown
+//
+
+@import "../mixins/mixins.less";
+@import "../variables/variables.less";
+
+// ========================================================================
+// Variables
+// ========================================================================
+
+@nav-link-color: @global-link-color;
+@nav-link-color-hover: @global-link-color-hover;
+
+@nav-padding-vertical: 5px;
+@nav-padding-horizontal: 15px;
+
+@nav-header-padding-vertical: @nav-padding-vertical;
+@nav-header-padding-horizontal: @nav-padding-horizontal;
+@nav-header-font-size: 12px;
+@nav-header-font-weight: bold;
+@nav-header-text-transform: uppercase;
+@nav-header-margin-top: @global-margin;
+
+@nav-divider-margin-vertical: 9px;
+@nav-divider-margin-horizontal: @nav-padding-horizontal;
+
+@nav-subtitle-font-size: @global-font-size-small;
+@nav-subtitle-line-height: @global-line-height-small;
+
+@nav-nested-padding-left: 15px;
+
+@nav-parent-icon: @global-icon-chevron-left;
+
+@nav-side-color: @global-font-color;
+@nav-side-hover-background: fade(#000, 5%);
+@nav-side-hover-color: @nav-side-color;
+@nav-side-active-background: @color-primary-background;
+@nav-side-active-color: @color-white;
+@nav-side-divider-border: @global-border-color;
+@nav-side-divider-border-width: @global-border-width;
+@nav-side-nested-color: @nav-link-color;
+@nav-side-nested-hover-color: @nav-link-color-hover;
+
+@nav-dropdown-hover-background: @color-primary-background;
+@nav-dropdown-hover-color: @color-white;
+@nav-dropdown-divider-border: @global-border-color;
+@nav-dropdown-divider-border-width: @global-border-width;
+@nav-dropdown-nested-color: @nav-link-color;
+@nav-dropdown-nested-hover-color: @nav-link-color-hover;
+
+@nav-navbar-color: @global-font-color;
+@nav-navbar-hover-background: @color-primary-background;
+@nav-navbar-hover-color: @color-white;
+@nav-navbar-divider-border: @global-border-color;
+@nav-navbar-divider-border-width: @global-border-width;
+@nav-navbar-nested-color: @global-link-color;
+@nav-navbar-nested-hover-color: #059;
+
+@nav-offcanvas-padding-vertical: 10px;
+@nav-offcanvas-padding-horizontal: 15px;
+@nav-offcanvas-color: #ccc;
+@nav-offcanvas-hover-background: @color-primary-background;
+@nav-offcanvas-hover-color: @color-white;
+@nav-offcanvas-active-background: @nav-offcanvas-hover-background;
+@nav-offcanvas-active-color: @color-white;
+@nav-offcanvas-header-color: #777;
+@nav-offcanvas-divider-border: #1a1a1a;
+@nav-offcanvas-divider-border-width: @global-border-width;
+@nav-offcanvas-nested-color: #ccc;
+@nav-offcanvas-nested-hover-color: @color-white;
+
+@nav-offcanvas-bar-background: #333;
+@nav-offcanvas-header-background: lighten(@nav-offcanvas-bar-background, 5%);
+@nav-offcanvas-divider-background: fade(#000, 20%);
+
+// ========================================================================
+// Component: Nav
+// ========================================================================
+
+.nav {
+	&,
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	// Links
+	a {
+		color: inherit;
+		display: block;
+		text-decoration: none;
+		padding: @nav-padding-vertical @nav-padding-horizontal;
+	}
+
+	// Item subtitle
+	li {
+		> a {
+			> div {
+				font-size: @nav-subtitle-font-size;
+				line-height: unit(@nav-subtitle-line-height) / unit(@nav-subtitle-font-size);
+			}
+		}
+	}
+
+	// Sub-object: `.nav-header`
+	// ========================================================================
+
+	&-header {
+		padding: @nav-header-padding-vertical @nav-header-padding-horizontal;
+		text-transform: @nav-header-text-transform;
+		font-weight: @nav-header-font-weight;
+		font-size: @nav-header-font-size;
+
+		&:not(:first-child) {
+			margin-top: @nav-header-margin-top;
+		}
+	}
+
+
+	// Sub-object: `.nav-divider`
+	// ========================================================================
+
+	&-divider {
+		margin: @nav-divider-margin-vertical @nav-divider-margin-horizontal;
+	}
+
+	// Sub-object: `.nav-sub`
+	// ========================================================================
+
+	&-sub {
+		ul {
+			padding-left: @nav-nested-padding-left;
+		}
+		a {
+			padding-left: @nav-nested-padding-left * 2;
+		}
+	}
+
+	// Modifier: `.nav-parent-icon`
+	// ========================================================================
+
+	&-parent {
+		&-icon {
+			> .parent {
+				> a {
+					position: relative;
+
+					&:after {
+						content: @nav-parent-icon;
+						.size(20);
+						position: absolute;
+						right: 20px / 2;
+						top: 50%;
+						font-family: "icomoon";
+						text-align: center;
+						.transform(translate(0, -50%) rotate(0deg));
+						.transition(400ms ease-in-out transform);
+					}
+				}
+				&.open {
+					> a {
+						&:after {
+							.transform(translate(0, -50%) rotate(-90deg));
+						}
+					}
+				}
+			}
+		}
+	}
+
+	// Modifier: `.nav-side`
+	// ========================================================================
+
+	// Items
+	&-side {
+		> li {
+			> a {
+
+				// Hover
+				&:hover {
+					background-color: @nav-side-hover-background;
+					color: @nav-side-hover-color;
+				}
+			}
+
+			// Active
+			&.active {
+				> a {
+					background-color: @nav-side-active-background;
+					color: @nav-side-active-color;
+				}
+			}
+		}
+
+		// Sub-object: `.nav-divider`
+		.nav {
+			&-divider {
+				border-top: @nav-side-divider-border-width solid @nav-side-divider-border;
+			}
+		}
+
+		// Nested items
+		ul {
+			a {
+				color: @nav-side-nested-color;
+
+				&:hover {
+					color: @nav-side-nested-hover-color;
+				}
+			}
+		}
+	}
+
+	// Modifier: `.nav-dropdown`
+	// ========================================================================
+
+	// Items
+	&-dropdown {
+		> li {
+			> a {
+				&:hover {
+					background-color: @nav-dropdown-hover-background;
+					color: @nav-dropdown-hover-color;
+					outline: 0;
+				}
+			}
+		}
+
+		// Sub-object: `.nav-divider`
+		.nav {
+			&-divider {
+				border-top: @nav-dropdown-divider-border-width solid @nav-dropdown-divider-border;
+			}
+		}
+
+		// Nested items
+		ul {
+			a {
+				color: @nav-dropdown-nested-color;
+				&:hover {
+					color: @nav-dropdown-nested-hover-color;
+				}
+			}
+		}
+	}
+
+
+	// Modifier: `.nav-navbar`
+	// ========================================================================
+
+	// Items
+	&-navbar {
+		> li {
+			> a {
+				color: @nav-navbar-color;
+
+				// Hover
+				&:hover {
+					background-color: @nav-navbar-hover-background;
+					color: @nav-navbar-hover-color;
+					outline: 0;
+				}
+			}
+		}
+
+		// Sub-object: `.nav-divider`
+		.nav {
+			&-divider {
+				border-top: @nav-navbar-divider-border-width solid @nav-navbar-divider-border;
+			}
+		}
+
+		// Nested items
+		ul {
+			a {
+				color: @nav-navbar-nested-color;
+				&:hover {
+					color: @nav-navbar-nested-hover-color;
+				}
+			}
+		}
+	}
+
+	// Modifier: `.nav-offcanvas`
+	// ========================================================================
+
+	// Items
+	&-offcanvas {
+		border-bottom: 1px solid fade(#000, 30%);
+
+		a {
+			color: @nav-offcanvas-color;
+		}
+
+		ul {
+			a {
+				color: @nav-offcanvas-nested-color;
+
+				&:hover {
+					color: @nav-offcanvas-nested-hover-color;
+				}
+			}
+		}
+
+		> li {
+			> a {
+				padding: @nav-offcanvas-padding-vertical @nav-offcanvas-padding-horizontal;
+				border-top: 1px solid fade(#000, 30%);
+
+				// Hover/Focus
+				&:hover {
+					background-color: @nav-offcanvas-hover-background;
+					color: @nav-offcanvas-hover-color;
+					outline: 0;
+				}
+			}
+		}
+
+		// Open
+		> .open {
+			> a {
+				&:extend(.nav-offcanvas > li > a:hover);
+			}
+		}
+
+		// Active
+		> .active {
+			> a {
+				background-color: @nav-offcanvas-active-background;
+				color: @nav-offcanvas-active-color;
+			}
+		}
+
+
+		.nav {
+
+			// Sub-object: `.nav-divider`
+			&-header {
+				color: @nav-offcanvas-header-color;
+				margin-top: 0;
+				border-top: 1px solid fade(#000, 30%);
+				background-color: @nav-offcanvas-header-background;
+			}
+
+			// Sub-object: `.nav-divider`
+			&-divider {
+				border-top: @nav-offcanvas-divider-border-width solid @nav-offcanvas-divider-border;
+				margin: 0;
+				height: 2px;
+				background-color: @nav-offcanvas-divider-background;
+			}
+
+			// Sub-object: `.nav-sub`
+			&-sub {
+				border-top: 1px solid fade(#000, 30%);
+			}
+		}
+	}
+}

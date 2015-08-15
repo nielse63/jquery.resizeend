@@ -1,0 +1,140 @@
+// Name:            Off-canvas
+//
+// Description:     Defines styles for an off-canvas sidebar that slides in and out of the page
+//
+// Component:       `.offcanvas`
+//
+// Sub-objects:     `.offcanvas-page`
+//                  `.offcanvas-bar`
+//                  `.offcanvas-close`
+//
+// Modifiers:       `.offcanvas-bar-flip`
+//
+// States:          `.active`
+//
+// Uses:            Panel: `.panel`
+//
+
+@import "../mixins/mixins.less";
+@import "../variables/variables.less";
+
+// ========================================================================
+// Variables
+// ========================================================================
+
+@offcanvas-z-index: 1000;
+@offcanvas-background: fade(#000, 10%);
+
+@offcanvas-bar-width: 270px;
+@offcanvas-bar-background: #333;
+
+@offcanvas-panel-margin: 20px @global-margin;
+@offcanvas-panel-color: #777;
+@offcanvas-panel-link-color: #ccc;
+@offcanvas-panel-link-hover-color: @color-white;
+@offcanvas-panel-title-color: @offcanvas-panel-link-color;
+
+// ========================================================================
+// Component: Off-canvas
+// ========================================================================
+
+.offcanvas {
+	display: none;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: @offcanvas-z-index;
+	touch-action: none;
+	background-color: @offcanvas-background;
+
+	&.active {
+		display: block;
+	}
+
+	// Sub-object: `.offcanvas-page`
+	// ========================================================================
+
+	&-page {
+		position: fixed;
+		.transition(margin-left 300ms ease-in-out);
+	}
+
+	// Sub-object: `.offcanvas-bar`
+	// ========================================================================
+
+	&-bar {
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		.translate(-100%, 0);
+		z-index: @offcanvas-z-index + 1;
+		width: @offcanvas-bar-width;
+		max-width: 100%;
+		background-color: @offcanvas-bar-background;
+		overflow-y: auto;
+		.transition(transform 300ms ease-in-out);
+		-webkit-overflow-scrolling: touch;
+		-ms-scroll-chaining: none;
+
+		&:after {
+			content: "";
+			display: block;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			width: 1px;
+			background-color: fade(#000, 60%);
+			.box-shadow(0 0 5px 2px fade(#000, 60%));
+		}
+
+		// Modifier: `.offcanvas-bar-flip`
+		// ========================================================================
+
+		&-flip {
+			left: auto;
+			right: 0;
+			.translate(100%, 0);
+
+			&:after {
+				right: auto;
+				left: 0;
+				width: 1px;
+				background-color: fade(#000, 60%);
+				.box-shadow(0 0 5px 2px fade(#000, 60%));
+			}
+		}
+
+		// State: `.offcanvas-bar-show`
+		// ========================================================================
+
+		&-show {
+			.translate(0, 0);
+		}
+	}
+
+	// Panel in offcanvas
+	// ========================================================================
+
+	.panel {
+		margin: @offcanvas-panel-margin;
+		color: @offcanvas-panel-color;
+
+		a {
+			&:not([class]) {
+				color: @offcanvas-panel-link-color;
+
+				&:hover {
+					color: @offcanvas-panel-link-hover-color;
+				}
+			}
+		}
+
+		&-title {
+			color: @offcanvas-panel-title-color;
+		}
+	}
+}

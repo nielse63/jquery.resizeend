@@ -1,0 +1,108 @@
+// Name:            Thumbnail
+//
+// Description:     Defines styles for image thumbnails
+//
+// Component:       `.thumbnail`
+//
+// Sub-objects:     `.thumbnail-caption`
+//
+// Modifiers:       `.thumbnail-mini`
+//                  `.thumbnail-small`
+//                  `.thumbnail-medium`
+//                  `.thumbnail-large`
+//                  `.thumbnail-expand`
+//
+
+@import "../mixins/mixins.less";
+@import "../variables/variables.less";
+
+// ========================================================================
+// Variables
+// ========================================================================
+
+@thumbnail-padding: 4px;
+@thumbnail-border: @global-border-color;
+@thumbnail-border-width: @global-border-width;
+@thumbnail-background: @color-white;
+
+@thumbnail-hover-border: #aaa;
+@thumbnail-hover-background: @color-white;
+
+@thumbnail-caption-padding: @thumbnail-padding;
+@thumbnail-caption-color: @global-font-color;
+
+@thumbnail-mini-width: 150px;
+@thumbnail-small-width: 200px;
+@thumbnail-medium-width: 300px;
+@thumbnail-large-width: 400px;
+
+// ========================================================================
+// Component: Thumbnail
+// ========================================================================
+
+.thumbnail {
+	display: inline-block;
+	max-width: 100%;
+	margin: 0;
+	padding: @thumbnail-padding;
+	border: @thumbnail-border-width solid @thumbnail-border;
+	background-color: @thumbnail-background;
+
+	// Hover/Focus
+	a& {
+		&:hover,
+		&:focus {
+			border-color: @thumbnail-hover-border;
+			background-color: @thumbnail-hover-background;
+			text-decoration: none;
+			outline: 0;
+		}
+	}
+
+	// Sub-object: `.thumbnail-caption`
+	// ========================================================================
+
+	&-caption {
+		padding-top: @thumbnail-caption-padding;
+		text-align: center;
+		color: @thumbnail-caption-color;
+	}
+
+	// Sub-objects: `.thumbnail-{mini, small, medium, large}`
+	// ========================================================================
+
+	&-mini,
+	&-small,
+	&-medium,
+	&-large {
+		> img {
+			width: 100%;
+		}
+	}
+
+	&-mini {
+		width: @thumbnail-mini-width;
+	}
+
+	&-small {
+		width: @thumbnail-small-width;
+	}
+
+	&-medium {
+		width: @thumbnail-medium-width;
+	}
+
+	&-large {
+		width: @thumbnail-large-width;
+	}
+
+	// Sub-object: `.thumbnail-expand`
+	// ========================================================================
+
+	&-expand {
+		&,
+		> img {
+			width: 100%;
+		}
+	}
+}

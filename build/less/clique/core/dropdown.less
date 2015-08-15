@@ -1,0 +1,151 @@
+// Name:            Dropdown
+//
+// Description:     Defines styles for a toggleable dropdown
+//
+// Component:       `.dropdown`
+//
+// Modifiers:       `.dropdown-right`
+//                  `.dropdown-center`
+//                  `.dropdown-justify`
+//                  `.dropdown-up`
+//                  `.dropdown-navbar`
+//                  `.dropdown-scrollable`
+//
+// States:          `.open`
+//
+// Uses:            Animation
+//                  Grid: `.col-*`
+//                  Panel: `.panel`
+//                  Nav: `.nav`
+
+@import "../mixins/mixins.less";
+@import "../variables/variables.less";
+
+// ========================================================================
+// Variables
+// ========================================================================
+
+@dropdown-z-index: 970;
+@dropdown-width: 200px;
+@dropdown-margin-top: 5px;
+@dropdown-padding: 15px;
+@dropdown-background: @color-white;
+@dropdown-color: @global-font-color;
+@dropdown-font-size: @global-font-size;
+@dropdown-animation: fade;
+
+@dropdown-navbar-margin: 0;
+@dropdown-navbar-background: #f5f5f5;
+@dropdown-navbar-color: @dropdown-color;
+@dropdown-navbar-animation: slide-top-fixed;
+
+@dropdown-scrollable-height: 200px;
+
+@dropdown-border-width: @global-border-width;
+@dropdown-border: @global-border-color;
+
+// ========================================================================
+// Component: Dropdown
+// ========================================================================
+
+.dropdown {
+	display: none;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	z-index: @dropdown-z-index;
+	width: @dropdown-width;
+	margin-top: @dropdown-margin-top;
+	padding: @dropdown-padding;
+	background-color: @dropdown-background;
+	color: @dropdown-color;
+	font-size: @dropdown-font-size;
+	vertical-align: top;
+	border: @dropdown-border-width solid @dropdown-border;
+
+	.open > & {
+		display: block;
+		.animation(@dropdown-animation 200ms ease-in-out);
+		.transform-origin(0 0);
+	}
+
+	// Nav in dropdown
+	// ========================================================================
+
+	.nav {
+		margin: 0 -@dropdown-padding;
+	}
+
+	// Modifier: `.dropdown-flip`
+	// ========================================================================
+
+	&-right {
+		left: auto;
+		right: 0;
+	}
+
+	// Modifier: `.dropdown-center`
+	// ========================================================================
+
+	&-center {
+		left: 50%;
+		.translate(-50%, 0);
+	}
+
+	// Modifier: `.dropdown-justify`
+	// ========================================================================
+
+	&-justify {
+		left: 0;
+		right: 0;
+		width: auto;
+	}
+
+	// Modifier: `.dropdown-up`
+	// ========================================================================
+
+	&-up {
+		top: auto;
+		bottom: 100%;
+		margin-top: auto;
+		margin-bottom: @dropdown-margin-top;
+	}
+
+
+	// Modifier: `.dropdown-navbar`
+	// ========================================================================
+
+	&-navbar {
+		margin-top: @dropdown-navbar-margin;
+		background-color: @dropdown-navbar-background;
+		color: @dropdown-navbar-color;
+		left: -1px;
+		border: @dropdown-border-width solid @dropdown-border;
+
+		> .open {
+			.animation(@dropdown-navbar-animation 200ms ease-in-out);
+		}
+
+		&.dropdown-flip {
+			left: auto;
+		}
+	}
+
+	// Modifier: `.dropdown-scrollable`
+	// ========================================================================
+
+	&-scrollable {
+		overflow-x: hidden;
+		height: auto;
+		max-height: @dropdown-scrollable-height;
+	}
+
+	// Sub-object: `.dropdown-scrollable`
+	// ========================================================================
+
+	&-button {
+		display: inline-block;
+		vertical-align: middle;
+		position: relative;
+	}
+}

@@ -1,0 +1,88 @@
+// Name:            Article
+//
+// Description:     Defines styles for articles within your page
+//
+// Component:       `.article`
+//
+// Sub-objects:     `.article-title`
+//                  `.article-meta`
+//                  `.article-lead`
+//                  `.hr`
+//
+
+@import "../mixins/mixins.less";
+@import "../variables/variables.less";
+
+// ========================================================================
+// Variables
+// ========================================================================
+
+// Component-wide declarations
+
+@article-margin-top: 25px;
+
+@article-title-font-size: 36px;
+@_article-title-line-height: 42px;
+@article-title-line-height: unit(@_article-title-line-height) / unit(@article-title-font-size);
+@article-title-font-weight: 200;
+
+@article-meta-font-size: @global-font-size;
+@_article-meta-line-height: @global-line-height-small;
+@article-meta-line-height: unit(@_article-meta-line-height) / unit(@article-meta-font-size);
+
+@article-lead-font-size: 22px;
+@article-lead-font-weight: @article-title-font-weight;
+@_article-lead-line-height: 30px;
+@article-lead-line-height: unit(@_article-lead-line-height) / unit(@article-lead-font-size);
+
+@article-border-width: @global-border-width;
+@article-border: @global-border-color;
+
+// ========================================================================
+// Component: Article
+// ========================================================================
+
+.article {
+	.micro-clearfix();
+
+	> :last-child {
+		margin-bottom: 0;
+	}
+
+	// Vertical gutter for articles
+	& + & {
+		margin-top: @article-margin-top;
+		padding-top: @article-margin-top;
+		border-top: @article-border-width solid @article-border;
+	}
+
+	// Sub-object: `.article-title`
+	// ========================================================================
+
+	&-title {
+		font-size: @article-title-font-size;
+		line-height: @article-title-line-height;
+		font-weight: @article-title-font-weight;
+
+		a {
+			color: inherit;
+			text-decoration: none;
+		}
+	}
+
+	// Sub-object: `.article-meta`
+	// ========================================================================
+
+	&-meta {
+		line-height: @article-meta-line-height;
+	}
+
+	// Sub-object: `.article-lead`
+	// ========================================================================
+
+	&-lead {
+		font-size: @article-lead-font-size;
+		line-height: @article-lead-line-height;
+		font-weight: @article-lead-font-weight;
+	}
+}

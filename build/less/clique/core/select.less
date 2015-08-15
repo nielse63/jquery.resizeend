@@ -1,0 +1,85 @@
+// Name:            Select
+//
+// Description:     Defines styles for the Select Component
+//
+// Component:       `.select`
+//
+// Sub-objects:     `.select-link`
+//
+
+@import "../mixins/mixins.less";
+@import "../variables/variables.less";
+
+// ========================================================================
+// Variables
+// ========================================================================
+
+@select-height: 30px;
+@select-font-size: @global-font-size;
+@select-line-height: @global-line-height;
+@select-padding-vertical: 4px;
+@select-padding-left: 6px;
+@select-padding-right: 30px;
+@select-border-width: @global-border-width;
+@select-border-color: @global-border-color;
+
+@select-transition-duration: 200ms;
+@select-transition-timing-function: linear;
+
+@select-icon: @global-icon-chevron-down;
+@select-open-icon: @global-icon-chevron-up;
+
+@select-hover-color: @global-font-color;
+
+@select-open-background: #f5fbfe;
+@select-open-border-color: #99baca;
+
+// ========================================================================
+// Component: Select
+// ========================================================================
+
+.select {
+	position: relative;
+	display: inline-block;
+
+	> .dropdown {
+		width: 100%;
+	}
+
+	&-link {
+		height: @select-height;
+		line-height: unit(@select-line-height) / unit(@select-font-size);
+		max-width: 100%;
+		padding: @select-padding-vertical @select-padding-right @select-padding-vertical @select-padding-left;
+		border: @select-border-width solid @select-border-color;
+		width: 100%;
+		display: block;
+		position: relative;
+		.transition(@select-transition-duration @select-transition-timing-function);
+
+		&:after {
+			content: @select-icon;
+			font-family: "icomoon";
+			position: absolute;
+			right: 10px;
+			top: 50%;
+			line-height: unit(@select-font-size - (@select-border-width * 2)) / unit(@select-font-size);
+			.translate(0, -50%);
+			.open & {
+				content: @select-open-icon;
+			}
+		}
+
+		&,
+		&:hover,
+		&:focus {
+			color: @select-hover-color;
+			text-decoration: none;
+		}
+
+		.open & {
+			background-color: @select-open-background;
+			border-color: @select-open-border-color;
+		}
+	}
+}

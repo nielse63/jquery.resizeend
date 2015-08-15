@@ -1,0 +1,117 @@
+// Name:            List
+//
+// Description:     Defines styles for ordered and unordered lists
+//
+// Component:       `.list`
+//
+// Modifiers:       `.list-line`
+//                  `.list-striped`
+//                  `.list-space`
+
+@import "../mixins/mixins.less";
+@import "../variables/variables.less";
+
+// ========================================================================
+// Variables
+// ========================================================================
+
+@list-nested-padding-left: 20px;
+
+@list-inline-margin: 5px;
+
+@list-line-margin-top: 5px;
+@list-line-border: @global-border-color;
+@list-line-border-width: @global-border-width;
+
+@list-striped-padding-vertical: 5px;
+@list-striped-padding-horizontal: 5px;
+@list-striped-background: #f5f5f5;
+
+@list-space-margin-top: 10px;
+
+@list-striped-border-width: @list-line-border-width;
+@list-striped-border: @global-border-color;
+
+// ========================================================================
+// Component: List
+// ========================================================================
+
+.list {
+	padding: 0;
+	list-style: none;
+
+	> li {
+		// .micro-clearfix();
+
+		> :last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	// Nested lists
+	ul {
+		margin: 0;
+		padding-left: @list-nested-padding-left;
+		list-style: none;
+	}
+
+	// Modifier: `.list-inline`
+	// ========================================================================
+
+	&-inline {
+		.display(flex);
+		margin-bottom: 0;
+
+		> li {
+			.flex(0 1 auto);
+			&:nth-child(n+2) {
+				margin-left: @list-inline-margin;
+				padding-left: @list-inline-margin;
+			}
+		}
+	}
+
+	// Modifier: `.list-line`
+	// ========================================================================
+
+	&-line {
+
+		> li {
+			+ li {
+				margin-top: @list-line-margin-top;
+				padding-top: @list-line-margin-top;
+				border-top: @list-line-border-width solid @list-line-border;
+			}
+		}
+	}
+
+	// Modifier: `.list-striped`
+	// ========================================================================
+
+	&-striped {
+		> li {
+			padding: @list-striped-padding-vertical @list-striped-padding-horizontal;
+			border-bottom: @list-striped-border-width solid @list-striped-border;
+
+			&:first-child {
+				border-top: @list-striped-border-width solid @list-striped-border;
+			}
+
+			&:nth-of-type(odd) {
+				background-color: @list-striped-background;
+			}
+		}
+	}
+
+
+	// Modifier: `.list-space`
+	// ========================================================================
+
+	&-space {
+		> li {
+			&:nth-child(n+2) {
+				margin-top: @list-space-margin-top;
+			}
+		}
+	}
+}

@@ -1,0 +1,185 @@
+// Name:            Datepicker
+//
+// Description:     Defines styles for a datepicker
+//
+// Component:       `.datepicker`
+//
+// Sub-objects:     `.datepicker-nav`
+//                  `.datepicker-previous`
+//                  `.datepicker-next`
+//                  `.datepicker-heading`
+//                  `.datepicker-table`
+//                  `.datepicker-table-muted`
+//
+
+@import "../mixins/mixins.less";
+@import "../variables/variables.less";
+
+// ========================================================================
+// Variables
+// ========================================================================
+
+@datepicker-z-index: 1050;
+@datepicker-animation: fade;
+
+@datepicker-nav-height: 20px;
+@datepicker-nav-margin-bottom: @global-margin;
+@datepicker-nav-color: @global-font-color;
+@datepicker-nav-hover-color: @datepicker-nav-color;
+
+@datepicker-previous-icon: "\e601";
+@datepicker-next-icon: "\e602";
+
+@datepicker-table-width: 26px;
+@datepicker-table-height: 24px;
+@datepicker-table-color: @global-font-color;
+@datepicker-table-hover-background: #ddd;
+@datepicker-table-hover-color: @datepicker-table-color;
+@datepicker-table-onclick-background: #ccc;
+@datepicker-table-onclick-color: @datepicker-table-color;
+@datepicker-table-active-background: @color-primary-background;
+@datepicker-table-active-color: #fff;
+@datepicker-table-muted-color: @global-muted-color;
+@datepicker-table-border-width: @global-border-width;
+@datepicker-hover-border: fade(#000, 16%);
+
+// ========================================================================
+// Component: Datepicker
+// ========================================================================
+
+.datepicker {
+	z-index: @datepicker-z-index;
+	width: auto;
+	.animation(@datepicker-animation 200ms ease-in-out);
+	.transform-origin(0 0);
+
+	// Sub-object: `.datepicker-nav`
+	// ========================================================================
+
+	&-nav {
+		margin-bottom: @datepicker-nav-margin-bottom;
+		text-align: center;
+		.micro-clearfix();
+
+		a {
+			color: @datepicker-nav-color;
+			text-decoration: none;
+
+			&:hover {
+				color: @datepicker-nav-hover-color;
+			}
+		}
+	}
+
+	// Sub-object: `.datepicker-previous` & `.datepicker-next`
+	// ========================================================================
+
+	&-previous,
+	&-next {
+		&:after {
+			width: @datepicker-nav-height;
+			font-family: "icomoon";
+		}
+	}
+
+	&-previous {
+		float: left;
+
+		&:after {
+			content: @datepicker-previous-icon;
+		}
+	}
+
+	&-next {
+		float: right;
+
+		&:after {
+			content: @datepicker-next-icon;
+		}
+	}
+
+	// Sub-object: `.datepicker-heading`
+	// ========================================================================
+
+	&-heading {
+		// ...
+	}
+
+	// Sub-object: `.datepicker-table`
+	// ========================================================================
+
+	&-table {
+		width: 100%;
+
+		th,
+		td {
+			padding: 2px;
+		}
+		th {
+			font-size: 12px;
+		}
+		a {
+			display: block;
+			width: @datepicker-table-width;
+			line-height: @datepicker-table-height;
+			text-align: center;
+			color: @datepicker-table-color;
+			text-decoration: none;
+			border: @datepicker-table-border-width solid transparent;
+
+			// Hover/Focus
+			&:hover,
+			&:focus {
+				background-color: @datepicker-table-hover-background;
+				color: @datepicker-table-hover-color;
+				outline: 0;
+				border-color: @datepicker-hover-border;
+			}
+
+			// On Click
+			&:active {
+				background-color: @datepicker-table-onclick-background;
+				color: @datepicker-table-onclick-color;
+			}
+		}
+
+		// Active
+		.active {
+			background-color: @datepicker-table-active-background;
+			color: @datepicker-table-active-color;
+			.box-shadow(inset 0 0 5px fade(#000, 5%));
+		}
+
+		.datepicker {
+			&-date {
+				&-disabled {
+					cursor: default;
+
+					&,
+					&:hover,
+					&:active,
+					&:focus {
+						color: @datepicker-table-muted-color;
+						border-color: transparent;
+						background-color: inherit;
+					}
+				}
+			}
+		}
+	}
+
+	// Sub-object: `.datepicker-table-muted`
+	// ========================================================================
+
+	&-table {
+		&-muted {
+			a& {
+
+				&,
+				&:hover {
+					color: @datepicker-table-muted-color;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,114 @@
+//
+// Mixin:           Grid
+// Description:     Mixins and functions for greating the Grid component.
+//                  Performs basic looping for LESS.
+//
+// ========================================================================
+
+.calc-grid-column(@index, @total, @class) when (@index > 0) {
+	.col-@{index}-@{total}-@{class} {
+		width: percentage((@index / @total));
+	}
+}
+.calc-grid-column(@index, @total) when (@index > 0) {
+	.col-@{index}-@{total} {
+		width: percentage((@index / @total));
+	}
+}
+
+.loop-grid-columns(@index, @total, @class) when (@index >= 0) {
+	.calc-grid-column(@index, @total, @class);
+	.loop-grid-columns((@index - 1), @total, @class);
+}
+.loop-grid-columns(@index, @total) when (@index >= 0) {
+	.calc-grid-column(@index, @total);
+	.loop-grid-columns((@index - 1), @total);
+}
+
+.make-col-grid(@columns, @class) {
+	.loop-grid-columns(@columns, @columns, @class);
+}
+.make-col-grid(@columns) {
+	.loop-grid-columns(@columns, @columns);
+}
+
+
+// Row Mixins
+// ========================================================================
+
+.calc-grid-row(@index, @class) when (@index > 1) {
+	.row-@{index}-cols-@{class} {
+		> * {
+			width: percentage((1 / @index));
+		}
+	}
+}
+.calc-grid-row(@index) when (@index > 1) {
+	.row-@{index}-cols {
+		> * {
+			width: percentage((1 / @index));
+		}
+	}
+}
+
+
+// Row Loops
+// ========================================================================
+
+.loop-grid-rows(@index, @class) when (@index >= 1) {
+	.calc-grid-row(@index, @class);
+	.loop-grid-rows((@index - 1), @class);
+}
+.loop-grid-rows(@index) when (@index >= 1) {
+	.calc-grid-row(@index);
+	.loop-grid-rows((@index - 1));
+}
+
+.make-row-grid(@rows, @class) {
+	.loop-grid-rows(@rows, @class);
+}
+.make-row-grid(@rows) {
+	.loop-grid-rows(@rows);
+}
+
+
+// Push Loops
+// ========================================================================
+
+.calc-grid-push(@index, @total) when (@index > 0) {
+	.push-@{index}-@{total} {
+		left: percentage((@index / @total));
+	}
+}
+
+.loop-grid-push(@index, @total) when (@index >= 0) {
+	.calc-grid-push(@index, @total);
+	.loop-grid-push((@index - 1), @total);
+}
+
+.make-push-grid(@cols) {
+	.loop-grid-push((@cols - 1), @cols);
+}
+
+
+// Pull Loops
+// ========================================================================
+
+.calc-grid-pull(@index, @total) when (@index > 0) {
+	.pull-@{index}-@{total} {
+		left: -(percentage((@index / @total)));
+	}
+}
+
+.loop-grid-pull(@index, @total) when (@index >= 0) {
+	.calc-grid-pull(@index, @total);
+	.loop-grid-pull((@index - 1), @total);
+}
+
+
+// Column Loop
+// ========================================================================
+
+.make-pull-grid(@cols) {
+	.loop-grid-pull((@cols - 1), @cols);
+}

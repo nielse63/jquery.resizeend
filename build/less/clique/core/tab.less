@@ -1,0 +1,365 @@
+// Name:            Tab
+//
+// Description:     Defines styles for a tabbed navigation
+//
+// Component:       `.tab`
+//
+// Modifiers:       `.tab-flip`
+//                  `.tab-center`
+//                  `.tab-bottom`
+//                  `.tab-left`
+//                  `.tab-right`
+//                  `.tab-responsive`
+//
+// States:          `.active`
+//                  `.disabled`
+//
+
+@import "../mixins/mixins.less";
+@import "../variables/variables.less";
+
+// ========================================================================
+// Variables
+// ========================================================================
+
+@tab-border: @global-border-color;
+@tab-hover-border: #f5f5f5;
+@tab-border-width: @global-border-width;
+
+@tab-padding-horizontal: 12px;
+@tab-padding-vertical: 8px;
+@tab-padding-top: @tab-padding-vertical;
+@tab-padding-bottom: @tab-padding-vertical;
+
+@tab-margin-horizontal: 5px;
+@tab-margin-vertical: 5px;
+
+@tab-color: @global-link-color;
+@tab-hover-color: @global-link-color-hover;
+
+@tab-hover-background: #f5f5f5;
+
+@tab-active-border: @global-border-color;
+@tab-active-background: @color-white;
+@tab-active-color: @global-font-color;
+
+@tab-disabled-color: #999;
+
+// ========================================================================
+// Component: Tab
+// ========================================================================
+
+.tab {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	border-bottom: @tab-border-width solid @tab-border;
+	.display(flex);
+
+	// Items
+	> li {
+		margin-bottom: -@tab-border-width;
+		padding-left: @tab-margin-horizontal;
+		position: relative;
+		> a {
+			display: block;
+			padding: @tab-padding-top @tab-padding-horizontal @tab-padding-bottom @tab-padding-horizontal;
+			border: @tab-border-width solid transparent;
+			border-bottom-width: 0;
+			color: @tab-color;
+			text-decoration: none;
+			text-align: center;
+
+			// Hover
+			&:hover {
+				color: @tab-hover-color;
+				border-top-color: @tab-active-border;
+				border-left-color: @tab-active-border;
+				border-right-color: @tab-active-border;
+			}
+		}
+
+		// Hover (cont.)
+		&:not(.active) {
+			> a {
+				&:hover,
+				&:focus {
+					margin-bottom: @tab-border-width;
+					padding-bottom: @tab-padding-bottom - @tab-border-width;
+				}
+			}
+		}
+	}
+
+	// Open
+	> .open {
+		> a {
+			border-color: @tab-hover-border;
+			background-color: @tab-hover-background;
+			color: @tab-hover-color;
+		}
+
+		// Hover (cont.)
+		&:not(.active) {
+			> a {
+				margin-bottom: @tab-border-width;
+				padding-bottom: @tab-padding-bottom - @tab-border-width;
+			}
+		}
+	}
+
+	// Active
+	> .active {
+		> a {
+			background-color: @tab-active-background;
+			border-top-color: @tab-active-border;
+			border-left-color: @tab-active-border;
+			border-right-color: @tab-active-border;
+
+			&,
+			&:hover {
+				color: @tab-active-color;
+			}
+		}
+	}
+
+	// Disabled
+	> .disabled {
+		> a {
+			cursor: text;
+
+			&,
+			&:hover,
+			&:focus {
+				color: @tab-disabled-color;
+				background-color: transparent;
+				border-color: transparent;
+			}
+
+			// Hover (cont.)
+			&:hover,
+			&:focus {
+				margin-bottom: @tab-border-width;
+				padding-bottom: @tab-padding-bottom - @tab-border-width;
+			}
+		}
+
+		&.active {
+			> a {
+				background-color: transparent;
+				border-color: transparent;
+			}
+		}
+	}
+
+	// Modifier: `.tab-flip`
+	// ========================================================================
+
+	&-flip {
+		.flex-direction(row-reverse);
+
+		> li {
+			&:nth-child(n+2) {
+				> a {
+					margin-left: 0;
+					margin-right: @tab-margin-horizontal;
+				}
+			}
+		}
+	}
+
+	// Modifier: `.tab-center`
+	// ========================================================================
+
+	&-center {
+		.justify-content(center);
+	}
+
+	// Modifier: `.tab-bottom`
+	// ========================================================================
+
+	&-bottom {
+		border-top: @tab-border-width solid @tab-border;
+		border-bottom: none;
+		> li {
+			margin-top: -@tab-border-width;
+			margin-bottom: 0;
+			> a {
+				padding-top: @tab-padding-bottom;
+				padding-bottom: @tab-padding-top;
+				border-bottom-width: @tab-border-width;
+				border-top-width: 0;
+
+				&:hover,
+				&:focus {
+					border-top-color: transparent;
+					border-bottom-color: @tab-active-border;
+				}
+			}
+			&:not(.active) {
+				&:not(.disabled) {
+					> a {
+						&:hover,
+						&:focus {
+							margin-bottom: 0;
+							margin-top: @tab-border-width;
+							padding-bottom: @tab-padding-top;
+							padding-top: @tab-padding-bottom - @tab-border-width;
+						}
+					}
+				}
+			}
+		}
+
+		> .open {
+			&:not(.active) {
+				> a {
+					margin-bottom: 0;
+					margin-top: @tab-border-width;
+					padding-bottom: @tab-padding-top;
+					padding-top: @tab-padding-bottom - @tab-border-width;
+				}
+			}
+		}
+
+		> .active {
+			> a {
+				border-top-color: transparent;
+				border-bottom-color: @tab-active-border;
+			}
+		}
+	}
+
+	// Modifiers: `.tab-{left|right}`
+	// ========================================================================
+
+	@media (min-width: @breakpoint-medium) {
+		&-left,
+		&-right {
+			.flex-direction(column);
+			border-bottom: none;
+
+			> li {
+				margin-bottom: 0;
+
+				> a {
+					padding-top: @tab-padding-vertical;
+					padding-bottom: @tab-padding-vertical;
+
+					&:hover,
+					&:focus {
+						border-bottom-color: @tab-active-border;
+						border-top-color: @tab-active-border;
+					}
+				}
+
+				&:not(.active) {
+					&:not(.disabled) {
+						> a {
+							&:hover,
+							&:focus {
+								margin-bottom: 0;
+								padding-bottom: @tab-padding-vertical;
+							}
+						}
+					}
+				}
+
+				&:nth-child(n+2) {
+					> a {
+						margin-left: 0;
+						margin-top: @tab-margin-vertical;
+					}
+				}
+			}
+			> .active {
+				> a {
+					border-bottom-color: @tab-active-border;
+					border-top-color: @tab-active-border;
+				}
+			}
+		}
+
+		// Modifiers: `.tab-left`
+		// ========================================================================
+
+		&-left {
+			border-right: @tab-border-width solid @tab-border;
+
+			> li {
+				margin-right: -@tab-border-width;
+
+				> a {
+					border-bottom-width: @tab-border-width;
+					border-right-width: 0;
+
+					&:hover,
+					&:focus {
+						border-left-color: @tab-active-border;
+						border-right-color: transparent;
+					}
+				}
+
+				&:not(.active) {
+					&:not(.disabled) {
+						> a {
+							&:hover,
+							&:focus {
+								margin-right: @tab-border-width;
+								padding-right: @tab-padding-horizontal - @tab-border-width;
+							}
+						}
+					}
+				}
+			}
+
+			> .active {
+				> a {
+					border-right-color: transparent;
+					border-left-color: @tab-active-border;
+				}
+			}
+		}
+
+		// Modifiers: `.tab-right`
+		// ========================================================================
+
+		&-right {
+			border-left: @tab-border-width solid @tab-border;
+
+			> li {
+				margin-left: -@tab-border-width;
+
+				> a {
+					border-bottom-width: @tab-border-width;
+					border-left-width: 0;
+
+					&:hover,
+					&:focus {
+						border-left-color: transparent;
+						border-right-color: @tab-active-border;
+					}
+				}
+
+				&:not(.active) {
+					&:not(.disabled) {
+						> a {
+							&:hover,
+							&:focus {
+								margin-left: @tab-border-width;
+								padding-left: @tab-padding-horizontal - @tab-border-width;
+							}
+						}
+					}
+				}
+			}
+
+			> .active {
+				> a {
+					border-left-color: transparent;
+					border-right-color: @tab-active-border;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,65 @@
+// Name:            Upload
+//
+// Description:     Provides a dragover state for uploads
+//
+// Component:       `.upload`
+//
+// States:          `.dragover`
+
+@import "../mixins/mixins.less";
+@import "../variables/variables.less";
+
+// ========================================================================
+// Variables
+// ========================================================================
+
+@upload-dragover-box-shadow: fade(#666, 30%);
+@upload-dragover-box-shadow-blur: 20px;
+
+// ========================================================================
+// Component: Upload
+// ========================================================================
+
+// Create a box-shadow when dragging a file over the upload area
+.dragover {
+	.box-shadow(0 0 @upload-dragover-box-shadow-blur @upload-dragover-box-shadow);
+}
+
+// Name:            Placeholder
+//
+// Description:     Defines styles for placeholder boxes
+//
+// Component:       `.placeholder`
+//
+// Modifiers:       `.placeholder-large`
+
+// ========================================================================
+// Variables
+// ========================================================================
+
+@placeholder-margin-vertical: @global-margin;
+@placeholder-padding: 20px;
+@placeholder-border-width: @global-border-width;
+@placeholder-border: @global-border-color;
+@placeholder-background: #fafafa;
+@placeholder-color: @global-font-color;
+
+@placeholder-large-padding-vertical: 80px;
+
+// ========================================================================
+// Component: Placeholder
+// ========================================================================
+
+.placeholder {
+	margin-bottom: @placeholder-margin-vertical;
+	padding: @placeholder-padding;
+	border: @placeholder-border-width dashed @placeholder-border;
+	background-color: @placeholder-background;
+	color: @placeholder-color;
+	* + & {
+		margin-top: @placeholder-margin-vertical;
+	}
+	> :last-child {
+		margin-bottom: 0;
+	}
+}

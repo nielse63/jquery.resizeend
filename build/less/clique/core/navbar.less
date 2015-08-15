@@ -1,0 +1,237 @@
+// Name:            Navbar
+//
+// Description:     Defines styles for the navigation bar
+//
+// Component:       `.navbar`
+//
+// Sub-objects:     `.navbar-nav`
+//                  `.navbar-nav-subtitle`
+//                  `.navbar-content`
+//                  `.navbar-brand`
+//                  `.navbar-toggle`
+//                  `.navbar-toggle-alt`
+//                  `.navbar-center`
+//                  `.navbar-flip`
+//
+// States:          `.active`
+//                  `.parent`
+//                  `.open`
+//
+// Used by:         Dropdown
+//
+
+@import "../mixins/mixins.less";
+@import "../variables/variables.less";
+
+// ========================================================================
+// Variables
+// ========================================================================
+
+// Component-wide declarations
+
+@navbar-background: @global-default-background;
+@navbar-border-width: @global-border-width;
+@navbar-border: @navbar-border-width solid fade(@color-black, 10%);
+
+@navbar-link-color: @global-link-color;
+@navbar-link-hover-color: @global-link-color-hover;
+
+@navbar-nav-height: 40px;
+@navbar-nav-line-height: @navbar-nav-height;
+@navbar-nav-padding-horizontal: 15px;
+@navbar-nav-font-size: @global-font-size;
+@navbar-nav-hover-background: #f5f5f5;
+@navbar-nav-subtitle-font-size: 10px;
+@navbar-nav-subtitle-offset: 2px;
+@navbar-nav-hover-border: fade(#000, 10%);
+@navbar-nav-hover-border-top: fade(#000, 10%);
+
+@navbar-brand-font-size: @global-font-size-block-title;
+
+@navbar-toggle-font-size: @global-font-size-block-title;
+@navbar-toggle-line-height: @navbar-nav-height - (@navbar-border-width * 2);
+@navbar-toggle-icon: "\e9bd";
+
+
+// ========================================================================
+// Component: Navbar
+// ========================================================================
+
+.navbar {
+	background-color: @navbar-background;
+	border: @navbar-border;
+	.micro-clearfix();
+
+	a {
+		&:hover {
+			text-decoration: none;
+		}
+	}
+
+	// Sub-object: `.navbar-nav`
+	// ========================================================================
+
+	// Ruleset: `.navbar > li > a:hover`
+	// Written this way to avoid repition and ensure consistency
+	// ========================================================================
+
+	.navbar-item-active() {
+		background-color: @navbar-nav-hover-background;
+		position: relative;
+		z-index: 1;
+		border-left-color: @navbar-nav-hover-border;
+		border-right-color: @navbar-nav-hover-border;
+		border-top-color: @navbar-nav-hover-border-top;
+	}
+
+	&-nav {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		float: left;
+
+		> li {
+			float: left;
+			position: relative;
+
+			> a {
+				color: inherit;
+				display: block;
+				height: @navbar-nav-height;
+				padding: 0 @navbar-nav-padding-horizontal;
+				line-height: unit(@navbar-nav-line-height) / unit(@navbar-nav-font-size);
+				margin-top: -@navbar-border-width;
+				margin-left: -@navbar-border-width;
+				border: @navbar-border-width solid transparent;
+				border-bottom-width: 0;
+
+				// Hover
+				&:active,
+				&:hover,
+				&:focus {
+					.navbar-item-active();
+				}
+			}
+		}
+
+		// Active & Open
+		> .active,
+		> .open {
+			> a {
+				.navbar-item-active();
+			}
+		}
+
+		// Sub-object: `.navbar-nav-subtitle`
+		// ========================================================================
+
+		.navbar-nav-subtitle {
+			line-height: unit(@navbar-nav-line-height - @navbar-nav-subtitle-font-size - @navbar-nav-subtitle-offset) / unit(@navbar-nav-font-size);
+
+			> div {
+				margin-top: ((@navbar-nav-line-height - @navbar-nav-subtitle-font-size - @navbar-nav-font-size) / -2) + @navbar-nav-subtitle-offset;
+				font-size: @navbar-nav-subtitle-font-size;
+				line-height: unit(@navbar-nav-subtitle-font-size + @navbar-nav-subtitle-offset) / unit(@navbar-nav-subtitle-font-size);
+			}
+		}
+	}
+
+	// Sub-objects: `.navbar-content`, `.navbar-brand`, `.navbar-toggle`
+	// ========================================================================
+
+	// Imitate navbar items
+	&-content,
+	&-brand,
+	&-toggle {
+		display: block;
+		height: @navbar-nav-height;
+		padding: @navbar-border-width @navbar-nav-padding-horizontal;
+		float: left;
+		margin-top: -@navbar-border-width;
+
+		.container > & {
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
+
+
+	// Sub-object: `.navbar-content`
+	// ========================================================================
+
+	&-content {
+		line-height: @navbar-nav-height;
+		& + & {
+			&:not(.navbar-center) {
+				padding-left: 0;
+			}
+		}
+
+		> a {
+			&:not([class]) {
+				color: @navbar-link-color;
+
+				&:hover {
+					color: @navbar-link-hover-color;
+					text-decoration: @global-link-decoration-hover;
+				}
+			}
+		}
+	}
+
+
+	// Sub-object: `.navbar-brand`
+	// ========================================================================
+
+	&-brand {
+		color: inherit;
+		font-size: @navbar-brand-font-size;
+		line-height: unit(@navbar-nav-line-height) / unit(@navbar-brand-font-size);
+	}
+
+
+	// Sub-object: `.navbar-toggle`
+	// ========================================================================
+
+	&-toggle {
+		font-size: @navbar-toggle-font-size;
+		line-height: unit(@navbar-toggle-line-height) / unit(@navbar-toggle-font-size);
+
+		&:after {
+			content: @navbar-toggle-icon;
+			font-family: "icomoon";
+		}
+	}
+
+	// Sub-object: `.navbar-center`
+	// ========================================================================
+
+	// The element with this class needs to be last child in the navbar
+	&-center {
+		float: none;
+		text-align: center;
+		max-width: 50%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	// Sub-object: `.navbar-flip`
+	// ========================================================================
+
+	&-flip {
+		float: right;
+		margin-right: -@navbar-border-width;
+
+		// Collapse border
+		.navbar {
+			&-nav {
+				> li {
+					> a {
+						margin-left: 0;
+						margin-right: -@navbar-border-width;
+					}
+				}
+			}
+		}
+	}
+}

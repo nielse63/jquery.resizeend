@@ -1,0 +1,291 @@
+// Name:            Flex
+//
+// Description:     Defines styles to create layouts with flexbox
+//
+// Component:       `.flex-*`
+//
+// Used by:         Caption
+
+@import "../mixins/mixins.less";
+@import "../variables/variables.less";
+
+// ========================================================================
+// Component: Flex
+// ========================================================================
+
+// No Flexbox Support Fallbacks
+// ========================================================================
+
+.flex {
+	.display(flex);
+
+	.noflex & {
+		display: table;
+		width: 100%;
+	}
+
+	// Modifier: `..flex-inline`
+	// ========================================================================
+
+	&-inline {
+		.display(inline-flex);
+
+		.noflex & {
+			display: inline-table;
+			width: auto;
+		}
+	}
+
+	// Sub-objects: items
+	// ========================================================================
+
+	// Fixes initial flex-shrink value in IE10
+	&,
+	&-inline {
+
+		// Must remove pseudo-selector values on flex-based elements
+		&:before,
+		&:after {
+			display: none;
+		}
+
+		> * {
+			.flex(0 1 auto);
+			-ms-flex-negative: 1;
+		}
+
+		.noflex & {
+			display: table-cell;
+			float: none;
+		}
+
+	}
+
+	// Alignment
+	// ========================================================================
+
+	// Vertical alignment
+	&-top {
+		.align-items(flex-start);
+
+		.noflex & {
+			> * {
+				vertical-align: top;
+			}
+		}
+	}
+
+	&-middle {
+		.align-items(center);
+
+		.noflex & {
+			> * {
+				vertical-align: middle;
+			}
+		}
+	}
+
+	&-bottom {
+		.align-items(flex-end);
+
+		.noflex & {
+			> * {
+				vertical-align: bottom;
+			}
+		}
+	}
+
+	&-center {
+		.justify-content(center);
+
+		.noflex & {
+			width: auto;
+			margin-left: auto;
+			margin-right: auto;
+		}
+	}
+
+	&-right {
+		.justify-content(flex-end);
+
+		.noflex & {
+			width: auto;
+			float: right;
+		}
+	}
+
+	&-space {
+		&-between {
+			.justify-content(space-between);
+		}
+		&-around {
+			.justify-content(space-around);
+		}
+	}
+
+	// Direction
+	// ========================================================================
+
+	&-row {
+		&-reverse {
+			.flex-direction(row-reverse);
+		}
+	}
+
+	&-column {
+		.flex-direction(column);
+
+		&-reverse {
+			.flex-direction(column-reverse);
+		}
+	}
+
+	// Wrap
+	// ========================================================================
+
+	&-wrap {
+		.flex-wrap(wrap);
+
+		&-reverse {
+			.flex-wrap(wrap-reverse);
+		}
+	}
+
+	// Item ordering
+	// ========================================================================
+
+	&-order {
+		&-first {
+			.order(-1);
+
+			// Phone landscape and bigger
+			@media (min-width: @breakpoint-small) {
+				&-small {
+					.order(-1);
+				}
+			}
+
+			// Tablet and bigger
+			@media (min-width: @breakpoint-medium) {
+				&-medium {
+					.order(-1);
+				}
+			}
+
+			// Desktop and bigger
+			@media (min-width: @breakpoint-large) {
+				&-large {
+					.order(-1);
+				}
+			}
+
+			// Large screen and bigger
+			@media (min-width: @breakpoint-xlarge) {
+				&-xlarge {
+					.order(-1);
+				}
+			}
+		}
+		&-last {
+			.order(99);
+
+			// Phone landscape and bigger
+			@media (min-width: @breakpoint-small) {
+				&-small {
+					.order(99);
+				}
+			}
+
+			// Tablet and bigger
+			@media (min-width: @breakpoint-medium) {
+				&-medium {
+					.order(-1);
+				}
+			}
+
+			// Desktop and bigger
+			@media (min-width: @breakpoint-large) {
+				&-large {
+					.order(-1);
+				}
+			}
+
+			// Large screen and bigger
+			@media (min-width: @breakpoint-xlarge) {
+				&-xlarge {
+					.order(-1);
+				}
+			}
+		}
+	}
+
+	// Item dimensions
+	// ========================================================================
+
+	&-item {
+
+		&-shrink {
+			.flex(0 1 auto);
+
+			// Phone landscape and bigger
+			@media (min-width: @breakpoint-small) {
+				&-small {
+					.flex(0 1 auto);
+				}
+			}
+
+			// Tablet and bigger
+			@media (min-width: @breakpoint-medium) {
+				&-medium {
+					.flex(0 1 auto);
+				}
+			}
+
+			// Desktop and bigger
+			@media (min-width: @breakpoint-large) {
+				&-large {
+					.flex(0 1 auto);
+				}
+			}
+
+			// Large screen and bigger
+			@media (min-width: @breakpoint-xlarge) {
+				&-xlarge {
+					.flex(0 1 auto);
+				}
+			}
+		}
+
+		&-grow {
+			.flex(1 0 auto);
+
+			// Phone landscape and bigger
+			@media (min-width: @breakpoint-small) {
+				&-small {
+					.flex(1 0 auto);
+				}
+			}
+
+			// Tablet and bigger
+			@media (min-width: @breakpoint-medium) {
+				&-medium {
+					.flex(1 0 auto);
+				}
+			}
+
+			// Desktop and bigger
+			@media (min-width: @breakpoint-large) {
+				&-large {
+					.flex(1 0 auto);
+				}
+			}
+
+			// Large screen and bigger
+			@media (min-width: @breakpoint-xlarge) {
+				&-xlarge {
+					.flex(1 0 auto);
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,166 @@
+// Name:            Nestable
+//
+// Description:     Defines styles for nestable lists
+//
+// Component:       `.nestable`
+//
+// Sub-objects:     `.nestable-list`
+//                  `.nestable-item`
+//                  `.nestable-placeholder`
+//                  `.nestable-empty`
+//                  `.nestable-handle`
+//                  `.nestable-moving`
+//                  `.[data-nestable-action="toggle"]`
+//
+// Modifiers:       `.nestable-list-dragged`
+//
+// States:          `.parent`
+//                  `.collapsed`
+//
+
+@import "../mixins/mixins.less";
+@import "../variables/variables.less";
+
+// ========================================================================
+// Variables
+// ========================================================================
+
+@nestable-padding-left: 40px;
+@nestable-dragged-z-index: 1050;
+@nestable-item-margin-bottom: 10px;
+@nestable-item-padding: @global-gutter-mini;
+@nestable-item-background: #f5f5f5;
+@nestable-placeholder-border: @global-border-color;
+@nestable-empty-height: 40px;
+@nestable-handle-font-size: 18px;
+@nestable-handle-color: #ddd;
+@nestable-handle-icon: "\e9bd";
+@nestable-toggle-color: @global-muted-color;
+@nestable-toggle-hover-color: @global-font-color;
+@nestable-toggle-icon: "\f147";
+@nestable-toggle-collapsed-icon: "\f196";
+
+@nestable-border-width: @global-border-width;
+@nestable-border: fade(#000, 6%);
+
+// ========================================================================
+// Component: Nestable
+// ========================================================================
+
+.nestable {
+	padding: 0;
+	list-style: none;
+
+	// Sub-object: `.nestable-list`
+	// ========================================================================
+
+	&-list {
+		margin: 0;
+		padding-left: @nestable-padding-left;
+		list-style: none;
+
+		// Sub-modifier `.nestable-list-dragged`
+		// ========================================================================
+
+		&-dragged {
+			position: absolute;
+			z-index: @nestable-dragged-z-index;
+			padding-left: 0;
+			pointer-events: none;
+		}
+
+		.collapse & {
+			display: none;
+		}
+	}
+
+	// Sub-object: `.nestable-item`
+	// ========================================================================
+
+	&-item {
+		margin-bottom: @nestable-item-margin-bottom;
+		padding: @nestable-item-padding;
+		background-color: @nestable-item-background;
+		border: @nestable-border-width solid @nestable-border;
+
+		[data-nestable-action="toggle"] {
+			.parent > & {
+				visibility: visible;
+			}
+
+			.collapse > & {
+				&:after {
+					content: @nestable-toggle-collapsed-icon;
+				}
+			}
+		}
+	}
+
+	// Sub-object: `.nestable-placeholder`
+	// ========================================================================
+
+	&-placeholder {
+		margin-bottom: @nestable-item-margin-bottom;
+		border: @nestable-border-width dashed @nestable-placeholder-border;
+	}
+
+	// Sub-object: `.nestable-empty`
+	// ========================================================================
+
+	&-empty {
+		min-height: @nestable-empty-height;
+	}
+
+	// Sub-object: `.nestable-handle`
+	// ========================================================================
+
+	&-handle {
+		display: inline-block;
+		font-size: @nestable-handle-font-size;
+		color: @nestable-handle-color;
+		touch-action: none;
+
+		// Hover
+		&:hover {
+			cursor: move;
+		}
+
+		// Icon
+		&:after {
+			content: @nestable-handle-icon;
+			font-family: "icomoon";
+		}
+	}
+
+	// Sub-object: `.nestable-moving`
+	// ========================================================================
+
+	&-moving {
+		&,
+		* {
+			cursor: move;
+		}
+	}
+}
+
+// Sub-object: `.[data-action="toggle"]`
+// ========================================================================
+
+// Hidden by default
+[data-nestable-action="toggle"] {
+	display: inline-block;
+	color: @nestable-toggle-color;
+	visibility: hidden;
+
+	// Hover
+	&:hover {
+		color: @nestable-toggle-hover-color;
+		cursor: pointer;
+	}
+
+	// Icon
+	&:after {
+		content: @nestable-toggle-icon;
+		font-family: "icomoon";
+	}
+}

@@ -1,0 +1,705 @@
+// Name:            Form
+//
+// Description:     Defines styles for forms
+//
+// Component:       `.form`
+//
+// Sub-objects:     `.form-row`
+//                  `.form-help-inline`
+//                  `.form-help-block`
+//                  `.form-label`
+//                  `.form-controls`
+//                  `.form-controls-condensed`
+//                  `.form-icon`
+//
+// Modifiers:       `.form-stacked`
+//                  `.form-horizontal`
+//
+// Sub-modifiers:   `.form-danger`
+//                  `.form-success`
+//                  `.form-small`
+//                  `.form-large`
+//                  `.form-controls-text`
+//
+
+@import "../mixins/mixins.less";
+@import "../variables/variables.less";
+
+// ========================================================================
+// Variables
+// ========================================================================
+
+@form-height: 30px;
+@form-padding: 4px 6px;
+@form-border-color: @global-border-color;
+@form-border-width: @global-border-width;
+@form-background: @color-white;
+@form-color: @global-font-color;
+@form-font-size: @global-font-size;
+@form-line-height: unit(@form-height - (@form-border-width * 2)) / unit(@form-font-size);
+
+@form-focus-border: #99baca;
+@form-focus-background: #f5fbfe;
+@form-focus-color: @form-color;
+
+@form-disabled-border: #dbdbdb;
+@form-disabled-background: #fcfcfc;
+@form-disabled-color: @form-disabled-border;
+
+@form-placeholder-color: @global-muted-color;
+@form-gutter: 15px;
+
+@form-legend-border: @global-border-color;
+@form-legend-border-width: @global-border-width;
+@form-legend-font-size: @global-font-size-block-title;
+@form-legend-line-height: @global-line-height-block-title;
+
+// Size Modifiers
+@form-large-height: 40px;
+@form-large-font-size: @global-font-size-large;
+@form-large-line-height: unit(@form-large-height - (@form-border-width * 2)) / unit(@form-large-font-size);
+@form-large-padding: 8px 6px;
+
+@form-small-height: 24px;
+@form-small-font-size: @global-font-size-small;
+@form-small-line-height: unit(@form-small-height - (@form-border-width * 2)) / unit(@form-small-font-size);
+@form-small-padding: 3px 3px;
+
+// Validation States
+@form-danger-border: #dc8d99;
+@form-danger-background: #fff7f8;
+@form-danger-color: @color-danger-text;
+
+@form-success-border: #8ec73b;
+@form-success-background: #fafff2;
+@form-success-color: @color-success-text;
+
+@form-help-inline-margin-left: 10px;
+@form-help-block-margin-top: 5px;
+
+@form-controls-condensed-margin-vertical: 5px;
+@form-stacked-margin-bottom: 5px;
+@form-stacked-font-weight: bold;
+
+@form-horizontal-label-width: 200px;
+@form-horizontal-label-margin-top: 5px;
+@form-horizontal-controls-margin-left: 215px;
+
+@form-icon-width: 30px;
+
+@distance-to-edges: 4px;
+@input-radio-checkbox-size: 18px;
+@input-background-color: @color-white;
+@checkbox-check-color: @color-primary;
+@radio-check-color: @color-primary;
+
+// ========================================================================
+// Component: Form
+// ========================================================================
+
+
+// Resets
+input,
+select,
+textarea {
+	margin: 0;
+	.border-radius(0);
+	font: inherit;
+	color: inherit;
+	border: @form-border-width solid @form-border-color;
+	background-color: @form-background;
+	.appearance(none);
+}
+
+// Vertical alignment
+input,
+select {
+	vertical-align: middle;
+}
+
+// Address inconsistent `.text-transform` inheritance which is only inherit in Firefox
+select {
+	text-transform: none;
+}
+
+optgroup {
+	font: inherit;
+	font-weight: bold;
+}
+
+
+input {
+
+	// Removes inner padding and border in Firefox 4+.
+	&::-moz-focus-inner {
+		border: 0;
+		padding: 0;
+	}
+}
+
+
+input {
+
+	// Remove inner padding and search cancel button in Chrome, Safari and Opera on OS X.
+	&[type="search"] {
+		&::-webkit-search-cancel-button,
+		&::-webkit-search-decoration {}
+	}
+
+	// Remove button on `.number` input
+	&[type="number"] {
+		&::-webkit-inner-spin-button,
+		&::-webkit-outer-spin-button {
+			-moz-appearance: textfield;
+
+			-webkit-appearance: none;
+			margin: 0;
+		}
+	}
+}
+
+// Define consistent border, margin, and padding.
+fieldset {
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+
+textarea {
+	overflow: auto;
+	vertical-align: top;
+	min-height: 150px;
+}
+
+// Removes placeholder transparency in Firefox.
+::-moz-placeholder {
+	opacity: 1;
+}
+
+// Removes `.box-shadow` for invalid controls in Firefox.
+:invalid {
+	.box-shadow(none);
+}
+
+::-ms-clear {
+	display: none;
+}
+
+// Style
+// ========================================================================
+
+// Remove margin from the last-child
+form > {
+	:last-child {
+		margin-bottom: 0;
+	}
+}
+:-ms-input-placeholder {
+	color: @form-placeholder-color !important;
+}
+::-moz-placeholder {
+	color: @form-placeholder-color;
+}
+::-webkit-input-placeholder {
+	color: @form-placeholder-color;
+}
+:disabled {
+	&:-ms-input-placeholder {
+		color: @form-disabled-color !important;
+	}
+	&::-moz-placeholder {
+		color: @form-disabled-color;
+	}
+	&::-webkit-input-placeholder {
+		color: @form-disabled-color;
+	}
+}
+
+// Controls
+// Expand width to container of [class*="col-"]
+select,
+textarea,
+input:not([type]),
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"] {
+	[class*="col-"] > & {
+		width: 100%;
+		display: block;
+	}
+}
+select,
+textarea,
+input {
+	height: @form-height;
+	font-size: @form-font-size;
+	line-height: @form-line-height;
+	max-width: 100%;
+	padding: @form-padding;
+	color: @form-color;
+	display: inline-block;
+	.transition(all linear 200ms);
+
+	// Focus state
+	&:focus {
+		border-color: @form-focus-border;
+		background-color: @form-focus-background;
+		color: @form-focus-color;
+	}
+
+	// Disabled state
+	&:disabled {
+		border-color: @form-disabled-border;
+		background-color: @form-disabled-background;
+		color: @form-disabled-color;
+	}
+}
+
+// Legend
+legend {
+	width: 100%;
+	border: 0;
+	padding: 0;
+	padding-bottom: @form-gutter;
+	font-size: @form-legend-font-size;
+	line-height: unit(@form-legend-line-height) / unit(@form-legend-font-size);
+	&:after {
+		content: "";
+		display: block;
+		border-bottom: @form-legend-border-width solid @form-legend-border;
+		width: 100%;
+	}
+}
+
+// Component: `.form`
+// ========================================================================
+
+.form {
+
+	// Size modifiers
+	// ========================================================================
+
+	&-small {
+		input&,
+		textarea&,
+		select& {
+			height: @form-small-height;
+			padding: @form-small-padding;
+			font-size: @form-small-font-size;
+			line-height: @form-small-line-height;
+		}
+	}
+
+	&-large {
+		input&,
+		textarea&,
+		select& {
+			height: @form-large-height;
+			padding: @form-large-padding;
+			font-size: @form-large-font-size;
+			line-height: @form-large-line-height;
+		}
+	}
+
+	// Checkboxes & Radios
+	// ========================================================================
+
+	&-checkbox,
+	&-radio {
+		position: relative;
+		display: inline-block;
+		.size(@input-radio-checkbox-size);
+		vertical-align: middle;
+		margin-right: 2px;
+
+		// When the child of a label
+		label > & {
+			top: @input-radio-checkbox-size - @global-line-height;
+		}
+
+		input {
+			z-index: 2;
+			opacity: 0;
+			.size(@input-radio-checkbox-size);
+			display: inline-block;
+			position: relative;
+
+			// Focus state
+			&:focus {
+				+ span {
+					border-color: @form-focus-border;
+					background-color: @form-focus-background;
+				}
+			}
+
+			// Standardize cusor
+			&:not(:disabled) {
+				cursor: pointer;
+			}
+
+			// Disabled
+			&[disabled] {
+				+ span {
+					opacity: 0.5;
+					background-color: #f5f5f5;
+				}
+			}
+
+			// Shared input mask styles
+			+ span {
+				z-index: 1;
+				position: absolute;
+				.size(@input-radio-checkbox-size);
+				border: @form-border-width solid @form-border-color;
+				background-color: @input-background-color;
+				left: 0;
+				top: 50%;
+				display: inline-block;
+				.translate(0, -50%);
+				.transition(300ms cubic-bezier(0.68, -0.55, 0.265, 1.55));
+
+				&:after {
+					content: "";
+					position: absolute;
+					.transition(300ms cubic-bezier(0.68, -0.55, 0.265, 1.55));
+				}
+			}
+		}
+	}
+
+	&-checkbox {
+		input {
+			+ span {
+				.border-radius(3px);
+
+				// The actual "check"
+				&:after {
+					left: 5px;
+					bottom: 2px;
+					border-bottom: 3px solid @checkbox-check-color;
+					border-right: 3px solid @checkbox-check-color;
+					.border-radius(2px);
+					.size(7, 13);
+					.transform(rotate(45deg) scale(0));
+				}
+			}
+
+			// Checked state
+			&:checked {
+				+ span {
+					&:after {
+						.transform(rotate(45deg) scale(1));
+					}
+				}
+			}
+
+			// Disabled
+			&[disabled] {
+				+ span {
+					&:after {
+						border-color: @form-disabled-border;
+					}
+				}
+			}
+		}
+
+		// Validation States
+		// ========================================================================
+
+		.form {
+
+			&-danger {
+				+ span {
+					border-color: @form-danger-border !important;
+					background-color: @form-danger-background !important;
+				}
+			}
+
+			&-success {
+				+ span {
+					border-color: @form-success-border !important;
+					background-color: @form-success-background !important;
+				}
+			}
+		}
+	}
+
+	&-radio {
+		input {
+			+ span {
+				.border-radius(50%);
+
+				// The actual "check"
+				&:after {
+					top: @distance-to-edges;
+					left: @distance-to-edges;
+					bottom: @distance-to-edges;
+					right: @distance-to-edges;
+					background-color: @radio-check-color;
+					.border-radius(100%);
+					.scale(0);
+				}
+			}
+
+			// Checked state
+			&:checked {
+				+ span {
+					&:after {
+						.scale(1);
+					}
+				}
+			}
+
+			// Disabled
+			&[disabled] {
+				+ span {
+					&:after {
+						background-color: @form-disabled-border;
+					}
+				}
+			}
+		}
+
+		// Validation States
+		// ========================================================================
+
+		.form {
+
+			&-danger {
+				+ span {
+					border-color: @form-danger-border !important;
+					background-color: @form-danger-background !important;
+				}
+			}
+
+			&-success {
+				+ span {
+					border-color: @form-success-border !important;
+					background-color: @form-success-background !important;
+				}
+			}
+		}
+	}
+
+	// Validation states
+	// ========================================================================
+
+	// Error state
+	&-danger {
+		border-color: @form-danger-border !important;
+		background-color: @form-danger-background !important;
+		color: @form-danger-color !important;
+	}
+
+	// Success state
+	&-success {
+		border-color: @form-success-border !important;
+		background-color: @form-success-background !important;
+		color: @form-success-color !important;
+	}
+
+	&-row {
+		.micro-clearfix();
+		+ .form {
+			&-row {
+				margin-top: 15px;
+			}
+		}
+		label {
+			+ label {
+				margin-left: 15px;
+			}
+		}
+	}
+
+	// Help text
+	// Sub-object: `.form-help-inline`, `.form-help-block`
+	// ========================================================================
+
+	&-help {
+		&-inline {
+			display: inline-block;
+			margin: 0 0 0 @form-help-inline-margin-left;
+			vertical-align: middle;
+		}
+
+		&-block {
+			margin: @form-help-block-margin-top 0 0 0;
+		}
+	}
+
+	// Controls content
+	// Sub-object: `.form-controls`, `.form-controls-condensed`
+	// ========================================================================
+
+	// Remove margins
+	&-controls {
+
+		> :first-child {
+			margin-top: 0;
+		}
+
+		> :last-child {
+			margin-bottom: 0;
+		}
+
+		&-condensed {
+			margin: @form-controls-condensed-margin-vertical 0;
+		}
+	}
+
+
+	// Modifier: `.form-stacked`
+	// Requires sub-object: `.form-label`
+	// ========================================================================
+
+	&-stacked {
+		.form {
+			&-label {
+				display: block;
+				margin-bottom: @form-stacked-margin-bottom;
+			}
+		}
+	}
+
+
+	// Modifier: `..form-horizontal`
+	// Requires sub-objects: `.form-label`, `.form-controls`
+	// ========================================================================
+
+	&-horizontal {
+		//  Tablet portrait and smaller
+		@media (max-width: @breakpoint-medium-max) {
+			.form {
+				&-label {
+					display: block;
+					margin-bottom: @form-stacked-margin-bottom;
+					font-weight: @form-stacked-font-weight;
+				}
+			}
+		}
+
+		// Desktop and bigger
+		@media (min-width: @breakpoint-large) {
+			.form {
+				&-label {
+					width: @form-horizontal-label-width;
+					margin-top: @form-horizontal-label-margin-top;
+					float: left;
+				}
+			}
+			.form {
+				&-controls {
+					margin-left: @form-horizontal-controls-margin-left;
+				}
+			}
+		}
+	}
+
+	// Sub-object: `.form-icon`
+	// ========================================================================
+
+	&-icon {
+		display: inline-block;
+		position: relative;
+		max-width: 100%;
+
+		> [class*="icon-"] {
+			position: absolute;
+			top: 50%;
+			width: @form-icon-width;
+			.translate(0, -50%);
+			text-align: center;
+			pointer-events: none;
+		}
+
+		&:not(.form-icon-flip) {
+			> input {
+				padding-left: @form-icon-width !important;
+			}
+		}
+
+		// Sub-modifier: `.form-icon-flip`
+		&-flip {
+			> [class*="icon-"] {
+				right: 0;
+			}
+			> input {
+				padding-right: @form-icon-width !important;
+			}
+		}
+	}
+
+	&-select {
+		display: inline-block;
+		vertical-align: middle;
+		position: relative;
+		overflow: hidden;
+		.border-radius(3px);
+
+		select {
+			position: absolute;
+			top: 0;
+			z-index: 1;
+			width: 100%;
+			height: 100%;
+			opacity: 0;
+			cursor: pointer;
+			left: 0;
+		}
+	}
+
+	// Modifier: `.form-file`
+	// ========================================================================
+
+	&-file {
+		display: inline-block;
+		vertical-align: middle;
+		position: relative;
+		overflow: hidden;
+
+		input {
+			&[type="file"] {
+				position: absolute;
+				top: 0;
+				z-index: 1;
+				width: 100%;
+				opacity: 0;
+				cursor: pointer;
+				left: 0;
+				font-size: 500px;
+			}
+		}
+	}
+}
+
+// Reset height
+// Must be after size modifiers
+// ========================================================================
+
+textarea,
+select[multiple],
+select[size] {
+	height: auto;
+}
+
+// Sub-objects: `.label`
+// ========================================================================
+
+label {
+	display: inline-block;
+	vertical-align: middle;
+	cursor: pointer;
+	position: relative;
+}

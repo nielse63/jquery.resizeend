@@ -1,0 +1,50 @@
+// Name:            Breadcrumb
+//
+// Description:     Defines styles for a breadcrumb navigation
+//
+// Component:       `.breadcrumb`
+//
+// States:          `.active`
+//
+
+@import "../mixins/mixins.less";
+@import "../variables/variables.less";
+
+// ========================================================================
+// Variables
+// ========================================================================
+
+// Component-wide declarations
+@breadcrumb-divider: "/";
+@breadcrumb-divider-margin: 8px;
+@breadcrumb-divider-color: @global-muted-color;
+
+@breadcrumb-disabled-color: @global-font-color;
+
+// ========================================================================
+// Component: Breadcrumb
+// ========================================================================
+
+.breadcrumb {
+	padding: 0;
+	list-style: none;
+	.display(flex);
+
+	> li {
+
+		+ li {
+			&:before {
+				content: @breadcrumb-divider;
+				display: inline-block;
+				margin: 0 @breadcrumb-divider-margin;
+				color: @breadcrumb-divider-color;
+			}
+		}
+	}
+
+	> .active {
+		> * {
+			color: @breadcrumb-disabled-color;
+		}
+	}
+}
