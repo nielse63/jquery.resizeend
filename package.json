@@ -1,5 +1,5 @@
 {
-	"name": "jQuery.resizeend",
+	"name": "jquery.resizeend",
 	"title": "jQuery resizeend",
 	"description": "A jQuery plugin that allows for window resize-end event handling.",
 	"version": "0.2.0",
