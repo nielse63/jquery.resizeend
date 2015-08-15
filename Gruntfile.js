@@ -122,7 +122,6 @@ module.exports = function(grunt) {
 				files: [{
 					expand: true,
 					cwd: 'build/js/clique',
-					// src: '**/*.js',
 					src: ['**/*.js', '!**/_*.js'],
 					dest: 'js'
 				}]
@@ -153,12 +152,12 @@ module.exports = function(grunt) {
 					extDot : 'last'
 				}]
 			},
-			plugins : {
+			core : {
 				files: [{
 					expand: true,
-					cwd: 'js/plugins',
+					cwd: 'js/core',
 					src: ['*.js', '!*.min.js'],
-					dest: 'js/plugins',
+					dest: 'js/core',
 					ext: '.min.js',
 					extDot : 'last'
 				}]
@@ -219,7 +218,7 @@ module.exports = function(grunt) {
 				}
 			},
 			js : {
-				src: ['js/**/*', '!js/plugins/*'],
+				src: ['js/**/*', '!js/plugins/*', '!js/lib/*'],
 				filter : function(filepath) {
 					return filepath.indexOf('.min') < 0
 				}

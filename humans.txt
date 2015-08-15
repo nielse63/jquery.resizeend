@@ -1,0 +1,15 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Erik Nielsen -- Lead Developer -- @erikkylenielsen
+
+# THANKS
+
+    Clique Studios
+
+# TECHNOLOGY COLOPHON
+
+    CSS3, HTML5
+    jQuery

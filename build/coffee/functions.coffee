@@ -69,6 +69,8 @@ do (_c = Clique)->
 			width : parent.width()
 
 	_c.$doc.on 'ready scrolling.clique.dom reloaded.clique.dom', (e, memory)->
+		if _c.$html.hasClass 'screen-mini'
+			return
 		y = if memory then memory.y else _c.$win.scrollTop()
 		if y < GLOBALS.header
 			parallaxHeader y

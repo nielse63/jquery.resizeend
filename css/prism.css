@@ -7,13 +7,8 @@
  * @author Lea Verou
  */
 
-code[class*="language-"],
-pre[class*="language-"] {
-	color: #000;
-	/*text-shadow: 0 1px white;*/
-	/*font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;*/
-	direction: ltr;
-	text-align: left;
+code[class*='language-'],
+pre[class*='language-'] {
 	white-space: pre;
 	word-spacing: normal;
 	word-break: normal;
@@ -23,29 +18,34 @@ pre[class*="language-"] {
 	tab-size: 4;
 	-webkit-hyphens: none;
 	-moz-hyphens: none;
-	-ms-hyphens: none;
 	hyphens: none;
+	color: #000;
+	text-align: left;
+	-ms-hyphens: none;
+	/*text-shadow: 0 1px white;*/
+	/*font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;*/
+	direction: ltr;
 }
 
-pre[class*="language-"]::-moz-selection,
-pre[class*="language-"]::-moz-selection,
-code[class*="language-"]::-moz-selection,
-code[class*="language-"]::-moz-selection {
-	text-shadow: none;
+pre[class*='language-']::-moz-selection,
+pre[class*='language-']::-moz-selection,
+code[class*='language-']::-moz-selection,
+code[class*='language-']::-moz-selection {
 	background: #b3d4fc;
+	text-shadow: none;
 }
 
-pre[class*="language-"]::selection,
-pre[class*="language-"]::selection,
-code[class*="language-"]::selection,
-code[class*="language-"]::selection {
-	text-shadow: none;
+pre[class*='language-']::selection,
+pre[class*='language-']::selection,
+code[class*='language-']::selection,
+code[class*='language-']::selection {
 	background: #b3d4fc;
+	text-shadow: none;
 }
 
 @media print {
-	code[class*="language-"],
-	pre[class*="language-"] {
+	code[class*='language-'],
+	pre[class*='language-'] {
 		text-shadow: none;
 	}
 }
@@ -53,10 +53,10 @@ code[class*="language-"]::selection {
 
 /* Code blocks */
 
-pre[class*="language-"] {
-	padding: 1em;
-	margin: .5em 0;
+pre[class*='language-'] {
 	overflow: auto;
+	margin: .5em 0;
+	padding: 1em;
 }
 
 
@@ -68,7 +68,7 @@ pre[class*="language-"] {
 
 /* Inline code */
 
-:not(pre) > code[class*="language-"] {
+:not(pre) > code[class*='language-'] {
 	padding: .1em;
 	border-radius: .3em;
 }
@@ -77,7 +77,7 @@ pre[class*="language-"] {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-	color: #8E959C;
+	color: #8e959c;
 }
 
 .token.punctuation {
@@ -123,7 +123,7 @@ pre[class*="language-"] {
 }
 
 .token.function {
-	color: #dd0055;
+	color: #d05;
 }
 
 .token.regex,

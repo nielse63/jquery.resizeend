@@ -1,17 +1,91 @@
 <!doctype html>
 <html lang="en">
 <head>
+	<!-- seo -->
+	<title>Resize End | Github Pages | A jQuery Plugin by Erik Nielsen</title>
+	<meta name="description" content="A jQuery plugin that allows for window resize-end event handling.">
+	<meta name="robots" content="index, follow">
+	<meta name="url" content="https://nielse63.github.io/jquery.resizeend/">
+
+	<!-- http settings -->
 	<meta charset="UTF-8">
-	<title>Resize End | A jQuery Plugin by Erik Nielsen</title>
-	<link rel="shortcut icon" href="images/favicon.ico?_=1439606525" type="image/x-icon" />
-	<link rel="apple-touch-icon" href="images/apple-touch-icon.png?_=1439606525">
-	<link rel="apple-touch-icon" sizes="57x57" href="images/apple-touch-icon-57x57.png?_=1439606525">
-	<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png?_=1439606525">
-	<link rel="apple-touch-icon" sizes="76x76" href="images/apple-touch-icon-76x76.png?_=1439606525">
-	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png?_=1439606525">
-	<link rel="apple-touch-icon" sizes="120x120" href="images/apple-touch-icon-120x120.png?_=1439606525">
-	<link rel="apple-touch-icon" sizes="144x144" href="images/apple-touch-icon-144x144.png?_=1439606525">
-	<link rel="apple-touch-icon" sizes="152x152" href="images/apple-touch-icon-152x152.png?_=1439606525">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8">
+
+	<!-- mobile -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="375">
+
+	<!-- DNS Prefect -->
+	<link href="//www.google-analytics.com" rel="dns-prefetch">
+	<link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
+
+	<!-- Icons -->
+	<link rel="shortcut icon" href="images/icons/favicon.ico?_=1439665395" type="image/x-icon" />
+	<link rel="apple-touch-icon" sizes="57x57" href="images/icons/apple-touch-icon-57x57.png?_=1439665395">
+	<link rel="apple-touch-icon" sizes="60x60" href="images/icons/apple-touch-icon-60x60.png?_=1439665395">
+	<link rel="apple-touch-icon" sizes="72x72" href="images/icons/apple-touch-icon-72x72.png?_=1439665395">
+	<link rel="apple-touch-icon" sizes="76x76" href="images/icons/apple-touch-icon-76x76.png?_=1439665395">
+	<link rel="apple-touch-icon" sizes="114x114" href="images/icons/apple-touch-icon-114x114.png?_=1439665395">
+	<link rel="apple-touch-icon" sizes="120x120" href="images/icons/apple-touch-icon-120x120.png?_=1439665395">
+	<link rel="apple-touch-icon" sizes="144x144" href="images/icons/apple-touch-icon-144x144.png?_=1439665395">
+	<link rel="apple-touch-icon" sizes="152x152" href="images/icons/apple-touch-icon-152x152.png?_=1439665395">
+	<link rel="apple-touch-icon" sizes="180x180" href="images/icons/apple-touch-icon-180x180.png?_=1439665395">
+	<link rel="icon" type="image/png" href="images/icons/favicon-32x32.png?_=1439665395" sizes="32x32">
+	<link rel="icon" type="image/png" href="images/icons/android-chrome-192x192.png?_=1439665395" sizes="192x192">
+	<link rel="icon" type="image/png" href="images/icons/favicon-96x96.png?_=1439665395" sizes="96x96">
+	<link rel="icon" type="image/png" href="images/icons/favicon-16x16.png?_=1439665395" sizes="16x16">
+	<link rel="manifest" href="manifest.json">
+	<meta name="msapplication-TileColor" content="#2b5797">
+	<meta name="msapplication-TileImage" content="images/icons/mstile-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+	<!-- copyright/author info -->
+	<meta name="copyright" content="2015 Erik Nielsen">
+	<meta name="language" content="en-US">
+	<meta name="revised" content="Saturday, August 15th, 2015, 1:00 pm">
+	<meta name="author" content="Erik Nielsen, erik@312development.com">
+	<meta name="reply-to" content="erik@312development.com">
+	<link rel="me" type="text/html" href="https://plus.google.com/+ErikNielsen312Dev/about">
+	<link rel="author" type="text/html" href="https://plus.google.com/+ErikNielsen312Dev/about">
+
+	<!-- open graph/social -->
+	<meta property="og:title" content="jQuery Resize End">
+	<meta property="og:site_name" content="Resize End | Github Pages | A jQuery Plugin by Erik Nielsen">
+	<meta property="og:url" content="https://nielse63.github.io/jquery.resizeend/">
+	<meta property="og:description" content="A jQuery plugin that allows for window resize-end event handling.">
+	<meta property="fb:app_id" content="1045036275506704" />
+	<meta property="og:type" content="product">
+	<meta property="og:locale" content="en_US" />
+	<meta property="article:author" content="https://www.facebook.com/erikkylenieslen" />
+	<meta property="article:publisher" content="https://www.facebook.com/312Development" />
+	<meta property="og:image" content="http://nielse63.github.io/jquery.resizeend/images/og-image.jpg">
+	<meta property="og:image:secure_url" content="https://nielse63.github.io/jquery.resizeend/images/og-image.jpg">
+	<meta property="og:image:type" content="image/jpeg">
+	<meta property="og:image:width" content="1285">
+	<meta property="og:image:height" content="698">
+	<meta property="og:updated_time" content="1439665395">
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="@erikkylenielsen">
+	<meta name="twitter:creator" content="@erikkylenielsen">
+	<meta name="twitter:title" content="Resize End | Github Pages | A jQuery Plugin by Erik Nielsen">
+	<meta name="twitter:description" content="A jQuery plugin that allows for window resize-end event handling.">
+	<meta name="twitter:image" content="https://nielse63.github.io/jquery.resizeend/images/og-image.jpg">
+
+	<!-- deprecated -->
+	<meta name="twitter:url" content="https://nielse63.github.io/jquery.resizeend/">
+	<meta name="twitter:image:src" content="https://nielse63.github.io/jquery.resizeend/images/og-image.jpg">
+	<meta name="twitter:image:width" content="1285">
+	<meta name="twitter:image:height" content="698">
+
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="css/clique.min.css">
+	<link rel="stylesheet" href="css/main.min.css">
+	<link rel="stylesheet" href="css/prism.min.css">
 </head>
 <body>
 
@@ -34,7 +108,7 @@
 		<article>
 			<div class="container">
 				<div class="row">
-					<div class="col-12-12 col-4-12-small flex">
+					<div class="hidden-small col-4-12-small flex">
 						<aside class="aside flex-item-grow">
 							<div class="aside-inner">
 								<h4>ResizeEnd</h4>
@@ -71,29 +145,29 @@
 							<p class="article-lead">Basic usage.</p>
 							<p>Direct method reference:</p>
 							<pre><code class="language-javascript">// Default options
-$(selector).resizeend(function() {
+$('selector').resizeend(function() {
 	// execute callback...
 });
 
 // Custom options
-$(selector).resizeend(1000, function() {
+$('selector').resizeend(1000, function() {
 	// execute callback...
 });</code></pre>
 							<p>Event binding:</p>
 							<pre><code class="language-javascript">// Default options
-$(selector).on('resizeend', function() {
+$('selector').on('resizeend', function() {
 	// execute callback...
 });
 
 // Custom options
-$(selector).on('resizeend', 1000, function() {
+$('selector').on('resizeend', 1000, function() {
 	// execute callback...
 });</code></pre>
 						</section>
 						<section class="article" id="options">
 							<h3 class="article-title">Options</h3>
 							<p class="article-lead">All plugin &amp; event options.</p>
-							<div class="overflow-container">
+							<div class="overflow-container hidden-small">
 								<table class="table-striped">
 									<thead>
 										<tr>
@@ -105,11 +179,31 @@ $(selector).on('resizeend', 1000, function() {
 									</thead>
 									<tbody>
 										<tr>
-											<td>
-												<code>delay</code>
-											</td>
+											<td><code>delay</code></td>
 											<td>integer/<br>object</td>
 											<td>250</td>
+											<td>The amount of time, in millisecond, to wait after the last <em>resize</em> event was fired before triggering the event.</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="overflow-container visible-small">
+								<table class="table-striped">
+									<tbody>
+										<tr>
+											<th>Option</th>
+											<td><code>delay</code></td>
+										</tr>
+										<tr>
+											<th>Type</th>
+											<td>integer/<br>object</td>
+										</tr>
+										<tr>
+											<th>Default</th>
+											<td>250</td>
+										</tr>
+										<tr>
+											<th>Description</th>
 											<td>The amount of time, in millisecond, to wait after the last <em>resize</em> event was fired before triggering the event.</td>
 										</tr>
 									</tbody>
@@ -134,15 +228,13 @@ $(selector).on('resizeend', 1000, function() {
 		</footer>
 	</main>
 
-	<link rel="stylesheet" href="css/clique.css">
-	<link rel="stylesheet" href="css/main.css">
-	<link rel="stylesheet" href="css/prism.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-	<script src="js/core/core.js"></script>
-	<script src="js/jquery.resizeend.js"></script>
-	<script src="js/functions.js"></script>
-	<!-- <script src="js/syntax.js"></script> -->
-	<script src="js/prism.js"></script>
+	<script>window.jQuery || document.write('<script src="js/lib/jquery.min.js"><\/script>')</script>
+	<script src="js/core/core.min.js"></script>
+	<script src="js/core/browser.min.js"></script>
+	<script src="js/jquery.resizeend.min.js"></script>
+	<script src="js/functions.min.js"></script>
+	<script src="js/prism.min.js"></script>
 	<script>
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

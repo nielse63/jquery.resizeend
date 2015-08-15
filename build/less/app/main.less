@@ -66,11 +66,15 @@ body {
 
 .header {
 	background-color: @color-blue-dark;
-	min-height: 100vh;
+	min-height: 75vh;
 	position: relative;
 	text-align: center;
 	color: @color-white;
 	overflow: hidden;
+
+	@media (min-width: @breakpoint-small) {
+		min-height: 100vh;
+	}
 
 	+ * {
 		padding-top: 50px;
@@ -85,14 +89,22 @@ body {
 
 	h1 {
 		font-weight: 700;
-		font-size: 52px;
+		font-size: 44px;
 		font-family: @header-font-family;
+
+		@media (min-width: @breakpoint-small) {
+			font-size: 52px;
+		}
 	}
 
 	h2 {
 		font-family: @article-header;
-		font-size: 26px;
+		font-size: 18px;
 		font-weight: 200;
+
+		@media (min-width: @breakpoint-small) {
+			font-size: 26px;
+		}
 	}
 
 	.button {
@@ -144,6 +156,24 @@ h3 {
 h4 {
     font-weight: 700;
     letter-spacing: 1px;
+}
+
+.row-2-cols {
+	> * {
+		.flex( 1 0 100% );
+
+		+ * {
+			margin-top: 15px;
+
+			@media (min-width: @breakpoint-small) {
+				margin-top: 0;
+			}
+		}
+
+		@media (min-width: @breakpoint-small) {
+			.flex( 1 0 50% );
+		}
+	}
 }
 
 .aside {

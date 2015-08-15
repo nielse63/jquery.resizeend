@@ -743,6 +743,7 @@
 			_c.domready = true;
 
 			_c.$win.on('load resizeend.clique.dom orientationchange', function() {
+				_c.support.touch = "ontouchstart" in window && navigator.userAgent.toLowerCase().match(/mobile|tablet/) || global.DocumentTouch && document instanceof global.DocumentTouch || global.navigator.msPointerEnabled && global.navigator.msMaxTouchPoints > 0 || global.navigator.pointerEnabled && global.navigator.maxTouchPoints > 0 || false;
 				_c.$doc.trigger('reloaded.clique.dom');
 			});
 		});

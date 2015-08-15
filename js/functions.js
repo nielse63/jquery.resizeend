@@ -84,6 +84,9 @@
 	});
 	_c.$doc.on('ready scrolling.clique.dom reloaded.clique.dom', function(e, memory) {
 		var y;
+		if(_c.$html.hasClass('screen-mini')) {
+			return;
+		}
 		y = memory ? memory.y : _c.$win.scrollTop();
 		if(y < GLOBALS.header) {
 			parallaxHeader(y);
