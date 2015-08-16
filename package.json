@@ -37,6 +37,7 @@
     "grunt-csscss": "^0.6.2",
     "grunt-jsbeautifier": "^0.2.10",
     "grunt-newer": "^1.1.0",
+    "grunt-shell": "^1.1.2",
     "jshint-html-reporter": "^0.2.4",
     "load-grunt-tasks": "^3.1.0"
   }
