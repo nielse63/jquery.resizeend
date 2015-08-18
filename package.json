@@ -2,7 +2,7 @@
 	"name": "jquery.resizeend",
 	"title": "jQuery resizeend",
 	"description": "A jQuery plugin that allows for window resize-end event handling.",
-	"version": "0.2.0",
+	"version": "0.2.1",
 	"homepage": "https://nielse63.github.io/jquery.resizeend/",
 	"author": {
 		"name": "Erik Nielsen",
@@ -17,6 +17,13 @@
 		"type": "MIT",
 		"url": "https://github.com/nielse63/jquery.resizeend/blob/master/LICENSE.md"
 	}],
+	"keywords" : [
+		"jquery-plugin",
+		"resizeend",
+		"jQuery",
+		"events",
+		"scroll"
+	],
 	"dependencies": {
 		"node-promise": "^0.5.10"
 	},
