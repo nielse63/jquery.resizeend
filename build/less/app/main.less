@@ -124,6 +124,13 @@ body {
 
 	.row {
 		margin-top: 35px;
+		max-width: 500px;
+		margin-left: auto;
+		margin-right: auto;
+
+		@media (min-width: @breakpoint-small) {
+			width: 500px;
+		}
 	}
 
 	&-cover {
