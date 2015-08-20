@@ -1,5 +1,8 @@
 CACHE MANIFEST
-# Modified: Wed, 19 Aug 2015 22:51:49 -0500
+# Modified: Thu, 20 Aug 2015 12:53:07 -0500
+
+# HTML
+/jquery.resizeend/index.html
 
 # CSS
 /jquery.resizeend/css/clique.min.css
