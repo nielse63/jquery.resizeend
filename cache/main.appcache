@@ -1,0 +1,55 @@
+CACHE MANIFEST
+# Modified: Wed, 19 Aug 2015 22:51:49 -0500
+
+# CSS
+/jquery.resizeend/css/clique.min.css
+/jquery.resizeend/css/main.min.css
+/jquery.resizeend/css/prism.min.css
+
+# JS
+/jquery.resizeend/js/core/browser.min.js
+/jquery.resizeend/js/core/core.min.js
+/jquery.resizeend/js/functions.min.js
+/jquery.resizeend/js/jquery.resizeend.min.js
+/jquery.resizeend/js/lib/jquery.min.js
+/jquery.resizeend/js/prism.min.js
+
+# IMAGES
+/jquery.resizeend/images/icons/android-chrome-144x144.png
+/jquery.resizeend/images/icons/android-chrome-192x192.png
+/jquery.resizeend/images/icons/android-chrome-36x36.png
+/jquery.resizeend/images/icons/android-chrome-48x48.png
+/jquery.resizeend/images/icons/android-chrome-72x72.png
+/jquery.resizeend/images/icons/android-chrome-96x96.png
+/jquery.resizeend/images/icons/apple-touch-icon-114x114.png
+/jquery.resizeend/images/icons/apple-touch-icon-120x120.png
+/jquery.resizeend/images/icons/apple-touch-icon-144x144.png
+/jquery.resizeend/images/icons/apple-touch-icon-152x152.png
+/jquery.resizeend/images/icons/apple-touch-icon-180x180.png
+/jquery.resizeend/images/icons/apple-touch-icon-57x57.png
+/jquery.resizeend/images/icons/apple-touch-icon-60x60.png
+/jquery.resizeend/images/icons/apple-touch-icon-72x72.png
+/jquery.resizeend/images/icons/apple-touch-icon-76x76.png
+/jquery.resizeend/images/icons/apple-touch-icon-precomposed.png
+/jquery.resizeend/images/icons/apple-touch-icon.png
+/jquery.resizeend/images/icons/favicon-16x16.png
+/jquery.resizeend/images/icons/favicon-32x32.png
+/jquery.resizeend/images/icons/favicon-96x96.png
+/jquery.resizeend/images/icons/favicon.ico
+/jquery.resizeend/images/icons/mstile-144x144.png
+/jquery.resizeend/images/icons/mstile-150x150.png
+/jquery.resizeend/images/icons/mstile-310x150.png
+/jquery.resizeend/images/icons/mstile-310x310.png
+/jquery.resizeend/images/icons/mstile-70x70.png
+/jquery.resizeend/images/og-image.jpg
+/jquery.resizeend/images/skyline-lite.png
+
+# FONTS
+/jquery.resizeend/fonts/Brandon_bld.ttf
+/jquery.resizeend/fonts/Brandon_reg.ttf
+/jquery.resizeend/fonts/icomoon.ttf
+/jquery.resizeend/fonts/Proxima-Nova-Bold.ttf
+/jquery.resizeend/fonts/ProximaNova-Regular.ttf
+
+NETWORK:
+*
