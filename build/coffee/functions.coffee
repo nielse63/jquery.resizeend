@@ -51,8 +51,10 @@ do (_c = Clique)->
 				return false
 
 	_c.$html.on 'click', '.nav-side a', (e)->
-		e.preventDefault()
 		id = _c.$(@).attr 'href'
+		if id.indexOf( 'http' ) > -1
+			return
+		e.preventDefault()
 		parent = _c.$(@).parent()
 		_c.$('html, body').stop().animate
 			scrollTop : _c.$(id).offset().top
