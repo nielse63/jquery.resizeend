@@ -1,0 +1,21 @@
+
+language: node_js
+node_js:
+  - "node"
+sudo: false
+dist: trusty
+cache:
+  yarn: true
+  directories:
+    - node_modules
+install:
+  - yarn
+
+env:
+  - TEST_COMMAND="lint"
+  - TEST_COMMAND="test"
+
+script:
+  - (eval "yarn run $TEST_COMMAND")
+
+after_success: yarn run coverage

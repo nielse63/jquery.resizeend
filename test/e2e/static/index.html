@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Resize End Test</title>
+  <link rel="stylesheet" href="style.css">
+  <link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+  <div class="main-wrapper">
+    <h1 class="site-title">jQuery resizeend event</h1>
+    <h2>Resize your browser window,<br>a completion notice will appear below:</h2>
+    <div class="window"><h3></h3></div>
+    <br clear="all">
+    <a href="https://github.com/nielse63/jquery.resizeend" target="_blank">View Source</a>
+  </div>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="jquery.resizeend.min.js"></script>
+  <script>
+    ;(function($, window) {
+      $(window).on('load resize resizeend', function(e) {
+        $('.window h3').text(`${e.type} fired`);
+      });
+    })(jQuery, window);
+  </script>
+</body>
+</html>

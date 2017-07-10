@@ -1,65 +1,72 @@
-### jQuery resizeend
+### jquery.resizeend
+
+[![Build Status](https://travis-ci.org/nielse63/jquery.resizeend.svg?branch=master)](https://travis-ci.org/nielse63/jquery.resizeend)
+[![Coverage Status](https://coveralls.io/repos/github/nielse63/jquery.resizeend/badge.svg?branch=master)](https://coveralls.io/github/nielse63/jquery.resizeend?branch=master)
+[![devDependencies Status](https://david-dm.org/nielse63/jquery.resizeend/dev-status.svg)](https://david-dm.org/nielse63/jquery.resizeend?type=dev)
+[![Code Climate](https://codeclimate.com/github/nielse63/jquery.resizeend/badges/gpa.svg)](https://codeclimate.com/github/nielse63/jquery.resizeend)
+[![NPM version](https://badge.fury.io/js/jquery.resizeend.svg)](http://badge.fury.io/js/jquery.resizeend)
+[![npm](https://img.shields.io/npm/dt/jquery.resizeend.svg?style=flat-square)](https://www.npmjs.com/package/jquery.resizeend)
 
 A jQuery plugin that allows for window resize-end event handling.
 
-## Demo
+## Installation
 
-See the demo <a href="http://nielse63.github.io/jquery.resizeend/" target="_blank">here</a>.
+### With `yarn`
+
+```sh
+yarn add jquery.resizeend
+```
+
+### With `npm`
+
+```sh
+npm install jquery.resizeend
+```
+
+### In the browser
+
+Reference your local script:
+
+```html
+<script src="node_modules/jquery.resizeend/lib/jquery.resizeend.min.js"></script>
+```
+
+Or load the script via jsdelivr:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/jquery.resizeend@latest/lib/jquery.resizeend.min.js"></script>
+```
 
 ## Usage
 
-Include both the jQuery library and the resizeend plugin in your project:
-
-```
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="js/jquery.resizeend.js"></script>
-```
-
-Execute the resizeend method to an element, instatiate options (if so desired), and run a callback functions:
-
 ```js
-$(window).resizeend({
-	delay : 250
-}, function() {
-	// ...
+$(window).on('resizeend', function(e) {
+  // ...
 });
 ```
 
-Or bind an element to the event, passing in options and event handler:
+## Contributing
 
-```js
-$(window).on('resizeend', 250, function() {
-	// ...
-});
+Fork the repo and clone locally, then run:
+
+```sh
+yarn install
 ```
 
-If you want to use the default delay setting of 250ms, simply don't include the options object:
+This will install the `devDependencies` packages and build the `dist` folder.
 
-```js
-$(window).resizeend(function() {
-	// ...
-});
+Once you've made your desired changes, make sure to write any new tests for
+your feature and run the tests:
+
+```sh
+yarn run lint # lints js
+
+yarn test     # runs test suite
 ```
 
-## Options
-
-The only option available is the delay time (in milliseconds) to execute the callback after the browser has stopped being resized. The default value is 250ms. This can be passed as either a number or object:
-
-```js
-// As a number
-$(window).on('resizeend', 250, function() {
-	// ...
-});
-
-// As an object
-$(window).on('resizeend', { delay : 250 }, function() {
-	// ...
-});
-```
+If all tests pass, [create a pull request](https://github.com/nielse63/jquery.resizeend/pulls).
 
 ## License
 
-This plugin is licensed under the <a href="http://opensource.org/licenses/MIT" target="_blank">MIT license</a>.  A copy of the license is included in this package.
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/nielse63/jquery-resizeend/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+This plugin is licensed under the [MIT license](http://opensource.org/licenses/MIT).
 

@@ -1,0 +1,17 @@
+{
+  "require": [
+    "babel-register"
+  ],
+  "sourceMap": true,
+  "reporter": [
+    "lcov",
+    "text",
+    "html"
+  ],
+  "check-coverage": true,
+  "per-file": true,
+  "lines": 99,
+  "statements": 99,
+  "functions": 99,
+  "branches": 99
+}
