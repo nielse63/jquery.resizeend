@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="3">
+
+  <testsuite name="General.spec"
+    errors="0" failures="0" hostname="" id="" package="General.spec" skipped="0"
+    tests="3" time="0.6120" timestamp="Mon, 10 Jul 2017 18:56:58 GMT">
+  
+    <testcase name="General" classname="General.spec" time="0.06600" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="OnLoad" classname="General.spec" time="0.1100" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="OnResizeEnd" classname="General.spec" time="0.4360" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+
+  
+
+  
+  </testsuite>
+</testsuites>
