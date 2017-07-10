@@ -1,25 +1,24 @@
 {
-	"name": "jquery.resizeend",
-	"version": "0.2.1",
-	"homepage": "https://nielse63.github.io/jquery.resizeend/",
-	"description": "A jQuery plugin that allows for window resize-end event handling.",
-	"main": "dist/jquery.resizeend.js",
-	"keywords": [
-		"jquery-plugin",
-		"resizeend",
-		"jQuery",
-		"events",
-		"resize"
-	],
-	"authors": [
-		"Erik Nielsen <erik@312development.com>"
-	],
-	"license": "MIT",
-	"ignore": [
-		"**/.*",
-		"node_modules",
-		"bower_components",
-		"test",
-		"tests"
-	]
+  "name": "jquery.resizeend",
+  "version": "0.2.1",
+  "homepage": "https://nielse63.github.io/jquery.resizeend/",
+  "description": "A jQuery plugin that allows for window resize-end event handling.",
+  "main": "lib/jquery.resizeend.js",
+  "keywords": [
+    "jquery-plugin",
+    "resizeend",
+    "jQuery",
+    "events",
+    "resize"
+  ],
+  "authors": [
+    "Erik Nielsen <erik@312development.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test"
+  ]
 }
