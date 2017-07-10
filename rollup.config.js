@@ -9,7 +9,7 @@ const plugins = [
 ];
 
 export default {
-  entry: 'src/jquery.resizeend.js',
+  entry: 'src/index.js',
   plugins,
   external,
   targets: [{
