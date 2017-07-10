@@ -1,7 +1,6 @@
-### jquery.resizeend
+# jquery.resizeend
 
 [![Build Status](https://travis-ci.org/nielse63/jquery.resizeend.svg?branch=master)](https://travis-ci.org/nielse63/jquery.resizeend)
-[![Coverage Status](https://coveralls.io/repos/github/nielse63/jquery.resizeend/badge.svg?branch=master)](https://coveralls.io/github/nielse63/jquery.resizeend?branch=master)
 [![devDependencies Status](https://david-dm.org/nielse63/jquery.resizeend/dev-status.svg)](https://david-dm.org/nielse63/jquery.resizeend?type=dev)
 [![Code Climate](https://codeclimate.com/github/nielse63/jquery.resizeend/badges/gpa.svg)](https://codeclimate.com/github/nielse63/jquery.resizeend)
 [![NPM version](https://badge.fury.io/js/jquery.resizeend.svg)](http://badge.fury.io/js/jquery.resizeend)

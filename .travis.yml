@@ -17,5 +17,3 @@ env:
 
 script:
   - (eval "yarn run $TEST_COMMAND")
-
-after_success: yarn run coverage

@@ -5,23 +5,23 @@
 
   <testsuite name="General.spec"
     errors="0" failures="0" hostname="" id="" package="General.spec" skipped="0"
-    tests="3" time="0.6120" timestamp="Mon, 10 Jul 2017 18:56:58 GMT">
+    tests="3" time="0.6120" timestamp="Mon, 10 Jul 2017 19:05:21 GMT">
   
-    <testcase name="General" classname="General.spec" time="0.06600" assertions="2">
+    <testcase name="General" classname="General.spec" time="0.06300" assertions="2">
 
     
 
     
     </testcase>
   
-    <testcase name="OnLoad" classname="General.spec" time="0.1100" assertions="2">
+    <testcase name="OnLoad" classname="General.spec" time="0.1140" assertions="2">
 
     
 
     
     </testcase>
   
-    <testcase name="OnResizeEnd" classname="General.spec" time="0.4360" assertions="2">
+    <testcase name="OnResizeEnd" classname="General.spec" time="0.4350" assertions="2">
 
     
 

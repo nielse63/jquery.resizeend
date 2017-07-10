@@ -26,7 +26,6 @@
   "scripts": {
     "lint": "eslint src ./*.js --ignore-pattern '!.eslintrc.js'",
     "lint-fix": "npm run lint -- --fix",
-    "lint:internal": "eslint test/",
     "rollup": "rollup -c --environment BABEL_ENV:production,NODE_ENV:production",
     "minify": "uglifyjs -mco lib/jquery.resizeend.min.js --  lib/jquery.resizeend.js",
     "prebuild": "npm run lint && rm -rf lib/ && mkdir lib",
@@ -37,7 +36,6 @@
     "prepublishOnly": "npm run build"
   },
   "devDependencies": {
-    "babel-cli": "^6.24.1",
     "babel-eslint": "^7.2.3",
     "babel-preset-env": "^1.6.0",
     "babel-register": "^6.24.1",
