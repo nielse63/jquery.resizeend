@@ -46,10 +46,10 @@
     "eslint-plugin-import": "^2.7.0",
     "express": "^4.15.3",
     "nightwatch": "^0.9.16",
-    "rollup": "^0.45.0",
+    "rollup": "^0.45.2",
     "rollup-plugin-babel": "^2.7.1",
     "selenium-server": "^3.4.0",
-    "uglify-js": "^3.0.24"
+    "uglify-js": "^3.0.25"
   },
   "engines": {
     "node": ">= 8.x",
