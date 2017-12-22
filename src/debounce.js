@@ -1,5 +1,4 @@
-
-export default function debounce(func, wait = 100, immediate) {
+module.exports = function debounce(func, wait = 100, immediate = false) {
   let timeout;
   let args;
   let context;
@@ -54,4 +53,4 @@ export default function debounce(func, wait = 100, immediate) {
   };
 
   return debounced;
-}
+};

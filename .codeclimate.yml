@@ -11,7 +11,12 @@ engines:
     enabled: true
   markdownlint:
     enabled: true
+    checks:
+      MD013:
+        enabled: false
   shellcheck:
+    enabled: true
+  nodesecurity:
     enabled: true
 ratings:
   paths:
@@ -22,3 +27,4 @@ exclude_paths:
 - node_modules/
 - test/
 - coverage/
+- CHANGELOG.md

@@ -12,8 +12,6 @@
     <h1 class="site-title">jQuery resizeend event</h1>
     <h2>Resize your browser window,<br>a completion notice will appear below:</h2>
     <div class="window"><h3></h3></div>
-    <br clear="all">
-    <a href="https://github.com/nielse63/jquery.resizeend" target="_blank">View Source</a>
   </div>
 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -23,7 +21,7 @@
       $(window).on('load resize resizeend', function(e) {
         $('.window h3').text(`${e.type} fired`);
       });
-    })(jQuery, window);
+    })(window.jQuery, window);
   </script>
 </body>
 </html>

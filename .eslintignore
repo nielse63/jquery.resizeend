@@ -1,2 +1,7 @@
 **/*{.,-}min.js
-dist
+build/
+lib/
+doc/
+docs/
+coverage/
+test/static

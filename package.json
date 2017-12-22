@@ -1,19 +1,21 @@
 {
   "name": "jquery.resizeend",
-  "title": "jQuery resizeend",
-  "description": "A jQuery plugin that allows for window resize-end event handling.",
   "version": "1.0.1",
-  "homepage": "https://nielse63.github.io/jquery.resizeend/",
+  "description": "A jQuery plugin that allows for window resize-end event handling.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nielse63/jquery.resizeend"
+  },
   "author": {
     "name": "Erik Nielsen",
     "email": "erik@312development.com",
-    "url": "http://312development.com"
+    "url": "https://312development.com"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/nielse63/jquery.resizeend.git"
+  "license": {
+    "type": "MIT",
+    "url": "https://opensource.org/licenses/MIT"
   },
-  "licenses": "MIT",
+  "homepage": "https://github.com/nielse63/jquery.resizeend",
   "keywords": [
     "jquery-plugin",
     "resizeend",
@@ -21,38 +23,83 @@
     "events",
     "scroll"
   ],
+  "bugs": {
+    "url": "https://github.com/nielse63/jquery.resizeend/issues",
+    "email": "erik@312development.com"
+  },
   "main": "lib/jquery.resizeend.js",
-  "bugs": "https://github.com/nielse63/jquery.resizeend/issues",
+  "files": [
+    "lib/"
+  ],
+  "directories": {
+    "lib": "./lib"
+  },
   "scripts": {
-    "lint": "eslint src ./*.js --ignore-pattern '!.eslintrc.js'",
-    "lint-fix": "npm run lint -- --fix",
-    "rollup": "rollup -c --environment BABEL_ENV:production,NODE_ENV:production",
-    "minify": "uglifyjs -mco lib/jquery.resizeend.min.js --  lib/jquery.resizeend.js",
-    "prebuild": "npm run lint && rm -rf lib/ && mkdir lib",
-    "build": "npm run rollup",
-    "postbuild": "npm run minify",
-    "pretest": "npm run build",
-    "test": "node test/e2e/runner.js",
-    "prepublishOnly": "npm run build"
+    "lint": "eslint src/ test/ ./*.js --cache --fix",
+    "build": "cross-env NODE_ENV=production babel src/ -d lib/",
+    "test": "nyc mocha test/specs/*.spec.js",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "commitmsg": "validate-commit-msg",
+    "precommit": "lint-staged",
+    "prepush": "nsp check",
+    "changelog": "github-changes -n ${npm_package_version} --only-pulls --use-commit-body --owner nielse63 --repository ${npm_package_name}",
+    "version": "scripts/release"
   },
   "devDependencies": {
-    "babel-eslint": "^7.2.3",
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.0.3",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-istanbul": "^4.1.5",
     "babel-preset-env": "^1.6.0",
-    "babel-register": "^6.26.0",
-    "chromedriver": "^2.31.0",
+    "babel-preset-flow": "^6.23.0",
+    "babel-preset-stage-2": "^6.24.1",
+    "conventional-commit-types": "^2.2.0",
+    "coveralls": "^3.0.0",
+    "cross-env": "^5.1.2",
     "cross-spawn": "^5.1.0",
+    "current-git-branch": "^1.0.1",
     "eslint": "^4.5.0",
-    "eslint-config-airbnb-base": "^11.3.2",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-config-xo": "^0.19.0",
+    "eslint-friendly-formatter": "^3.0.0",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-flowtype": "^2.40.1",
     "eslint-plugin-import": "^2.7.0",
-    "express": "^4.15.4",
-    "nightwatch": "^0.9.16",
-    "rollup": "^0.48.2",
-    "rollup-plugin-babel": "^3.0.2",
-    "selenium-server": "^3.5.0",
-    "uglify-js": "^3.0.28"
+    "eslint-plugin-prettier": "^2.4.0",
+    "express": "^4.16.2",
+    "flow-bin": "^0.61.0",
+    "github-changes": "^1.1.1",
+    "husky": "^0.14.3",
+    "jest": "^22.0.3",
+    "jest-cli": "^22.0.3",
+    "jest-environment-node": "^22.0.3",
+    "lint-staged": "^6.0.0",
+    "mkdirp": "^0.5.1",
+    "nsp": "^3.1.0",
+    "nyc": "^11.4.1",
+    "prettier": "^1.9.2",
+    "puppeteer": "^0.13.0",
+    "rimraf": "^2.6.2",
+    "staged-git-files": "^0.0.4",
+    "validate-commit-msg": "^2.14.0",
+    "webpack": "^3.10.0"
   },
   "engines": {
     "node": ">= 8.x",
-    "npm": ">= 5.x"
+    "npm": ">= 5.x",
+    "yarn": ">= 1.x"
+  },
+  "config": {
+    "validate-commit-msg": {
+      "types": "conventional-commit-types",
+      "subjectPatternErrorMsg": "[validate-commit-msg]: Subject does not match subject pattern!",
+      "autoFix": true
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
   }
 }

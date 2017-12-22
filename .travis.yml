@@ -11,9 +11,7 @@ cache:
 install:
   - yarn
 
-env:
-  - TEST_COMMAND="lint"
-  - TEST_COMMAND="test"
-
 script:
-  - (eval "yarn run $TEST_COMMAND")
+  - yarn test
+
+after_success: yarn run coverage
