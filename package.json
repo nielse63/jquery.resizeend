@@ -36,17 +36,17 @@
     "prepublishOnly": "npm run build"
   },
   "devDependencies": {
-    "babel-eslint": "^7.2.3",
+    "babel-eslint": "^8.2.6",
     "babel-preset-env": "^1.6.0",
     "babel-register": "^6.26.0",
     "chromedriver": "^2.31.0",
-    "cross-spawn": "^5.1.0",
-    "eslint": "^4.5.0",
-    "eslint-config-airbnb-base": "^11.3.2",
+    "cross-spawn": "^6.0.5",
+    "eslint": "^5.4.0",
+    "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.7.0",
     "express": "^4.15.4",
     "nightwatch": "^0.9.16",
-    "rollup": "^0.48.2",
+    "rollup": "^0.64.1",
     "rollup-plugin-babel": "^3.0.2",
     "selenium-server": "^3.5.0",
     "uglify-js": "^3.0.28"
