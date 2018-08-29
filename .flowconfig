@@ -10,5 +10,7 @@ src/
 [lints]
 
 [options]
+emoji=true
+experimental.const_params=true
 
 [strict]

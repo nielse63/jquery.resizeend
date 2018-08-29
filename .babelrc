@@ -2,14 +2,10 @@
   "presets": [
     ["env", {
       "modules": false,
-      "targets": { "node": true }
+      "targets": {
+        "browsers": ["> 1%", "last 3 versions", "not ie <= 8"]
+      }
     }],
     "stage-2", "flow"
-  ],
-  "env": {
-    "test": {
-      "presets": ["env", "stage-2", "flow"],
-      "plugins": [ "istanbul" ]
-    }
-  }
+  ]
 }

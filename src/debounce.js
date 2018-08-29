@@ -1,4 +1,9 @@
-module.exports = function debounce(func, wait = 100, immediate = false) {
+// @flow
+module.exports = function debounce(
+  func: Function,
+  wait: number = 100,
+  immediate: boolean = false,
+) {
   let timeout;
   let args;
   let context;

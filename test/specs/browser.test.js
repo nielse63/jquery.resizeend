@@ -32,7 +32,7 @@ describe(
     });
 
     describe('happy path', () => {
-      it('tracking resizeend event', async () => {
+      it('tracking resize event', async () => {
         const $title = await page.$('.window');
 
         // Resize window
@@ -40,6 +40,20 @@ describe(
           height: 600,
           width: 1100,
         });
+
+        // Get text
+        const text = await page.evaluate(title => {
+          return title.textContent;
+        }, $title);
+
+        // Dispose of handler and run test
+        await $title.dispose();
+        expect(text).toContain('resize fired');
+      });
+
+      it('tracking resizeend event', async () => {
+        await page.waitFor(250);
+        const $title = await page.$('.window');
 
         // Get text
         const text = await page.evaluate(title => {

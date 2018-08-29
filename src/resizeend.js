@@ -1,3 +1,4 @@
+// @flow
 const debounce = require('./debounce');
 
 const $ = window.jQuery;
@@ -7,8 +8,7 @@ if (!$) {
 
 $.event.special.resizeend = {
   setup() {
-    const ctx = this;
-    const $ctx = $(ctx);
+    const $ctx = $(this);
 
     function callback(e) {
       e.type = 'resizeend';
