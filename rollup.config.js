@@ -9,11 +9,11 @@ const plugins = [
 ];
 
 export default {
-  entry: 'src/index.js',
+  input: 'src/index.js',
   plugins,
   external,
-  targets: [{
-    dest: pkg.main,
+  output: [{
+    file: pkg.main,
     format: 'umd',
     moduleName: pkg.name,
     sourceMap: true,
