@@ -48,7 +48,7 @@
     "express": "^4.15.4",
     "nightwatch": "^0.9.16",
     "release-it": "^7.6.1",
-    "rollup": "^0.64.1",
+    "rollup": "^0.66.1",
     "rollup-plugin-babel": "^3.0.2",
     "selenium-server": "^3.5.0",
     "uglify-js": "^3.0.28"
