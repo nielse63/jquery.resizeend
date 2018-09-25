@@ -37,7 +37,7 @@
     "release": "release-it"
   },
   "devDependencies": {
-    "babel-eslint": "^8.2.6",
+    "babel-eslint": "^10.0.0",
     "babel-preset-env": "^1.6.0",
     "babel-register": "^6.26.0",
     "chromedriver": "^2.31.0",
