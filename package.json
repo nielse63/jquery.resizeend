@@ -38,7 +38,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^8.2.6",
-    "babel-preset-env": "^1.6.0",
+    "babel-preset-env": "^1.7.0",
     "babel-register": "^6.26.0",
     "chromedriver": "^2.31.0",
     "cross-spawn": "^6.0.5",
