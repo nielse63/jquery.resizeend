@@ -45,7 +45,7 @@
     "eslint": "^5.3.0",
     "eslint-config-airbnb-base": "13.1.0",
     "eslint-plugin-import": "^2.14.0",
-    "express": "^4.15.4",
+    "express": "^4.17.3",
     "nightwatch": "^0.9.16",
     "release-it": "^7.6.1",
     "rollup": "^0.64.1",
